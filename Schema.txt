@@ -1,0 +1,60 @@
+users:
+	id:integer
+	email: string
+	name: string
+	display_name:string
+	password: string
+
+	
+follow:
+	followee: integer
+	follower: integer
+	
+tweet:
+	id:integer
+	text: text
+	create_time: time
+	user_id: integer
+	retweet: integer
+	
+comment:
+	tweet_id:integer
+	reply_id:integer
+	
+favourite:
+	user_id: integer
+	tweet_id: integer
+	
+mention:
+	tweet_id:integer
+	user_id:integer
+	
+hashtag:
+	name: string
+	tweet_id: integer
+	
+users:
+	has_many tweets
+	has_many followers
+	has_many followees
+	has_many favourites
+	
+tweet:
+	has_many mentions
+	has_many comments
+	has_many favourites
+	has_many hashtags
+	belongs_to user
+	
+	
+comment:
+	belongs_to tweet
+
+favourites:
+	belongs_to tweet
+	belongs_to user
+	
+hashtag:
+	has_many tweets
+	
+	
