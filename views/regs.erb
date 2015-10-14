@@ -1,0 +1,23 @@
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<h3>All Registrations</h3>
+<table>
+  <tr>
+    <th>Person</th>
+    <th>Event</th>
+    <th>Status</th>
+  </tr>
+
+   <% @regs.each do |r| %>
+  <tr>
+    <td><%= r.person.nil? ? r.person_id : r.person.name %></td>
+    <td><%= r.event.nil? ? r.event_id : r.event.name %></td>
+    <td><%= r.status %></td>
+  </tr>
+  <% end %>
+
+</table>
+
+<a href="/registration/new">New Registration</a>
+<a href="/">Back to Home</a>
