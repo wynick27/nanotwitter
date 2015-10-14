@@ -7,77 +7,50 @@ require './models/registrations'
 
 set :public_folder, File.dirname(__FILE__) + '/static'
 
+#authentication
+get '/login' do
+end
+
+#Generates user login form.
+post '/login' do
+
+end
+#Checks user login information and puts session.
+get '/logout' do
+
+end
+
+get '/register/:username' do
+
+end
+
+#User Interface
 get '/' do
-	erb :index # home page, sign in and create account
-end
-
-get '/user' do
-	erb :create
-end
-
-get '/sign_in' do
-	erb :sign_in
-end
-
-post '/create' do
 
 end
-get '/person/new' do
-  erb :person_new
+
+#if user logged in return its tweets otherwise return all recent tweets of the site
+get '/user/:username' do
+
 end
 
-get '/event/new' do
-  erb :event_new
+#if user is matches the current user then show new tweet otherwise just show the user's tweets
+post '/tweet/new' do
+
+end
+#If user is not logged in then error else post a new tweet in users profile
+get '/tweet/:id/retweet' do
+
+end
+post '/tweet/:id/comments' do
+
+end
+post '/tweet/:id/favourate' do
+	
 end
 
-get '/registration/new' do
-  @persons=Person.all
-  @events=Event.all
-  erb :registration_new
-end
+#test interface
+get '/test/reset' do
 
-post '/person/new' do
-  pinfo = params[:person]
-  pinfo[:gender] = pinfo[:gender] == 'male'
-	person = Person.new(pinfo)
-	if person.save
-		redirect '/persons'
-	else
-		"Sorry, there was an error!"
-	end
 end
-
-post '/event/new' do
-	event = Event.new(params[:event])
-	if event.save
-		redirect '/events'
-	else
-		"Sorry, there was an error!"
-	end
-end
-
-post '/registration/new' do
-	reginfo = params[:reg]
-  reg = Registration.find_or_initialize_by(person_id: reginfo[:person].to_i ,event_id:reginfo[:event].to_i)
-  reg.status=reginfo[:status]
-	if reg.save
-		redirect '/registrations'
-	else
-		"Sorry, there was an error!"
-	end
-end
-
-get '/persons' do
-	@persons = Person.all
-	erb :persons
-end
-
-get '/events' do
-	@events = Event.all
-	erb :events
-end
-
-get '/registrations' do
-	@regs = Registration.all
-	erb :regs
-end
+#creates a testuser if not exist, delete all its follows and tweets
