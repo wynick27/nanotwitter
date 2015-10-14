@@ -12,18 +12,29 @@ require './models/favourate'
 set :public_folder, File.dirname(__FILE__) + '/static'
 
 get '/' do
-	erb :index
+	erb :index # home page, sign in and create account
 end
 
-get '/person/new' do 
+get '/user' do
+	erb :create
+end
+
+get '/sign_in' do
+	erb :sign_in
+end
+
+post '/create' do
+
+end
+get '/person/new' do
   erb :person_new
 end
 
-get '/event/new' do 
+get '/event/new' do
   erb :event_new
 end
 
-get '/registration/new' do 
+get '/registration/new' do
   @persons=Person.all
   @events=Event.all
   erb :registration_new
