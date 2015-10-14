@@ -1,9 +1,13 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require './config/environments' #database configuration
-require './models/persons'        #Model class
-require './models/events'
-require './models/registrations'
+require './models/user'        #Model class
+require './models/tweet'
+require './models/retweet'
+require './models/hashtag'
+require './models/follow'
+require './models/mention'
+require './models/favourate'
 
 set :public_folder, File.dirname(__FILE__) + '/static'
 

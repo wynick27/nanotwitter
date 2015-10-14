@@ -4,7 +4,8 @@ Generates user login form.
 post /login
 Checks user login information and puts session.
 get /logout
-get /register/:username
+get /register
+post /register
 
 User Interface
 get /
@@ -15,7 +16,7 @@ if user is matches the current user then show new tweet otherwise just show the 
 post /tweet/new
 If user is not logged in then error
 else post a new tweet in users profile
-get /tweet/:id/retweet
+post /tweet/:id/retweet
 post /tweet/:id/comments
 post /tweet/:id/favourate
 

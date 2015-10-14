@@ -17,9 +17,9 @@ tweet:
 	user_id: integer
 	retweet: integer
 	
-comment:
+retweet:
 	tweet_id:integer
-	reply_id:integer
+	user_id:integer
 	
 favourite:
 	user_id: integer
@@ -47,8 +47,8 @@ tweet:
 	belongs_to user
 	
 	
-comment:
-	belongs_to tweet
+retweet:
+	belongs_to user
 
 favourites:
 	belongs_to tweet
