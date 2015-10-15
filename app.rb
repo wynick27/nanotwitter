@@ -10,78 +10,100 @@ require './models/mention'
 require './models/favourate'
 
 set :public_folder, File.dirname(__FILE__) + '/static'
+enable :sessions
 
+#authentication
+get '/login' do
+  erb :login
+end
+
+#Generates user login form.
+post '/login' do
+  user=User.find_by name: params['name'],password:params['password']
+  if user
+    session['user']=user.id
+    redirect '/'
+  else
+    "User not found or password is not correct"
+  end
+end
+#Checks user login information and puts session.
+get '/logout' do
+  session.clear
+  redirect '/'
+end
+
+get '/register' do
+  erb :register
+end
+
+post '/register' do
+  user=User.new name:params['name'],email:params['email'],password:params['password']
+  begin
+   if user.valid?
+     user.save
+     redirect '/'
+   else
+     person.errors.messages[:name] + person.errors.messages[:email]
+   end
+  rescue
+    "Can't create user"
+  end
+end
+
+#User Interface
 get '/' do
-	erb :index # home page, sign in and create account
+  uid=session['user']
+  user=uid && User.find(uid)
+  erb :user,:locals=> {:user=>user}
 end
 
-get '/user' do
-	erb :create
+#if user logged in return its tweets otherwise return all recent tweets of the site
+get '/user/:username' do
+  user=User.find_by name: params['username']
+  if user
+    uid=session['user']
+    curuser=uid && User.find(uid)
+    erb :user,:locals=> {:user=>user} do 
+      if uid==user.id
+        erb :new_tweet
+      elsif uid
+        erb :follow,:locals=> {:curuser=>curuser,:user=>user}
+      else
+        ""
+      end
+    end
+  else
+    "Can't find user"
+  end
 end
 
-get '/sign_in' do
-	erb :sign_in
+#if user is matches the current user then show new tweet otherwise just show the user's tweets
+post '/tweet/new' do
+  uid=session['user']
+  user=uid && User.find(uid)
+  if user
+    tweet=user.tweets.create(text:params[:text],create_time:Time.now)
+    tweet.save
+    redirect '/'
+  else
+    redirect '/login'
+  end
+end
+#If user is not logged in then error else post a new tweet in users profile
+get '/tweet/:id/retweet' do
+
+end
+post '/tweet/:id/comments' do
+
+end
+post '/tweet/:id/favourate' do
+	
 end
 
-post '/create' do
+#test interface
+get '/test/reset' do
 
 end
-get '/person/new' do
-  erb :person_new
-end
+#creates a testuser if not exist, delete all its follows and tweets
 
-get '/event/new' do
-  erb :event_new
-end
-
-get '/registration/new' do
-  @persons=Person.all
-  @events=Event.all
-  erb :registration_new
-end
-
-post '/person/new' do
-  pinfo = params[:person]
-  pinfo[:gender] = pinfo[:gender] == 'male'
-	person = Person.new(pinfo)
-	if person.save
-		redirect '/persons'
-	else
-		"Sorry, there was an error!"
-	end
-end
-
-post '/event/new' do
-	event = Event.new(params[:event])
-	if event.save
-		redirect '/events'
-	else
-		"Sorry, there was an error!"
-	end
-end
-
-post '/registration/new' do
-	reginfo = params[:reg]
-  reg = Registration.find_or_initialize_by(person_id: reginfo[:person].to_i ,event_id:reginfo[:event].to_i)
-  reg.status=reginfo[:status]
-	if reg.save
-		redirect '/registrations'
-	else
-		"Sorry, there was an error!"
-	end
-end
-
-get '/persons' do
-	@persons = Person.all
-	erb :persons
-end
-
-get '/events' do
-	@events = Event.all
-	erb :events
-end
-
-get '/registrations' do
-	@regs = Registration.all
-	erb :regs
-end

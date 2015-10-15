@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20151014173553) do
     t.string "name"
     t.string "display_name"
     t.string "password"
+    t.string "email"
     t.time   "create_time"
   end
 

@@ -4,6 +4,7 @@ class CreateModel < ActiveRecord::Migration
   		t.string :name
       t.string :display_name
       t.string :password
+      t.string :email
       t.time :create_time
   	end
   	create_table :follows do |t|
