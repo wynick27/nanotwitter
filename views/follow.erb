@@ -1,5 +1,5 @@
 <%begin %>
-<% curuser.followers.find(user.id) %>
+<% curuser.followed_users.find(user.id) %>
 <a href="/unfollow/<%=user.name%>">Unfollow</a>
 <%rescue%>
 <a href="/follow/<%=user.name%>">Follow</a>

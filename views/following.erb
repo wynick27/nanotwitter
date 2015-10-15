@@ -1,0 +1,6 @@
+<% user.followed_users.each do |u| %>
+<div><a href="/user/<%= u.name%>"><%= u.name%></a></div>
+<% end %>
+<a href="/<%=baseurl%>"><%=user.name%>'s Home Page</a>
+<a href="<%=baseurl%>/following">Following</a>
+<a href="<%=baseurl%>/followers">Followers</a>

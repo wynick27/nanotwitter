@@ -1,0 +1,14 @@
+<h3>Welcome to Nanotwitter<%=user ? ' ' + user.name : nil%>!</h3>
+<%= yield %>
+<% tweets.each do |tweet| %>
+<p><a href="/user/<%= tweet.user.name%>"><%= tweet.user.name%></a>:<%= tweet.text%></p>
+<% end %>
+<%if user %>
+<a href="/"><%=user.name%>'s Home Page</a>
+<a href="/following">Following</a>
+<a href="/followers">Followers</a>
+<a href="/logout">Logout</a>
+<% else %>
+<a href="/login">Login</a>
+<a href="/register">Register</a>
+<% end %>

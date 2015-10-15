@@ -55,7 +55,36 @@ end
 get '/' do
   uid=session['user']
   user=uid && User.find(uid)
-  erb :user,:locals=> {:user=>user}
+  
+  tweets=user ? Tweet.user_timeline(user) : Tweet.all
+  tweets=tweets.order(create_time: :desc)
+  erb :index,:locals=> {:tweets=>tweets,:user=>user} do
+    if user
+        erb :new_tweet
+      else
+        ""
+      end
+  end
+end
+
+get '/following' do 
+  uid=session['user']
+  user=uid && User.find(uid)
+  if user
+    erb :following,:locals=> {:user=>user,:baseurl=>""}
+  else
+    "Not logged in"
+  end
+end
+
+get '/followers' do
+  uid=session['user']
+  user=uid && User.find(uid)
+  if user
+    erb :followers,:locals=> {:user=>user,:baseurl=>""}
+  else
+    "Not logged in"
+  end
 end
 
 #if user logged in return its tweets otherwise return all recent tweets of the site
@@ -78,6 +107,24 @@ get '/user/:username' do
   end
 end
 
+get '/user/:username/following' do 
+  user=User.find_by name: params['username']
+  if user
+    erb :following,:locals=> {:user=>user,:baseurl=>"/user/#{user.name}"}
+  else
+    "Not logged in"
+  end
+end
+
+get '/user/:username/followers' do
+  user=User.find_by name: params['username']
+  if user
+    erb :followers,:locals=> {:user=>user,:baseurl=>"/user/#{user.name}"}
+  else
+    "Not logged in"
+  end
+end
+
 #if user is matches the current user then show new tweet otherwise just show the user's tweets
 post '/tweet/new' do
   uid=session['user']
@@ -90,6 +137,22 @@ post '/tweet/new' do
     redirect '/login'
   end
 end
+get '/follow/:username' do
+  uid=session['user']
+  curuser=uid && User.find(uid)
+  user=User.find_by name: params['username']
+  curuser.followed_users << user
+  redirect "/user/#{params['username']}"
+end
+
+get '/unfollow/:username' do
+  uid=session['user']
+  curuser=uid && User.find(uid)
+  user=User.find_by name: params['username']
+  curuser.followed_users.destroy(user)
+  redirect "/user/#{params['username']}"
+end
+
 #If user is not logged in then error else post a new tweet in users profile
 get '/tweet/:id/retweet' do
 

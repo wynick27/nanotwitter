@@ -1,7 +1,7 @@
-<h3>Welcome to Nanotwitter<%=user ? user.name : nil%>!</h3>
+<h3>Welcome to <%=user.name%>'s Home!</h3>
 <%= yield %>
 <% user.tweets.each do |tweet| %>
-<p><%= tweet.user.name%>:<%= tweet.text%></p>
+<p><a href="/user/<%= tweet.user.name%>"><%= tweet.user.name%></a>:<%= tweet.text%></p>
 <% end %>
 <!--
 <a href="/events">Events</a>
