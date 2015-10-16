@@ -208,3 +208,14 @@ a:hover, a:active {
     text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
     }
 
+
+/*text area*/
+textarea {
+ background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;
+ width: 600px;
+ height: 300px;
+ font: normal 14px verdana;
+ line-height: 25px;
+ padding: 2px 10px;
+ border: solid 1px #ddd;
+}
