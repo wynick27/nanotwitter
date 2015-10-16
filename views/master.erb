@@ -1,0 +1,31 @@
+<style type="text/css">
+      #search input[type="text"] {
+        background: url(images/search-white.png) no-repeat 10px 6px #444;
+        }
+    #search input[type="text"]:focus {
+        background: url(images/search-dark.png) no-repeat 10px 6px #fcfcfc;
+    }
+</style>
+
+<div id='cssmenu'>
+<ul>
+   <li class='active'><a href='/'><span>Home</span></a></li>
+   <li><a href='#'><span>Messages</span></a></li>
+   <li class='last'><a href='#'><span>Settings</span></a></li>
+  <li>
+    <form method="get" action="/search" id="search">
+      <input name="search" type="text" size="40" placeholder="Search..." />
+    </form>
+  </li>
+  <%if @user %>
+  <li><a href="/<%=@baseurl%>"><%=@user.name%>'s Home Page</a></li>
+  <li><a href="<%=@baseurl%>/following">Following</a></li>
+  <li><a href="<%=@baseurl%>/followers">Followers</a></li>
+  <li><a href="/logout">Logout</a></li>
+  <% else %>
+  <li><a href="/login">Login</a></li>
+  <li><a href="/register">Register</a></li>
+    <% end %>
+  </ul>
+</div>
+<%= yield%>

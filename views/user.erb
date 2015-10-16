@@ -1,9 +1,27 @@
-<h3>Welcome to <%=user.name%>'s Home!</h3>
 <%= yield %>
-<% user.tweets.each do |tweet| %>
-<p><a href="/user/<%= tweet.user.name%>"><%= tweet.user.name%></a>:<%= tweet.text%></p>
-<% end %>
 <!--
 <a href="/events">Events</a>
 <a href="/registrations">Registrations</a>
 -->
+<body>
+	<title><%=@user.name%></title>
+	<header><h1>Welcome to <%=@user.name%>'s Home!</h1></header>
+	<div class="component">
+				<table>
+					<thead>
+						<tr>
+							<th>User</th>
+							<th>Tweet</th>
+						</tr>
+					</thead>
+					<tbody>
+							<% @user.tweets.each do |tweet| %>
+							<tr>
+								<td><p><a href="/user/<%= tweet.user.name%>"><%= tweet.user.name%></a></p></td>
+								<td><p><%= tweet.text%></p></td>
+							</tr>
+							<% end %>
+					</tbody>
+				</table>
+	</div>
+</body>

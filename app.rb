@@ -14,14 +14,18 @@ enable :sessions
 
 #authentication
 get '/login' do
-  erb :login
+  @baseurl = ""
+  @user = nil
+  erb :master, :layout=> :header do
+    erb :login
+  end
 end
 
 #Generates user login form.
 post '/login' do
-  user=User.find_by name: params['name'],password:params['password']
-  if user
-    session['user']=user.id
+  @user=User.find_by name: params['name'],password:params['password']
+  if @user
+    session['user']=@user.id
     redirect '/'
   else
     "User not found or password is not correct"
@@ -34,14 +38,17 @@ get '/logout' do
 end
 
 get '/register' do
-  erb :register
+  @baseurl = ""
+  erb :master, :layout=> :header do
+    erb :register
+  end
 end
 
 post '/register' do
-  user=User.new name:params['name'],email:params['email'],password:params['password']
+  @user=User.new name:params['name'],email:params['email'],password:params['password']
   begin
-   if user.valid?
-     user.save
+   if @user.valid?
+     @user.save
      redirect '/'
    else
      person.errors.messages[:name] + person.errors.messages[:email]
@@ -53,25 +60,31 @@ end
 
 #User Interface
 get '/' do
+  @baseurl = ""
   uid=session['user']
-  user=uid && User.find(uid)
+  @user=uid && User.find(uid)
   
-  tweets=user ? Tweet.user_timeline(user) : Tweet.all
+  tweets=@user ? Tweet.user_timeline(@user) : Tweet.all
   tweets=tweets.order(create_time: :desc)
-  erb :index,:locals=> {:tweets=>tweets,:user=>user} do
-    if user
+  erb :master, :locals=> {:tweets=>tweets}, :layout=> :header do
+    erb :index, :locals=> {:tweets=>tweets} do
+      if @user
         erb :new_tweet
       else
         ""
       end
+    end
   end
 end
 
 get '/following' do 
   uid=session['user']
-  user=uid && User.find(uid)
-  if user
-    erb :following,:locals=> {:user=>user,:baseurl=>""}
+  @baseurl = ""
+  @user=uid && User.find(uid)
+  if @user
+    erb :master, :layout=> :header do
+      erb :following
+    end
   else
     "Not logged in"
   end
@@ -79,9 +92,12 @@ end
 
 get '/followers' do
   uid=session['user']
-  user=uid && User.find(uid)
-  if user
-    erb :followers,:locals=> {:user=>user,:baseurl=>""}
+  @baseurl = ""
+  @user=uid && User.find(uid)
+  if @user
+    erb :master, :layout=> :header do
+      erb :followers
+    end
   else
     "Not logged in"
   end
@@ -89,17 +105,20 @@ end
 
 #if user logged in return its tweets otherwise return all recent tweets of the site
 get '/user/:username' do
-  user=User.find_by name: params['username']
-  if user
+  @user=User.find_by name: params['username']
+  if @user
+    @baseurl = "/user/#{@user.name}"
     uid=session['user']
     curuser=uid && User.find(uid)
-    erb :user,:locals=> {:user=>user} do 
-      if uid==user.id
-        erb :new_tweet
-      elsif uid
-        erb :follow,:locals=> {:curuser=>curuser,:user=>user}
-      else
-        ""
+    erb :master, :layout=> :header do
+      erb :user do 
+        if uid==@user.id
+          erb :new_tweet
+        elsif uid
+          erb :follow,:locals=> {:curuser=>curuser}
+        else
+          ""
+        end
       end
     end
   else
@@ -108,18 +127,24 @@ get '/user/:username' do
 end
 
 get '/user/:username/following' do 
-  user=User.find_by name: params['username']
-  if user
-    erb :following,:locals=> {:user=>user,:baseurl=>"/user/#{user.name}"}
+  @user=User.find_by name: params['username']
+  @baseurl = "/user/#{@user.name}"
+  if @user
+    erb :master, :layout=> :header do
+      erb :following
+    end
   else
     "Not logged in"
   end
 end
 
 get '/user/:username/followers' do
-  user=User.find_by name: params['username']
-  if user
-    erb :followers,:locals=> {:user=>user,:baseurl=>"/user/#{user.name}"}
+  @user=User.find_by name: params['username']
+  @baseurl = "/user/#{@user.name}"
+  if @user
+    erb :master, :layout=> :header do
+      erb :followers
+    end
   else
     "Not logged in"
   end
@@ -128,9 +153,9 @@ end
 #if user is matches the current user then show new tweet otherwise just show the user's tweets
 post '/tweet/new' do
   uid=session['user']
-  user=uid && User.find(uid)
-  if user
-    tweet=user.tweets.create(text:params[:text],create_time:Time.now)
+  @user=uid && User.find(uid)
+  if @user
+    tweet=@user.tweets.create(text:params[:text],create_time:Time.now)
     tweet.save
     redirect '/'
   else
@@ -138,18 +163,20 @@ post '/tweet/new' do
   end
 end
 get '/follow/:username' do
+  @baseurl = ""
   uid=session['user']
   curuser=uid && User.find(uid)
-  user=User.find_by name: params['username']
-  curuser.followed_users << user
+  @user=User.find_by name: params['username']
+  curuser.followed_users << @user
   redirect "/user/#{params['username']}"
 end
 
 get '/unfollow/:username' do
+  @baseurl = ""
   uid=session['user']
   curuser=uid && User.find(uid)
-  user=User.find_by name: params['username']
-  curuser.followed_users.destroy(user)
+  @user=User.find_by name: params['username']
+  curuser.followed_users.destroy(@user)
   redirect "/user/#{params['username']}"
 end
 
