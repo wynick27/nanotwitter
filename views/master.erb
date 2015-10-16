@@ -18,7 +18,7 @@
     </form>
   </li>
   <%if @user %>
-  <li><a href="/<%=@baseurl%>"><%=@user.name%>'s Home Page</a></li>
+  <li><a href="<%=@baseurl || '/'%>"><%=@user.name%>'s Home Page</a></li>
   <li><a href="<%=@baseurl%>/following">Following</a></li>
   <li><a href="<%=@baseurl%>/followers">Followers</a></li>
   <li><a href="/logout">Logout</a></li>

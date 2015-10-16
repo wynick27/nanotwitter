@@ -14,7 +14,6 @@ enable :sessions
 
 #authentication
 get '/login' do
-  @baseurl = ""
   @user = nil
   erb :master, :layout=> :header do
     erb :login
@@ -38,7 +37,7 @@ get '/logout' do
 end
 
 get '/register' do
-  @baseurl = ""
+  @baseurl = "/"
   erb :master, :layout=> :header do
     erb :register
   end
@@ -60,7 +59,6 @@ end
 
 #User Interface
 get '/' do
-  @baseurl = ""
   uid=session['user']
   @user=uid && User.find(uid)
   
@@ -79,7 +77,6 @@ end
 
 get '/following' do 
   uid=session['user']
-  @baseurl = ""
   @user=uid && User.find(uid)
   if @user
     erb :master, :layout=> :header do
@@ -92,7 +89,6 @@ end
 
 get '/followers' do
   uid=session['user']
-  @baseurl = ""
   @user=uid && User.find(uid)
   if @user
     erb :master, :layout=> :header do
@@ -128,8 +124,8 @@ end
 
 get '/user/:username/following' do 
   @user=User.find_by name: params['username']
-  @baseurl = "/user/#{@user.name}"
   if @user
+    @baseurl = "/user/#{@user.name}"
     erb :master, :layout=> :header do
       erb :following
     end
@@ -140,8 +136,8 @@ end
 
 get '/user/:username/followers' do
   @user=User.find_by name: params['username']
-  @baseurl = "/user/#{@user.name}"
   if @user
+    @baseurl = "/user/#{@user.name}"
     erb :master, :layout=> :header do
       erb :followers
     end
@@ -163,7 +159,6 @@ post '/tweet/new' do
   end
 end
 get '/follow/:username' do
-  @baseurl = ""
   uid=session['user']
   curuser=uid && User.find(uid)
   @user=User.find_by name: params['username']
@@ -172,7 +167,6 @@ get '/follow/:username' do
 end
 
 get '/unfollow/:username' do
-  @baseurl = ""
   uid=session['user']
   curuser=uid && User.find(uid)
   @user=User.find_by name: params['username']
