@@ -15,7 +15,7 @@ tweet:
 	text: text
 	create_time: time
 	user_id: integer
-	retweet: integer
+	reference: integer
 	
 retweet:
 	tweet_id:integer
