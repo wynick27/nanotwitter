@@ -1,56 +1,59 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require './config/environments' #database configuration
-require './models/persons'        #Model class
-require './models/events'
-require './models/registrations'
+require './models/user'        #Model class
+require './models/tweet'
+require './models/retweet'
+require './models/hashtag'
+require './models/follow'
+require './models/mention'
+require './models/favourate'
+require 'pry-byebug'
 
 set :public_folder, File.dirname(__FILE__) + '/static'
+enable :sessions
 
-#authentication
-get '/login' do
+get '/api/v1/users/username/:name' do
+  user = User.find_by name: params[:name]
+  if user
+    user.to_json
+  else
+    error 404, {:error => "user not found"}.to_json
+  end
 end
 
-#Generates user login form.
-post '/login' do
-
-end
-#Checks user login information and puts session.
-get '/logout' do
-
-end
-
-get '/register/:username' do
-
+get '/api/v1/users/id/:id' do
+	user = User.find_by id: params[:id]
+  if user
+    user.to_json
+  else
+    error 404, {:error => "user not found"}.to_json
+  end
 end
 
-#User Interface
-get '/' do
-
+get '/api/v1/tweets/id/:id' do
+	user = Tweet.find_by id: params[:id]
+  if user
+    user.to_json
+  else
+    error 404, {:error => "tweet not found"}.to_json
+  end
 end
 
-#if user logged in return its tweets otherwise return all recent tweets of the site
-get '/user/:username' do
-
+get '/api/v1/tweets/username/:name' do
+	user = User.find_by name: params[:name]
+	user_id = user.id
+	comb_user = user_id && User.find(user_id)
+	tweets = comb_user ? Tweet.user_timeline(comb_user) : Tweet.all
+	# tweets=tweets.order(create_time: :desc)
+  if user
+    tweets.to_json
+  else
+    error 404, {:error => "user not found"}.to_json
+  end
 end
 
-#if user is matches the current user then show new tweet otherwise just show the user's tweets
-post '/tweet/new' do
 
-end
-#If user is not logged in then error else post a new tweet in users profile
-get '/tweet/:id/retweet' do
 
-end
-post '/tweet/:id/comments' do
 
-end
-post '/tweet/:id/favourate' do
-	
-end
-
-#test interface
-get '/test/reset' do
-
-end
-#creates a testuser if not exist, delete all its follows and tweets
+# sample
