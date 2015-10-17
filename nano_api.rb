@@ -92,8 +92,28 @@ get '/api/v1/followers/userid/:id' do
   end
 end
 
+# find the people that user following by the username
+get '/api/v1/following/username/:name' do
+  user = User.find_by name: params[:name]
+  following = user.followed_users
+  if user
+    following .to_json
+  else
+    error 404, {:error => "user not found"}.to_json
+  end
+end
+
+# find the people that user following by the userid
+get '/api/v1/following/userid/:id' do
+  user = User.find_by id: params[:id]
+  following = user.followed_users
+  if user
+    following .to_json
+  else
+    error 404, {:error => "user not found"}.to_json
+  end
+end
 
 
 
-
-# sample
+# here sample
