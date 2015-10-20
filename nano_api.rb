@@ -56,6 +56,25 @@ get '/api/v1/tweets/username/:name' do
     error 404, {:error => "user not found"}.to_json
   end
 end
+
+################ This is just a sample #################
+get '/api/v1/tweets/sample/:name' do
+	user = User.find_by name: params[:name]
+	user_id = user.id
+	comb_user = user_id && User.find(user_id)
+	tweets = comb_user ? Tweet.user_timeline(comb_user) : Tweet.all
+
+	#tweets=tweets.order(create_time: :desc)
+
+  if user
+    tweets.to_json
+  else
+    error 404, {:error => "user not found"}.to_json
+  end
+end
+#################### sample ends ######################
+
+
 # find the user time_line by user_id
 get '/api/v1/tweets/userid/:id' do
 	user = User.find_by id: params[:id]
@@ -67,6 +86,18 @@ get '/api/v1/tweets/userid/:id' do
     tweets.to_json
   else
     error 404, {:error => "user not found"}.to_json
+  end
+end
+
+get '/api/v1/tweets/recent/:number' do
+  tweets = Tweet.all
+  tweets=tweets.order(create_time: :desc)
+  count = params[:number].to_i
+  tweets_return = tweets[0...count]
+  if tweets
+    tweets_return.to_json
+  else
+    error 404, {:error => "no tweets founds"}.to_json
   end
 end
 
@@ -93,7 +124,7 @@ get '/api/v1/followers/userid/:id' do
 end
 
 # find the people that user following by the username
-get '/api/v1/following/username/:name' do
+get '/api/v1/followings/username/:name' do
   user = User.find_by name: params[:name]
   following = user.followed_users
   if user
@@ -104,7 +135,7 @@ get '/api/v1/following/username/:name' do
 end
 
 # find the people that user following by the userid
-get '/api/v1/following/userid/:id' do
+get '/api/v1/followings/userid/:id' do
   user = User.find_by id: params[:id]
   following = user.followed_users
   if user
