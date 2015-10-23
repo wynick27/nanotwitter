@@ -18,10 +18,25 @@
 							<% @user.tweets.each do |tweet| %>
 							<tr>
 								<td><p><a href="/user/<%= tweet.user.name%>"><%= tweet.user.name%></a></p></td>
-								<td><p><%= tweet.text%></p></td>
+								<td><p><%= tweet.text%></p><a class="retweet-btn" role="button"  href="/tweet/<%=tweet.id%>/retweet"><span class="glyphicon glyphicon-retweet" /></a>
+								<a class="fav-btn" role="button"  href="/tweet/<%=tweet.id%>/favourite"><span class="glyphicon glyphicon-star" /></a></td>
 							</tr>
 							<% end %>
 					</tbody>
 				</table>
 	</div>
+	<script>
+	$( ".retweet-btn" ).click(function() {
+		$.post($( this ).attr( "href"),function( data ) {
+			alert( data );
+		});
+		return false;
+	});
+	$( ".fav-btn" ).click(function() {
+		$.post($( this ).attr( "href"),function( data ) {
+			alert( data );
+		});
+		return false;
+	});
+	</script>
 </body>

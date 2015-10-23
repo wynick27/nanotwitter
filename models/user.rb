@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
     :source => :user
   has_many :favourates
   has_many :tweets
+  has_many :retweets
   validates :email, uniqueness: true
   validates :name, uniqueness: true
 end

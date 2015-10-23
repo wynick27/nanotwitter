@@ -8,7 +8,7 @@ require './models/hashtag'
 require './models/follow'
 require './models/mention'
 require './models/favourate'
-require 'faker'
+require './utils/seed_generator'
 set :public_folder, File.dirname(__FILE__) + '/static'
 enable :sessions
 
@@ -182,14 +182,16 @@ end
 
 #If user is not logged in then error else post a new tweet in users profile
 post '/tweet/:tweet_id/retweet' do
+  uid=session['user']
+  @curuser=uid && User.find(uid)
   begin
-    tweetid=Tweet.find params['tweet_id']
+    tweet=Tweet.find id:params['tweet_id']
     comment=params['comment']
-    if comment
-      tweet=@user.tweets.create text:params[:text],create_time:Time.now,reference:tweetid
+    if tweet
+      tweet=@curuser.tweets.create text:params[:text],create_time:Time.now,reference:tweetid
       tweet.save
     else
-      @user.retweets.create tweet_id:tweetid,create_time:Time.now
+      @curuser.retweets.create tweet_id:tweetid,create_time:Time.now
     end
   rescue
     404
@@ -210,13 +212,15 @@ post '/tweet/:tweet_id/comments' do
 end
 
 post '/tweet/:tweet_id/favourite' do
+  uid=session['user']
+  @curuser=uid && User.find(uid)
 	begin
     tweetid=params['tweet_id'] && Tweet.find(params['tweet_id'])
     begin
-      tweet=@user.tweets.find tweetid
-      @user.favourites.destroy tweet
+      tweet=@curuser.tweets.find tweetid
+      @curuser.favourites.destroy tweet
     rescue
-      @user.favourites.create tweet_id:tweetid,create_time:Time.now
+      @curuser.favourites.create tweet_id:tweetid,create_time:Time.now
     end
   rescue
     404
@@ -243,13 +247,7 @@ end
 get %r{^/test/seed/(\d+)$} do |num|
   num=num.to_i
   num.times do 
-    #while true
-      dname = Faker::Name.name
-      name = dname.sub(/ /,'').downcase
-      user=User.create name: name,display_name:dname ,password:'',email:Faker::Internet.email
-      if user.valid?
-        user.save
-      end
+      FakeData::gen_user
   end
 end
 
@@ -257,28 +255,12 @@ get %r{^/test/tweets/(\d+)$} do |num|
   num=num.to_i
   begin
     testuser=User.find_by name: 'testuser'
-    ActiveRecord::Base.transaction do  
-      num.times do
-        tweet=testuser.tweets.create(text:Faker::Lorem.paragraph(1, false, 4),create_time:Faker::Date.backward(60))
-        tweet.save
-      end
-    end
+    FakeData::gen_tweets(testuser,num)
   end
 end
 
 get %r{^/test/follow/(\d+)$} do |num|
   num=num.to_i
-  
     testuser=User.find_by name: 'testuser'
-    usercount=User.count
-    num.times do
-      userid=Random.rand(usercount)+ 1
-      if userid!=testuser.id
-        user=User.find_by id:userid
-        if user 
-          testuser.followers << user
-        end
-      end
-    end
-  
+    FakeData::gen_followers(testuser,num)
 end

@@ -27,9 +27,9 @@ class CreateModel < ActiveRecord::Migration
       t.datetime :create_time
     end
     create_table :messages do |t|
-      t.intefer :from_user_id
-      t.references :to_user_id
-      t.text :messages
+      t.integer :from_user_id
+      t.integer :to_user_id
+      t.text :message
       t.datetime :create_time
     end
     create_table :favourites do |t|
