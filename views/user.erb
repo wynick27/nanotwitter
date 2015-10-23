@@ -18,8 +18,8 @@
 							<% @user.tweets.each do |tweet| %>
 							<tr>
 								<td><p><a href="/user/<%= tweet.user.name%>"><%= tweet.user.name%></a></p></td>
-								<td><p><%= tweet.text%></p><a class="retweet-btn" role="button"  href="/tweet/<%=tweet.id%>/retweet"><span class="glyphicon glyphicon-retweet" /></a>
-								<a class="fav-btn" role="button"  href="/tweet/<%=tweet.id%>/favourite"><span class="glyphicon glyphicon-star" /></a></td>
+								<td><p><%= tweet.text%></p><a class="retweet-btn" role="button"  href="/tweet/<%=tweet.id%>/retweet"><span class="glyphicon glyphicon-retweet" <%=(@curuser.retweets.find_by :tweet_id=>tweet.id) ? 'style="color:green"': nil%> /><span class="count"><%=tweet.retweets.count%></span></a>
+								<a class="fav-btn" role="button"  href="/tweet/<%=tweet.id%>/favourite"><span class="glyphicon glyphicon-star" <%=(@curuser.favourites.find_by :tweet_id=>tweet.id) ? 'style="color:yellow"': nil%> /><span class="count"><%=tweet.favourites.count%></span></a></td>
 							</tr>
 							<% end %>
 					</tbody>
@@ -27,15 +27,25 @@
 	</div>
 	<script>
 	$( ".retweet-btn" ).click(function() {
+		var element=$(this);
 		$.post($( this ).attr( "href"),function( data ) {
-			alert( data );
-		});
+			if (data.created)
+				element.children(0).css({'color':'green'});
+			else
+				element.children(0).css({'color':''});
+			element.children(1).text(data.count);
+		}, "json");
 		return false;
 	});
 	$( ".fav-btn" ).click(function() {
+		var element=$(this);
 		$.post($( this ).attr( "href"),function( data ) {
-			alert( data );
-		});
+			if (data.created)
+				element.children(0).css({'color':'yellow'});
+			else
+				element.children(0).css({'color':''});
+			element.children(1).text(data.count);
+		}, "json");
 		return false;
 	});
 	</script>

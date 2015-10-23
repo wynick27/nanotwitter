@@ -7,7 +7,7 @@ require './models/retweet'
 require './models/hashtag'
 require './models/follow'
 require './models/mention'
-require './models/favourate'
+require './models/favourite'
 require './utils/seed_generator'
 set :public_folder, File.dirname(__FILE__) + '/static'
 enable :sessions
@@ -185,13 +185,20 @@ post '/tweet/:tweet_id/retweet' do
   uid=session['user']
   @curuser=uid && User.find(uid)
   begin
-    tweet=Tweet.find id:params['tweet_id']
+    tweetid=params['tweet_id']
     comment=params['comment']
-    if tweet
-      tweet=@curuser.tweets.create text:params[:text],create_time:Time.now,reference:tweetid
+    if comment
+      tweet=@curuser.tweets.create text:params['comment'],create_time:Time.now,reference:tweetid
       tweet.save
     else
-      @curuser.retweets.create tweet_id:tweetid,create_time:Time.now
+      retweet=@curuser.retweets.find_by tweet_id:tweetid
+      if retweet
+        retweet.destroy
+        {:created=>false,:count=>Tweet.find(tweetid).retweets.count}.to_json
+      else
+        @curuser.retweets.create tweet_id:tweetid,create_time:Time.now
+        {:created=>true,:count=>Tweet.find(tweetid).retweets.count}.to_json
+      end
     end
   rescue
     404
@@ -215,12 +222,14 @@ post '/tweet/:tweet_id/favourite' do
   uid=session['user']
   @curuser=uid && User.find(uid)
 	begin
-    tweetid=params['tweet_id'] && Tweet.find(params['tweet_id'])
-    begin
-      tweet=@curuser.tweets.find tweetid
-      @curuser.favourites.destroy tweet
-    rescue
+    tweetid=params['tweet_id']
+    fav=@curuser.favourites.find_by :tweet_id=>tweetid
+    if fav
+      fav.destroy
+      {:created=>false,:count=>Tweet.find(tweetid).favourites.count}.to_json
+    else
       @curuser.favourites.create tweet_id:tweetid,create_time:Time.now
+      {:created=>true,:count=>Tweet.find(tweetid).favourites.count}.to_json
     end
   rescue
     404

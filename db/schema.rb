@@ -13,9 +13,10 @@
 
 ActiveRecord::Schema.define(version: 20151014173553) do
 
-  create_table "favourates", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "tweet_id"
+  create_table "favourites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "tweet_id"
+    t.datetime "create_time"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -28,14 +29,17 @@ ActiveRecord::Schema.define(version: 20151014173553) do
     t.integer "tweet_id"
   end
 
-  create_table "mentions", force: :cascade do |t|
-    t.integer "tweet_id"
-    t.integer "user_id"
+  create_table "messages", force: :cascade do |t|
+    t.integer  "from_user_id"
+    t.integer  "to_user_id"
+    t.text     "message"
+    t.datetime "create_time"
   end
 
   create_table "retweets", force: :cascade do |t|
-    t.integer "tweet_id"
-    t.integer "user_id"
+    t.integer  "tweet_id"
+    t.integer  "user_id"
+    t.datetime "create_time"
   end
 
   create_table "tweets", force: :cascade do |t|
@@ -44,14 +48,17 @@ ActiveRecord::Schema.define(version: 20151014173553) do
     t.integer "user_id"
     t.integer "reference"
     t.integer "reply_to"
+    t.integer "conversation_root"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "display_name"
-    t.string "password"
-    t.string "email"
-    t.time   "create_time"
+    t.string   "name"
+    t.string   "display_name"
+    t.string   "password"
+    t.string   "email"
+    t.text     "bio"
+    t.date     "birthday"
+    t.datetime "create_time"
   end
 
 end

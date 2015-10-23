@@ -35,6 +35,7 @@ class CreateModel < ActiveRecord::Migration
     create_table :favourites do |t|
       t.references :user
       t.references :tweet
+      t.datetime :create_time
     end
     create_table :hashtags do |t|
       t.string :name

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
     :foreign_key => :follower_id
   has_many :followers, :through => :followings,
     :source => :user
-  has_many :favourates
+  has_many :favourites
   has_many :tweets
   has_many :retweets
   validates :email, uniqueness: true
