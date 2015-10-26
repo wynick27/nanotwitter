@@ -13,6 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20151014173553) do
 
+  create_table "chat_groups", force: :cascade do |t|
+    t.datetime "create_time"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "chat_group_id"
+    t.integer "user_id"
+  end
+
   create_table "favourites", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "tweet_id"
@@ -30,9 +39,9 @@ ActiveRecord::Schema.define(version: 20151014173553) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer  "from_user_id"
-    t.integer  "to_user_id"
-    t.text     "message"
+    t.integer  "chat_group_id"
+    t.integer  "user_id"
+    t.text     "text"
     t.datetime "create_time"
   end
 

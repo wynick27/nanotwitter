@@ -57,6 +57,24 @@ get '/api/v1/tweets/username/:name' do
   end
 end
 
+################ This is just a sample #################
+get '/api/v1/tweets/sample/:name' do
+	user = User.find_by name: params[:name]
+	user_id = user.id
+	comb_user = user_id && User.find(user_id)
+	tweets = comb_user ? Tweet.user_timeline(comb_user) : Tweet.all
+
+	#tweets=tweets.order(create_time: :desc)
+
+  if user
+    tweets.to_json
+  else
+    error 404, {:error => "user not found"}.to_json
+  end
+end
+#################### sample ends ######################
+
+
 # find the user time_line by user_id
 get '/api/v1/tweets/userid/:id' do
 	user = User.find_by id: params[:id]
@@ -130,10 +148,3 @@ end
 
 
 # here sample
-
-
-################ This is just a sample #################
-get '/api/v1/tweets' do
-  params[:id]
-end
-#################### sample ends ######################
