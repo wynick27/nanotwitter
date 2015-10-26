@@ -27,17 +27,10 @@ class CreateModel < ActiveRecord::Migration
       t.datetime :create_time
     end
     create_table :messages do |t|
-      t.references :chat_group
-      t.references :user
-      t.text :text
+      t.integer :from_user_id
+      t.integer :to_user_id
+      t.text :message
       t.datetime :create_time
-    end
-    create_table :chat_groups do |t|
-      t.datetime :create_time
-    end
-    create_table :conversations do |t|
-      t.references :chat_group
-      t.references :user
     end
     create_table :favourites do |t|
       t.references :user
