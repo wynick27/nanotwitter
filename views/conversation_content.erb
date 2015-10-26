@@ -1,0 +1,12 @@
+<ul>
+<% @chatgroup.messages.each do |m| %>
+    <li><p><%= m.user.name + ":" %> <%= m.text %> <br/><%= m.create_time %></p></li>
+<% end %>
+</ul>
+
+<form action="/messages/<%= @chatgroup.id %>/new" method="POST">
+<br>Message:<br>
+<textarea maxlength="140" name="text" ></textarea>
+<br>
+<input type="submit" value="Send" />
+</form>

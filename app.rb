@@ -8,7 +8,11 @@ require './models/hashtag'
 require './models/follow'
 require './models/mention'
 require './models/favourite'
+require './models/conversation'
+require './models/chat_group'
+require './models/message'
 require './utils/seed_generator'
+require 'pry-byebug'
 set :public_folder, File.dirname(__FILE__) + '/static'
 enable :sessions
 
@@ -108,6 +112,7 @@ get '/user/:username' do
     @baseurl = "/user/#{@user.name}"
     uid=session['user']
     @curuser=uid && User.find(uid)
+    @tweets=@user.tweets.find_by(reply_to:nil)
     erb :master, :layout=> :header do
       erb :user do 
         if uid==@user.id
@@ -121,6 +126,44 @@ get '/user/:username' do
     end
   else
     "Can't find user"
+  end
+end
+
+get '/user/:username/with_replies' do
+  @user=User.find_by name: params['username']
+  if @user
+    @baseurl = "/user/#{@user.name}"
+    uid=session['user']
+    @curuser=uid && User.find(uid)
+    @tweets=@user.tweets
+    erb :master, :layout=> :header do
+      erb :user do 
+        if uid==@user.id
+          erb :new_tweet
+        elsif uid
+          erb :follow,:locals=> {:curuser=>@curuser}
+        else
+          ""
+        end
+      end
+    end
+  else
+    "Can't find user"
+  end
+end
+
+get '/user/:username/favourites' do 
+  @user=User.find_by name: params['username']
+  if @user
+    @baseurl = "/user/#{@user.name}"
+    uid=session['user']
+    @curuser=uid && User.find(uid)
+    @user.favourites.includes(:tweet)
+    erb :master, :layout=> :header do
+      erb :favourites
+    end
+  else
+    "Not logged in"
   end
 end
 
@@ -158,6 +201,7 @@ post '/tweet/new' do
   @user=uid && User.find(uid)
   if @user
     tweet=@user.tweets.create(text:params[:text],create_time:Time.now)
+    tweet.reply_id=tweet.id
     tweet.save
     redirect '/'
   else
@@ -190,6 +234,7 @@ post '/tweet/:tweet_id/retweet' do
     if comment
       tweet=@curuser.tweets.create text:params['comment'],create_time:Time.now,reference:tweetid
       tweet.save
+      {:created=>true,:count=>0}.to_json
     else
       retweet=@curuser.retweets.find_by tweet_id:tweetid
       if retweet
@@ -204,19 +249,37 @@ post '/tweet/:tweet_id/retweet' do
     404
   end
 end
-post '/tweet/:tweet_id/comments' do
+
+post '/tweet/:tweet_id/comment/new' do
 	begin
-    tweetid=params['tweet_id'] && Tweet.find(params['tweet_id'])
-    begin
-      tweet=@user.tweets.find tweetid
-      @user.favourites.destroy tweet
-    rescue
-      @user.favourites.create tweet_id:tweetid,create_time:Time.now
+    tweetid=params['tweet_id']
+    tweet=Tweet.find_by :id=>tweetid
+    comment=params['comment']
+    if comment && tweet
+      tweet=@curuser.tweets.create text:params['comment'],create_time:Time.now,reply_to:tweetid,conversation_root:tweet.conversation_root
+      tweet.save
     end
   rescue
     404
   end
 end
+
+post '/tweet/:tweet_id/expand' do
+	begin
+    tweetid=params['tweet_id']
+    tweet=Tweet.find_by :id=>tweetid
+    if tweet && tweet.id==tweet.conversation_root
+      @tweets=Tweet.find_by(:conversation_root=>tweet.conversation_root).order(create_time: :desc)
+      {:ancestors=>nil,:descendants=>(erb :comments)}.to_json
+    elsif tweet && tweet.id!=tweet.conversation_root
+      @tweets=Tweet.find_by(:conversation_root=>tweet.conversation_root)
+      {:ancestors=>(erb :conversation),:descendants=>nil}.to_json
+    end
+  rescue
+    404
+  end
+end
+
 
 post '/tweet/:tweet_id/favourite' do
   uid=session['user']
@@ -234,6 +297,57 @@ post '/tweet/:tweet_id/favourite' do
   rescue
     404
   end
+end
+
+get '/messages' do
+  uid=session['user']
+  @curuser=uid && User.find(uid)
+  erb :conversation_list
+end
+
+get '/messages/:conversation_id' do
+  uid=session['user']
+  @curuser=uid && User.find(uid)
+  cid=params['conversation_id']
+  @chatgroup=cid && ChatGroup.find_by(:id=>cid)
+  erb :conversation_content
+end
+
+post '/messages/new' do
+  text=params['text']
+  uid=session['user']
+  @curuser=uid && User.find_by(:id=>uid)
+  
+  usernames=params['users'].split(';')
+  users=User.where :name=>usernames
+  if users
+    group=ChatGroup.create :create_time=>Time.now
+    #binding.pry
+    users.each do |user|
+      if user.id==uid then return end
+      group.users << user
+    end
+    group.users << @curuser
+    group.messages.create :user_id=>uid,:text=>text,:create_time=>Time.now
+    group.save
+  end
+end
+
+post '/messages/:conversation_id/new' do
+  text=params['text']
+  uid=session['user']
+  @curuser=uid && User.find_by(:id=>uid)
+  cid=params['conversation_id']
+  @chatgroup=cid && ChatGroup.find_by(:id=>cid)
+  @chatgroup.messages.create :user_id=>uid,:text=>text,:create_time=>Time.now
+end
+
+get '/settings' do
+
+end
+
+post '/settings' do
+
 end
 
 #test interface
