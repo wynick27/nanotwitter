@@ -1,0 +1,12 @@
+<ul>
+<% @curuser.chat_groups.each do |c| %>
+    <li><a href="/messages/<%= c.id %>" > <%= (c.users.map {|u| u.name }).join ', ' %> </a></li>
+<% end %>
+</ul>
+<form action="/messages/new" method="POST">
+<br>People:<br>
+<textarea maxlength="140" name="users" ></textarea>
+<textarea maxlength="140" name="text" ></textarea>
+<br>
+<input type="submit" value="New Message" />
+</form>

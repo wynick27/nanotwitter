@@ -1,4 +1,4 @@
 class Favourite < ActiveRecord::Base
-  belongs_to :users
-  belongs_to :tweets
+  belongs_to :user
+  belongs_to :tweet
 end
