@@ -201,7 +201,7 @@ post '/tweet/new' do
   @user=uid && User.find(uid)
   if @user
     tweet=@user.tweets.create(text:params[:text],create_time:Time.now)
-    tweet.reply_to=tweet.id
+    tweet.conversation_root=tweet.id
     tweet.save
     redirect '/'
   else
