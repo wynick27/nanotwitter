@@ -106,7 +106,7 @@ get '/followers' do
 end
 
 #if user logged in return its tweets otherwise return all recent tweets of the site
-get '/user/:username' do
+get '/user/:username/?' do
   @user=User.find_by name: params['username']
   if @user
     @baseurl = "/user/#{@user.name}"
@@ -129,7 +129,7 @@ get '/user/:username' do
   end
 end
 
-get '/user/:username/with_replies' do
+get '/user/:username/with_replies/?' do
   @user=User.find_by name: params['username']
   if @user
     @baseurl = "/user/#{@user.name}"
@@ -152,7 +152,7 @@ get '/user/:username/with_replies' do
   end
 end
 
-get '/user/:username/favourites' do 
+get '/user/:username/favourites/?' do 
   @user=User.find_by name: params['username']
   if @user
     @baseurl = "/user/#{@user.name}"
@@ -167,7 +167,7 @@ get '/user/:username/favourites' do
   end
 end
 
-get '/user/:username/following' do 
+get '/user/:username/following/?' do 
   @user=User.find_by name: params['username']
   if @user
     @baseurl = "/user/#{@user.name}"
@@ -181,7 +181,7 @@ get '/user/:username/following' do
   end
 end
 
-get '/user/:username/followers' do
+get '/user/:username/followers/?' do
   @user=User.find_by name: params['username']
   if @user
     @baseurl = "/user/#{@user.name}"
@@ -201,14 +201,14 @@ post '/tweet/new' do
   @user=uid && User.find(uid)
   if @user
     tweet=@user.tweets.create(text:params[:text],create_time:Time.now)
-    tweet.reply_id=tweet.id
+    tweet.reply_to=tweet.id
     tweet.save
     redirect '/'
   else
     redirect '/login'
   end
 end
-get '/follow/:username' do
+get '/follow/:username/?' do
   uid=session['user']
   @curuser=uid && User.find(uid)
   @user=User.find_by name: params['username']
@@ -216,7 +216,7 @@ get '/follow/:username' do
   redirect "/user/#{params['username']}"
 end
 
-get '/unfollow/:username' do
+get '/unfollow/:username/?' do
   uid=session['user']
   @curuser=uid && User.find(uid)
   @user=User.find_by name: params['username']
@@ -299,13 +299,13 @@ post '/tweet/:tweet_id/favourite' do
   end
 end
 
-get '/messages' do
+get '/messages/?' do
   uid=session['user']
   @curuser=uid && User.find(uid)
   erb :conversation_list
 end
 
-get '/messages/:conversation_id' do
+get '/messages/:conversation_id/?' do
   uid=session['user']
   @curuser=uid && User.find(uid)
   cid=params['conversation_id']
@@ -342,8 +342,14 @@ post '/messages/:conversation_id/new' do
   @chatgroup.messages.create :user_id=>uid,:text=>text,:create_time=>Time.now
 end
 
-get '/settings' do
+get '/hashtag/:hashtag/?' do
 
+end
+
+get '/settings' do
+  uid=session['user']
+  @curuser=uid && User.find_by(:id=>uid)
+  erb :settings
 end
 
 post '/settings' do
@@ -386,4 +392,19 @@ get %r{^/test/follow/(\d+)$} do |num|
   num=num.to_i
     testuser=User.find_by name: 'testuser'
     FakeData::gen_followers(testuser,num)
+end
+
+
+
+helpers do
+  def html(text)
+    Rack::Utils.escape_html(text)
+  end
+  
+  def parse_tweet(text)
+    text=html(text)
+    text.gsub(/@\w+|#\w+/) do |s|
+       "<a href='/#{s[0]=='@'? 'user' : 'hashtag'}/#{s[1..-1]}'>#{s}</a>"
+    end
+  end
 end

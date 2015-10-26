@@ -8,12 +8,7 @@
 	  </div>
 	  <div class="col-md-7">
 	  	<% tweets.each do |tweet| %>
-		<div class="panel panel-info">
-		  <div class="panel-body bg-info">
-		    <a href="/user/<%= tweet.user.name%>"><%= tweet.user.name%></a>
-		  </div>
-		  <div class="panel-footer"><%= tweet.text%></div>
-		</div>
+		  <%= erb :show_tweet,:locals=>{:tweet=>tweet} %>
 		<% end %>
 	  </div>
 	  <div class="col-md-1"></div>
