@@ -9,11 +9,45 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tipsy/1.0.2/jquery.tipsy.css">
+   <link href='https://fonts.googleapis.com/css?family=Roboto:900,500' rel='stylesheet' type='text/css'>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tipsy/1.0.2/jquery.tipsy.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tipsy/1.0.2/jquery.tipsy.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
    <script src="js/jquery.sticky.js"></script>
-    <title>Welcome to Nanotwitter<%=@curuser ? ' ' + @curuser.display_name : nil%>!</title>
-   <header><h1>Welcome to Nanotwitter<%=@curuser ? ' ' + @curuser.display_name : nil%>!</h1></header>   
+   <style>
+  /* Note: Try to remove the following lines to see the effect of CSS positioning */
+     #navbar.affix {
+         top: 0;
+         width: 100%;
+         z-index: 2000;
+     }
+
+     #sidebar.affix {
+          top: 72px;
+         width: 318.5px;
+         z-index: 2000;
+     }
+
+     .affix + .container-fluid {
+         padding-top: 70px;
+     }
+
+     h1 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 900;
+     }
+
+     body {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+     }
+
+  </style>  
 </head>
-<%= yield %>
+<body>
+   <div class="container-fluid" style="background-color:#5bc0de;color:#fff;height:100px;">
+      <title>Welcome to Nanotwitter<%=@curuser ? ' ' + @curuser.display_name : nil%>!</title>
+      <header><h1>Welcome to Nanotwitter<%=@curuser ? ' ' + @curuser.display_name : nil%>!</h1></header>
+   </div>
+   <%= yield %>
+</body>

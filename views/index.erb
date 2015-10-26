@@ -1,23 +1,14 @@
-<!doctype html>
-<html lang=''>
-<body>
 	<%= yield%>
-	<div class="container">
-	<div class="row">
-	  <div class="col-md-4">
-	  </div>
-	  <div class="col-md-7">
+	<div class="container-fluid" style="height:1000px">
 	  	<% tweets.each do |tweet| %>
-		  <%= erb :show_tweet,:locals=>{:tweet=>tweet} %>
+		<div class="panel panel-info">
+		  <div class="panel-body bg-info">
+		    <a href="/user/<%= tweet.user.name%>"><%= tweet.user.name.capitalize%></a>
+		  </div>
+		  <div class="panel-footer"><%= tweet.text%></div>
+		</div>
 		<% end %>
-	  </div>
-	  <div class="col-md-1"></div>
-	</div>
 	</div>
 <!--
 	<script src="js/jquery.stickyheader.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>-->
-	
-
-</body>
-<html>
