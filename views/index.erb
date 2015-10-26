@@ -1,13 +1,25 @@
 	<%= yield%>
 	<div class="container-fluid" style="height:1000px">
-	  	<% tweets.each do |tweet| %>
-		<div class="panel panel-info">
-		  <div class="panel-body bg-info">
-		    <a href="/user/<%= tweet.user.name%>"><%= tweet.user.name.capitalize%></a>
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		  	<% tweets.each do |tweet| %>
+			<div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="heading<%=tweet.id%>">	   
+		      	<a href="/user/<%= tweet.user.name%>"><%= tweet.user.name.capitalize%></a>:
+		      	<br>
+		      	<%= tweet.text%>
+		      	<br>
+		        <a role="button" class="text-success" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=tweet.id%>" aria-expanded="true" aria-controls="collapse<%=tweet.id%>">
+		          <span class="glyphicon glyphicon-menu-down"></span>
+		        </a>	      
+		    </div>
+		    <div id="collapse<%=tweet.id%>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%=tweet.id%>">
+		      <div class="panel-body">
+		        <a href="/user/<%= tweet.user.name%>"><%= tweet.user.name.capitalize%></a><%= tweet.text%>
+		      </div>
+		    </div>
 		  </div>
-		  <div class="panel-footer"><%= tweet.text%></div>
+		  <% end %>
 		</div>
-		<% end %>
 	</div>
 <!--
 	<script src="js/jquery.stickyheader.js"></script>
