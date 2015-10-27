@@ -5,9 +5,11 @@
 		      	<br>
 		      	<%= tweet.text%>
 		      	<br>
-		        <a role="button" class="text-success" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=tweet.id%>" aria-expanded="true" aria-controls="collapse<%=tweet.id%>">
+		      	<a role="button" class="text-success" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=tweet.id%>" aria-expanded="true" aria-controls="collapse<%=tweet.id%>">
 		          <span class="glyphicon glyphicon-chevron-down" id="span<%=tweet.id%>"></span>
-		        </a>	      
+		        </a>
+		      	<a class="retweet-btn" role="button"  href="/tweet/<%=tweet.id%>/retweet"><span class="glyphicon glyphicon-retweet" <%=@curuser && (@curuser.retweets.find_by :tweet_id=>tweet.id) ? 'style="color:green"': nil%> /><span class="count"><%=tweet.retweets.count%></span></a>
+								<a class="fav-btn" role="button"  href="/tweet/<%=tweet.id%>/favourite"><span class="glyphicon glyphicon-star" <%=@curuser && (@curuser.favourites.find_by :tweet_id=>tweet.id) ? 'style="color:yellow"': nil%> /><span class="count"><%=tweet.favourites.count%></span></a>	      
 		    </div>
 		    <div id="collapse<%=tweet.id%>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%=tweet.id%>">
 		    	<ul class="list-group">

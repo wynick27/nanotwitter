@@ -116,9 +116,7 @@ get '/user/:username/?' do
     @tweets=@user.tweets.find_by(reply_to:nil)
     erb :master, :layout=> :header do
       erb :user do 
-        if uid==@user.id
-          erb :new_tweet
-        elsif uid
+        if uid
           erb :follow,:locals=> {:curuser=>@curuser}
         else
           ""

@@ -2,7 +2,7 @@
 	    <form action="/tweet/new" method="POST">
 		    <div class="form-group">
 			    <label for="text" class="control-label">Tweet:</label>
-			    <textarea class="form-control typeahead" data-provide="typeahead" placeholder="What's in your mind?" maxlength="140" id="text" name="text" required></textarea>
+			    <textarea class="form-control typeahead" data-provide="typeahead" placeholder="What's in your mind?" maxlength='140' id="text" name="text" required></textarea>
 		    </div>
 		    <input type="submit" class="btn btn-info" id="submit" value="New Tweet"/>
 		    <span id="charleft"></span>
@@ -18,11 +18,17 @@
 
 	$('#text').bind('input propertychange', function() {
 		charleft = 140 - $(this).val().length;
-		if(charleft == 0 || charleft == 140){
+		if(charleft == 140){
 			$('#submit').prop('disabled', true);
 		}else{
 			$('#submit').prop('disabled', false);
 		}
+
+    if(charleft <= 5){
+      $('#charleft').addClass('text-danger');
+    } else {
+      $('#charleft').removeClass('text-danger');
+    }
 		$('#charleft').html(charleft);
 	});
 

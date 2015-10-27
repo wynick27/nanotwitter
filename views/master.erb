@@ -82,10 +82,10 @@
           <img data-src="holder.js/100%x90" alt="100%x90" src="/pito.jpg" data-holder-rendered="true" style="height: 90px; display: block;">
         </a>
         </li>
-        <li><a href="<%="/user/#{@user.name}"%>">Messages<span class="badge">15</span></a>
-      <a href="<%="/user/#{@user.name}/following"%>">Following<span class="badge">43</span></a>
-      <a href="<%="/user/#{@user.name}/followers"%>">Followers<span class="badge">22</span></a>
-	  <a href="<%="/user/#{@user.name}/favourites"%>">Favourites<span class="badge">22</span></a>
+        <li><a href="<%="/user/#{@user.name}"%>">Tweets<span class="badge"><%= @user.tweets.count%></span></a>
+      <a href="<%="/user/#{@user.name}/following"%>">Following<span class="badge"><%= @user.followed_users.count%></span></a>
+      <a href="<%="/user/#{@user.name}/followers"%>">Followers<span class="badge"><%= @user.followers.count%></span></a>
+	  <a href="<%="/user/#{@user.name}/favourites"%>">Favourites<span class="badge"><%= @user.favourites.count%></span></a>
     </li>
       </ul>
     </nav>
@@ -202,22 +202,6 @@
 
 
 <script>
-/* New Tweet JS*/
-var charleft = 140;
-  $('#charleft').html(charleft);
-  $('#submit').prop('disabled', true);
-
-  $('#text').bind('input propertychange', function() {
-    charleft = 140 - $(this).val().length;
-    if(charleft == 0 || charleft == 140){
-      $('#submit').prop('disabled', true);
-    }else{
-      $('#submit').prop('disabled', false);
-    }
-    $('#charleft').html(charleft);
-  });
-
-
 /* Modal JS */
 $('#tweetModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
@@ -231,10 +215,15 @@ $('#tweetModal').on('show.bs.modal', function (event) {
 
   modal.find('.modal-body #text').bind('input propertychange', function() {
     charleft = 140 - $(this).val().length;
-    if(charleft == 0 || charleft == 140){
+    if(charleft == 140){
       modal.find('.modal-body #submit').prop('disabled', true);
     }else{
       modal.find('.modal-body #submit').prop('disabled', false);
+    }
+    if(charleft <= 5){
+      modal.find('.modal-body #charleft').addClass('text-danger');
+    } else {
+      modal.find('.modal-body #charleft').removeClass('text-danger');
     }
     modal.find('.modal-body #charleft').html(charleft);
   });

@@ -1,30 +1,23 @@
-<%= yield %>
 <!--
 <a href="/events">Events</a>
 <a href="/registrations">Registrations</a>
 -->
 	<title><%=@user.name%></title>
 	<header><h1>Welcome to <%=@user.name%>'s Home!</h1></header>
-	<div class="component">
-				<table>
-					<thead>
-						<tr>
-							<th>User</th>
-							<th>Tweet</th>
-						</tr>
-					</thead>
-					<tbody>
-							<% @user.tweets.each do |tweet| %>
-							<tr>
-								<td><p><a href="/user/<%= tweet.user.name%>"><%= tweet.user.name%></a></p></td>
-								<td><p><%= tweet.text%></p><a class="retweet-btn" role="button"  href="/tweet/<%=tweet.id%>/retweet"><span class="glyphicon glyphicon-retweet" <%=@curuser && (@curuser.retweets.find_by :tweet_id=>tweet.id) ? 'style="color:green"': nil%> /><span class="count"><%=tweet.retweets.count%></span></a>
-								<a class="fav-btn" role="button"  href="/tweet/<%=tweet.id%>/favourite"><span class="glyphicon glyphicon-star" <%=@curuser && (@curuser.favourites.find_by :tweet_id=>tweet.id) ? 'style="color:yellow"': nil%> /><span class="count"><%=tweet.favourites.count%></span></a></td>
-							</tr>
-							<% end %>
-					</tbody>
-				</table>
+
+		<div class="container-fluid" style="height:1000px">
+
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		  	<% @user.tweets.each do |tweet| %>
+			<%= erb :show_tweet,:locals=>{:tweet=>tweet} %>
+
+		  <% end %>
+		</div>
 	</div>
+
 	<script>
+	$('.collapse').collapse()
+
 	$( ".retweet-btn" ).click(function() {
 		var element=$(this);
 		$.post($( this ).attr( "href"),function( data ) {
