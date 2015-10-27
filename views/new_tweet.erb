@@ -2,22 +2,16 @@
 	    <form action="/tweet/new" method="POST">
 		    <div class="form-group">
 			    <label for="text" class="control-label">Tweet:</label>
-<<<<<<< HEAD
 			    <textarea class="form-control typeahead" data-provide="typeahead" placeholder="What's in your mind?" maxlength="140" id="text" name="text" required></textarea>
-=======
-			    <textarea class="form-control" maxlength="140" id="text" name="text" placeholder="What's in your mind?" required></textarea>
->>>>>>> origin/master
 		    </div>
 		    <input type="submit" class="btn btn-info" id="submit" value="New Tweet"/>
 		    <span id="charleft"></span>
 	    </form>
 	</div>
 
-<<<<<<< HEAD
+
 <script>
-=======
-	<script>
->>>>>>> origin/master
+
 	var charleft = 140;
 	$('#charleft').html(charleft);
 	$('#submit').prop('disabled', true);
@@ -32,8 +26,7 @@
 		$('#charleft').html(charleft);
 	});
 
-<<<<<<< HEAD
-
+	
 
 
 	var substringMatcher = function(strs) {
@@ -95,11 +88,3 @@ $('#text.typeahead').typeahead({
 });
   
   </script>
-=======
-	</script>
-
-<!--
-<a href="/events">Events</a>
-<a href="/registrations">Registrations</a>
--->
->>>>>>> origin/master
