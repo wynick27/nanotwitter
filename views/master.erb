@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <img src="ic_launcher.png" alt="logo" width="50" height="50">
+      <img src="/ic_launcher.png" alt="logo" width="50" height="50">
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -50,7 +50,7 @@
         </li>
         <li>
           <form class="navbar-form navbar-right">
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Tweet</button>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tweetModal" data-whatever="@fat">Tweet</button>
           </form>
         </li>
         <% end %>
@@ -79,7 +79,7 @@
         </li>
         <li>
           <a href="#" class="thumbnail">
-          <img data-src="holder.js/100%x90" alt="100%x90" src="pito.jpg" data-holder-rendered="true" style="height: 90px; display: block;">
+          <img data-src="holder.js/100%x90" alt="100%x90" src="/pito.jpg" data-holder-rendered="true" style="height: 90px; display: block;">
         </a>
         </li>
         <li><a href="#">Messages<span class="badge">15</span></a>
@@ -95,7 +95,16 @@
   <div class="clearfix visible-xs-block"></div>
 </div>
 </div>
-
+<style>
+    .modal-dialog{
+    position: absolute;
+    left: 50%;
+    margin-left: -312px;
+    height: 500px;
+    top: 50%;
+    margin-top: -250px;
+    }
+</style>
 
 
 <div class="modal fade" id="tweetModal" tabindex="-1" role="dialog" aria-labelledby="tweetModalLabel">
@@ -103,23 +112,17 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+                  <h4 class="modal-title" id="tweetModalLabel">New message</h4>
                 </div>
                 <div class="modal-body">
-                  <form>
+                  <form action="/tweet/new" method="POST">
                     <div class="form-group">
-                      <label for="recipient-name" class="control-label">Recipient:</label>
-                      <input type="text" class="form-control" id="recipient-name">
+                      <label for="text" class="control-label">Tweet:</label>
+                      <textarea class="form-control" maxlength="140" id="text" name="text" placeholder="What's in your mind?" required></textarea>
                     </div>
-                    <div class="form-group">
-                      <label for="message-text" class="control-label">Message:</label>
-                      <textarea class="form-control" id="message-text" required></textarea>
-                    </div>
+                    <input type="submit" class="btn btn-info" id="submit" value="Send Tweet"/>
+                    <span id="charleft"></span>
                   </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-info">Send message</button>
                 </div>
               </div>
             </div>
@@ -155,14 +158,42 @@
 
 
 <script>
-$('#exampleModal').on('show.bs.modal', function (event) {
+/* New Tweet JS*/
+var charleft = 140;
+  $('#charleft').html(charleft);
+  $('#submit').prop('disabled', true);
+
+  $('#text').bind('input propertychange', function() {
+    charleft = 140 - $(this).val().length;
+    if(charleft == 0 || charleft == 140){
+      $('#submit').prop('disabled', true);
+    }else{
+      $('#submit').prop('disabled', false);
+    }
+    $('#charleft').html(charleft);
+  });
+
+
+/* Modal JS */
+$('#tweetModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
   var recipient = button.data('whatever') // Extract info from data-* attributes
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   var modal = $(this)
-  modal.find('.modal-title').text('New message to ' + recipient)
-  modal.find('.modal-body input').val(recipient)
+  var charleft = 140;
+  modal.find('.modal-body #charleft').html(charleft);
+  modal.find('.modal-body #submit').prop('disabled', true);
+
+  modal.find('.modal-body #text').bind('input propertychange', function() {
+    charleft = 140 - $(this).val().length;
+    if(charleft == 0 || charleft == 140){
+      modal.find('.modal-body #submit').prop('disabled', true);
+    }else{
+      modal.find('.modal-body #submit').prop('disabled', false);
+    }
+    modal.find('.modal-body #charleft').html(charleft);
+  });
 })
 
 $(function () {

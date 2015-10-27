@@ -2,11 +2,29 @@
 	    <form action="/tweet/new" method="POST">
 		    <div class="form-group">
 			    <label for="text" class="control-label">Tweet:</label>
-			    <textarea class="form-control" maxlength="140" id="text" name="text" required></textarea>
+			    <textarea class="form-control" maxlength="140" id="text" name="text" placeholder="What's in your mind?" required></textarea>
 		    </div>
-		    <input type="submit" class="btn btn-info" value="New Tweet"/>
+		    <input type="submit" class="btn btn-info" id="submit" value="New Tweet"/>
+		    <span id="charleft"></span>
 	    </form>
 	</div>
+
+	<script>
+	var charleft = 140;
+	$('#charleft').html(charleft);
+	$('#submit').prop('disabled', true);
+
+	$('#text').bind('input propertychange', function() {
+		charleft = 140 - $(this).val().length;
+		if(charleft == 0 || charleft == 140){
+			$('#submit').prop('disabled', true);
+		}else{
+			$('#submit').prop('disabled', false);
+		}
+		$('#charleft').html(charleft);
+	});
+
+	</script>
 
 <!--
 <a href="/events">Events</a>
