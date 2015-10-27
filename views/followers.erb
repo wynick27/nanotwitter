@@ -11,7 +11,7 @@
 		  <div class="panel-footer">
 		  	Bio:<%= u.bio%>
 		  	<br>
-		  	<%= erb :follow%>
+		  	<%= erb :follow,:locals=>{:user=>u}%>
 		  </div>
 		</div>
 		<% index += 1%>

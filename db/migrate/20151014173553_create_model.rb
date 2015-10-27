@@ -44,7 +44,7 @@ class CreateModel < ActiveRecord::Migration
       t.references :tweet
       t.datetime :create_time
     end
-    create_table :hashtags do |t|
+    create_table :hash_tags do |t|
       t.string :name
       t.references :tweet
     end

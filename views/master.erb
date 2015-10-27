@@ -112,6 +112,7 @@
     }
 </style>
 
+
 <div class="modal fade" id="tweetModal" tabindex="-1" role="dialog" aria-labelledby="tweetModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -123,7 +124,7 @@
                   <form action="/tweet/new" method="POST">
                     <div class="form-group">
                       <label for="text" class="control-label">Tweet:</label>
-                      <textarea class="form-control" maxlength="140" id="text" name="text" placeholder="What's in your mind?" required></textarea>
+                      <textarea class="form-control user-autocomplete" data-provide="typeahead" maxlength="140" id="text" name="text" placeholder="What's in your mind?" required></textarea>
                     </div>
                     <input type="submit" class="btn btn-info" id="submit" value="Send Tweet"/>
                     <span id="charleft"></span>
@@ -133,7 +134,7 @@
             </div>
           </div>
 
-
+		  
 <div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="msgModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -170,6 +171,7 @@ $('#tweetModal').on('show.bs.modal', function (event) {
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   var modal = $(this)
+  
   modal.find('.modal-body #charleft').html(charleft);
   modal.find('.modal-body #submit').prop('disabled', true);
 
@@ -223,6 +225,33 @@ $('#msgModal').on('hidden.bs.modal', function (event) {
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+
+$('.user-autocomplete').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1,
+  source: function (query,process) {
+	var match=/@(\w+)$/g.exec(query);
+	if (match) {$.get('/autocomplete?q='+match[1],function( data ) {
+	process(data);},"json");
+	} else process([]);
+  },
+  displayText: function(item) {
+	return item[1] + " @" + item[0];
+  },
+  updater: function(item) {
+	var str=this.query.replace(/@(\w+)$/g,'@'+item[0]) + " ";
+	return str;
+  },
+  matcher: function (item) {
+	var match=/@(\w+)$/g.exec(this.query);
+	
+	return match ? item[0].indexOf(match[1]) === 0 :false;
+  }
+  
+});
+
 </script>
 
 

@@ -3,7 +3,7 @@
 		      	<a href="/user/<%= tweet.user.name%>"><%= tweet.user.display_name%></a>  @<%=tweet.user.name%>
 				<%=tweet.create_time%>
 		      	<br>
-		      	<%= tweet.text%>
+		      	<%= parse_tweet tweet.text%>
 		      	<br>
 		      	<a role="button" class="text-success" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=tweet.id%>" aria-expanded="true" aria-controls="collapse<%=tweet.id%>">
 		          <span class="glyphicon glyphicon-chevron-down" id="span<%=tweet.id%>"></span>

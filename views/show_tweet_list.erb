@@ -1,0 +1,37 @@
+	<div class="container-fluid" style="height:1000px">
+
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		  	<% tweets.each do |tweet| %>
+			<%= erb :show_tweet,:locals=>{:tweet=>tweet} %>
+
+		  <% end %>
+		</div>
+	</div>
+
+
+	<script>
+	$('.collapse').collapse()
+
+	$( ".retweet-btn" ).click(function() {
+		var element=$(this);
+		$.post($( this ).attr( "href"),function( data ) {
+			if (data.created)
+				element.children(0).css({'color':'green'});
+			else
+				element.children(0).css({'color':''});
+			element.children(1).text(data.count);
+		}, "json");
+		return false;
+	});
+	$( ".fav-btn" ).click(function() {
+		var element=$(this);
+		$.post($( this ).attr( "href"),function( data ) {
+			if (data.created)
+				element.children(0).css({'color':'yellow'});
+			else
+				element.children(0).css({'color':''});
+			element.children(1).text(data.count);
+		}, "json");
+		return false;
+	});
+	</script>
