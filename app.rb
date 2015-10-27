@@ -27,6 +27,7 @@ end
 #Generates user login form.
 post '/login' do
   @user=User.find_by name: params['name'],password:params['password']
+  @user=@user || User.find_by(name: params['email'],password:params['password'])
   if @user
     session['user']=@user.id
     redirect '/'
@@ -48,14 +49,13 @@ get '/register' do
 end
 
 post '/register' do
-  @user=User.new name:params['name'],email:params['email'],password:params['password']
+  @user=User.new name:params['name'],display_name:params['display_name'],email:params['email'],password:params['password']
   #begin
    if @user.valid?
      @user.save
      redirect '/'
    else
-     binding.pry
-     @user.errors.messages[:name] + @user.errors.messages[:email]
+     @user.errors.messages.to_s
    end
   #rescue
   #  "Can't create user"
@@ -67,16 +67,10 @@ get '/' do
   uid=session['user']
   @curuser=uid && User.find(uid)
   @user=@curuser
-  tweets=@curuser ? Tweet.user_timeline(@curuser) : Tweet.includes(:user).all.limit(50)
-  tweets=tweets.order(create_time: :desc)
-  erb :master, :locals=> {:tweets=>tweets}, :layout=> :header do
-    erb :index, :locals=> {:tweets=>tweets} do
-      if @curuser
-        erb :new_tweet
-      else
-        ""
-      end
-    end
+  @tweets=@curuser ? Tweet.user_timeline(@curuser) : Tweet.includes(:user).all.limit(50)
+  @tweets=@tweets.order(create_time: :desc)
+  erb :master, :layout=> :header do
+    erb :index
   end
 end
 
@@ -113,17 +107,9 @@ get '/user/:username/?' do
     @baseurl = "/user/#{@user.name}"
     uid=session['user']
     @curuser=uid && User.find(uid)
-    @tweets=@user.tweets.find_by(reply_to:nil)
+    @tweets=@user.tweets.where(reply_to:nil)
     erb :master, :layout=> :header do
-      erb :user do 
-        if uid==@user.id
-          erb :new_tweet
-        elsif uid
-          erb :follow,:locals=> {:curuser=>@curuser}
-        else
-          ""
-        end
-      end
+      erb :user 
     end
   else
     "Can't find user"
@@ -138,15 +124,7 @@ get '/user/:username/with_replies/?' do
     @curuser=uid && User.find(uid)
     @tweets=@user.tweets
     erb :master, :layout=> :header do
-      erb :user do 
-        if uid==@user.id
-          erb :new_tweet
-        elsif uid
-          erb :follow,:locals=> {:curuser=>@curuser}
-        else
-          ""
-        end
-      end
+      erb :user 
     end
   else
     "Can't find user"
@@ -204,6 +182,9 @@ post '/tweet/new' do
     tweet=@user.tweets.create(text:params[:text],create_time:Time.now)
     tweet.conversation_root=tweet.id
     tweet.save
+    extract_hashtag params[:text] do |name| 
+      HashTag.create :name=>name,:tweet_id=>tweet.id
+    end
     redirect '/'
   else
     redirect '/login'
@@ -344,7 +325,15 @@ post '/messages/:conversation_id/new' do
 end
 
 get '/hashtag/:hashtag/?' do
-
+  uid=session['user']
+  @curuser=uid && User.find(uid)
+  @user=@curuser
+  ids=HashTag.where('name = ?',params[:hashtag]).pluck(:tweet_id)
+  @tweets=ids==[] ? [] : Tweet.where("id in (?)",ids)
+  #binding.pry
+  erb :master, :layout=> :header do
+    erb :hashtag 
+  end
 end
 
 get '/settings' do
@@ -410,8 +399,14 @@ helpers do
   
   def parse_tweet(text)
     text=html(text)
-    text.gsub(/@\w+|#\w+/) do |s|
+    text.gsub(/@[\w\d]+|#[\w\d]+/) do |s|
        "<a href='/#{s[0]=='@'? 'user' : 'hashtag'}/#{s[1..-1]}'>#{s}</a>"
+    end
+  end
+  
+  def extract_hashtag(text)
+    text.scan(/#[\w\d]+/) do |s|
+       yield s[1..-1]
     end
   end
   

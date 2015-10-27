@@ -11,8 +11,8 @@ class FakeData
 
   def self.gen_user
     dname = Faker::Name.name
-      name = dname.gsub(/\s/,'').downcase
-      user=User.create name: name,display_name:dname ,password:'',email:Faker::Internet.email,create_time:Faker::Date.backward(60)
+      name = dname.gsub(/[^0-9a-zA-Z_]/,'').downcase
+      user=User.create name: name,display_name:dname ,password:'',email:Faker::Internet.email,create_time:Faker::Date.backward(60),bio:Faker::Lorem.paragraph(1, false, 3)
       if user.valid?
         user.save
       end

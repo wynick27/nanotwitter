@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20151014173553) do
     t.integer "follower_id"
   end
 
-  create_table "hashtags", force: :cascade do |t|
+  create_table "hash_tags", force: :cascade do |t|
     t.string  "name"
     t.integer "tweet_id"
   end
@@ -52,12 +52,12 @@ ActiveRecord::Schema.define(version: 20151014173553) do
   end
 
   create_table "tweets", force: :cascade do |t|
-    t.text    "text"
-    t.time    "create_time"
-    t.integer "user_id"
-    t.integer "reference"
-    t.integer "reply_to"
-    t.integer "conversation_root"
+    t.text     "text"
+    t.datetime "create_time"
+    t.integer  "user_id"
+    t.integer  "reference"
+    t.integer  "reply_to"
+    t.integer  "conversation_root"
   end
 
   create_table "users", force: :cascade do |t|

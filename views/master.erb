@@ -82,10 +82,10 @@
           <img data-src="holder.js/100%x90" alt="100%x90" src="/pito.jpg" data-holder-rendered="true" style="height: 90px; display: block;">
         </a>
         </li>
-        <li><a href="<%="/user/#{@user.name}"%>">Messages<span class="badge">15</span></a>
-      <a href="<%="/user/#{@user.name}/following"%>">Following<span class="badge">43</span></a>
-      <a href="<%="/user/#{@user.name}/followers"%>">Followers<span class="badge">22</span></a>
-	  <a href="<%="/user/#{@user.name}/favourites"%>">Favourites<span class="badge">22</span></a>
+        <li><a href="<%="/user/#{@user.name}"%>">Tweets<span class="badge"><%= @user.tweets.count%></span></a>
+      <a href="<%="/user/#{@user.name}/following"%>">Following<span class="badge"><%= @user.followed_users.count%></span></a>
+      <a href="<%="/user/#{@user.name}/followers"%>">Followers<span class="badge"><%= @user.followers.count%></span></a>
+	  <a href="<%="/user/#{@user.name}/favourites"%>">Favourites<span class="badge"><%= @user.favourites.count%></span></a>
     </li>
       </ul>
     </nav>
@@ -120,7 +120,7 @@
                   <form action="/tweet/new" method="POST">
                     <div class="form-group">
                       <label for="text" class="control-label">Tweet:</label>
-                      <textarea class="form-control" maxlength="140" id="text" name="text" placeholder="What's in your mind?" required></textarea>
+                      <textarea class="form-control user-autocomplete" maxlength="140" id="text" name="text" placeholder="What's in your mind?" required></textarea>
                     </div>
                     <input type="submit" class="btn btn-info" id="submit" value="Send Tweet"/>
                     <span id="charleft"></span>
@@ -129,49 +129,6 @@
               </div>
             </div>
           </div>
-
-<div class="modal fade" id="tweetModal" tabindex="-1" role="dialog" aria-labelledby="tweetModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="tweetModalLabel">New message</h4>
-                </div>
-                <div class="modal-body">
-                  <form action="/tweet/new" method="POST">
-                    <div class="form-group">
-                      <label for="text" class="control-label">Tweet:</label>
-                      <textarea class="form-control" maxlength="140" id="text" name="text" placeholder="What's in your mind?" required></textarea>
-                    </div>
-                    <input type="submit" class="btn btn-info" id="submit" value="Send Tweet"/>
-                    <span id="charleft"></span>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-
-<div class="modal fade" id="tweetModal" tabindex="-1" role="dialog" aria-labelledby="tweetModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="tweetModalLabel">New message</h4>
-                </div>
-                <div class="modal-body">
-                  <form action="/tweet/new" method="POST">
-                    <div class="form-group">
-                      <label for="text" class="control-label">Tweet:</label>
-                      <textarea class="form-control" maxlength="140" id="text" name="text" placeholder="What's in your mind?" required></textarea>
-                    </div>
-                    <input type="submit" class="btn btn-info" id="submit" value="Send Tweet"/>
-                    <span id="charleft"></span>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-
 
 <div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="msgModalLabel">
             <div class="modal-dialog" role="document">
@@ -202,39 +159,29 @@
 
 
 <script>
-/* New Tweet JS*/
-var charleft = 140;
-  $('#charleft').html(charleft);
-  $('#submit').prop('disabled', true);
-
-  $('#text').bind('input propertychange', function() {
-    charleft = 140 - $(this).val().length;
-    if(charleft == 0 || charleft == 140){
-      $('#submit').prop('disabled', true);
-    }else{
-      $('#submit').prop('disabled', false);
-    }
-    $('#charleft').html(charleft);
-  });
-
-
 /* Modal JS */
+var charleft = 140;
 $('#tweetModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
   var recipient = button.data('whatever') // Extract info from data-* attributes
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   var modal = $(this)
-  var charleft = 140;
+
   modal.find('.modal-body #charleft').html(charleft);
   modal.find('.modal-body #submit').prop('disabled', true);
 
   modal.find('.modal-body #text').bind('input propertychange', function() {
     charleft = 140 - $(this).val().length;
-    if(charleft == 0 || charleft == 140){
+    if(charleft == 140){
       modal.find('.modal-body #submit').prop('disabled', true);
     }else{
       modal.find('.modal-body #submit').prop('disabled', false);
+    }
+    if(charleft <= 5){
+      modal.find('.modal-body #charleft').addClass('text-danger');
+    } else {
+      modal.find('.modal-body #charleft').removeClass('text-danger');
     }
     modal.find('.modal-body #charleft').html(charleft);
   });
@@ -243,6 +190,33 @@ $('#tweetModal').on('show.bs.modal', function (event) {
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+
+$('.user-autocomplete').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1,
+  source: function (query,process) {
+	var match=/@(\w+)$/g.exec(query);
+	if (match) {$.get('/autocomplete?q='+match[1],function( data ) {
+	process(data);},"json");
+	} else process([]);
+  },
+  displayText: function(item) {
+	return item[1] + " @" + item[0];
+  },
+  updater: function(item) {
+	var str=this.query.replace(/@(\w+)$/g,'@'+item[0]) + " ";
+	return str;
+  },
+  matcher: function (item) {
+	var match=/@(\w+)$/g.exec(this.query);
+	
+	return match ? item[0].indexOf(match[1]) === 0 :false;
+  }
+  
+});
+
 </script>
 
 

@@ -5,8 +5,15 @@
 		<div class="panel panel-info">
 		  <div class="panel-body bg-info">
 		    <%= index%>
+		    <a href="/user/<%= u.name%>"><span style="color:#000000;"><%= u.display_name%></span></a>
+		    <br>
+		    <a href="/user/<%= u.name%>">@<%= u.name%></a>
 		  </div>
-		  <div class="panel-footer"><a href="/user/<%= u.name%>"><%= u.name%></a></div>
+		  <div class="panel-footer">
+		  	Bio:<%= u.bio%>
+		  	<br>
+		  	<%= erb :follow,:locals=>{:user=>u}%>
+		  </div>
 		</div>
 		<% index += 1%>
 		<% end %>

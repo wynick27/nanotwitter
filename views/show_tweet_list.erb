@@ -1,0 +1,13 @@
+	<div class="container-fluid" style="height:1000px">
+
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		  	<% tweets.each do |tweet| %>
+			<%= erb :show_tweet,:locals=>{:tweet=>tweet} %>
+
+		  <% end %>
+		</div>
+	</div>
+
+	<script>
+	$('.collapse').collapse()
+	</script>

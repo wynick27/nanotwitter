@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
   has_many :chat_groups, :through => :conversations
   validates :email, uniqueness: true
   validates :name, uniqueness: true
+  #validates :name, format: { with: /[\w\d]+/ , message: "only allows letters" }
 end

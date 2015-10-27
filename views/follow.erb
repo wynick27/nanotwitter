@@ -1,8 +1,7 @@
-<div class="component">
-<%begin %>
-<% curuser.followed_users.find(@user.id) %>
-<a href="/unfollow/<%=@user.name%>">Unfollow</a>
-<%rescue%>
-<a href="/follow/<%=@user.name%>">Follow</a>
+<% if @curuser %>
+<% if @curuser.followed_users.find_by(:id=>user.id) %>
+<a role="button" class="btn btn-info" href="/unfollow/<%=user.name%>">Unfollow</a>
+<%else%>
+<a role="button" class="btn btn-info" href="/follow/<%=user.name%>">Follow</a>
 <%end%>
-</div>
+<%end%>
