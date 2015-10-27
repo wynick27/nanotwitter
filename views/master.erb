@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-        <li data-toggle="modal" data-target="#msgModal" data-whatever="@fat">
+        <li data-toggle="modal" data-target="#msgModal">
           <a href="#" data-toggle="tooltip" data-placement="bottom" title="unread messages">Messages<span class="badge">15</span></a>
         </li>
         <li class="dropdown">
@@ -106,6 +106,10 @@
     top: 50%;
     margin-top: -250px;
     }
+
+    .bootstrap-tagsinput{
+      width: 100% !important;
+    }
 </style>
 
 <div class="modal fade" id="tweetModal" tabindex="-1" role="dialog" aria-labelledby="tweetModalLabel">
@@ -135,23 +139,21 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+                  <h4 class="modal-title" id="msgModalLabel">New message</h4>
                 </div>
                 <div class="modal-body">
-                  <form>
+                  <form action="/messages/new" method="POST">
                     <div class="form-group">
-                      <label for="recipient-name" class="control-label">Recipient:</label>
-                      <input type="text" class="form-control" id="recipient-name">
+                      <label for="chatgroups" class="control-label">Recent Chats:</label>
+                      <ul class="list-group" id="chatgroups">
+                      </ul>
                     </div>
                     <div class="form-group">
-                      <label for="message-text" class="control-label">Message:</label>
-                      <textarea class="form-control" id="message-text" required></textarea>
+                      <label for="recipients" class="control-label">Recipents:</label>
+                      <textarea class="form-control" name="text" data-role="tagsinput" id="recipients" required></textarea>
                     </div>
+                    <input type="submit" class="btn btn-info" value="New Chat"/>
                   </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-info">Send message</button>
                 </div>
               </div>
             </div>
@@ -159,6 +161,7 @@
 
 
 <script>
+
 /* Modal JS */
 var charleft = 140;
 $('#tweetModal').on('show.bs.modal', function (event) {
@@ -185,6 +188,37 @@ $('#tweetModal').on('show.bs.modal', function (event) {
     modal.find('.modal-body #charleft').html(charleft);
   });
 })
+
+
+/* Message Modal */
+$('#msgModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget);// Button that triggered the modal
+  //var recipients = button.data('convs'); // Extract info from data-* attributes
+  var chatgroups;
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  $('#recipients').tagsinput();
+
+  var modal = $(this);
+  $.post('/messages', function(data){
+    data.forEach(function(chatgroup, index){
+      var list = document.createElement('li');
+      list.className = "list-group-item";
+      //console.log(chatgroup.html);
+      $(list).append(chatgroup.html);
+      $('#chatgroups').append(list);
+    });
+  }, "json");
+
+  //modal.find('.modal-body #recipient-names').val(recipients);
+  //modal.find('modal-body input').tagsinput('add', 'mysgit');
+});
+
+$('#msgModal').on('hidden.bs.modal', function (event) {
+  $('#chatgroups').empty();
+});
+
+
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()

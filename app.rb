@@ -298,10 +298,11 @@ post '/tweet/:tweet_id/favourite' do
   end
 end
 
-get '/messages/?' do
+post '/messages/?' do
   uid=session['user']
   @curuser=uid && User.find(uid)
-  erb :conversation_list
+  (@curuser.chat_groups.map { |c|  
+    {:id=>c.id,:time=>c.create_time,:html=>"<a role='button' class='btn btn-success' href='/messages/#{c.id}' >#{(c.users.map {|u| u.name }).join ', '}</a>"}}).to_json
 end
 
 get '/messages/:conversation_id/?' do
