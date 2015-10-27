@@ -53,9 +53,9 @@ post '/register' do
   #begin
    if @user.valid?
      @user.save
-     redirect '/'
+     [].to_json
    else
-     @user.errors.messages.to_s
+     {name:@user.errors.messages[:name][0]}.to_json
    end
   #rescue
   #  "Can't create user"
@@ -138,6 +138,7 @@ get '/user/:username/favourites/?' do
     uid=session['user']
     @curuser=uid && User.find(uid)
     @user.favourites.includes(:tweet)
+    @tweets=@user.favourites.map {|fav| fav.tweet }
     erb :master, :layout=> :header do
       erb :favourites
     end
@@ -330,6 +331,7 @@ get '/hashtag/:hashtag/?' do
   @user=@curuser
   ids=HashTag.where('name = ?',params[:hashtag]).pluck(:tweet_id)
   @tweets=ids==[] ? [] : Tweet.where("id in (?)",ids)
+  @hashtag=params[:hashtag]
   #binding.pry
   erb :master, :layout=> :header do
     erb :hashtag 

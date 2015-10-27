@@ -213,7 +213,7 @@ $('.user-autocomplete').typeahead({
   matcher: function (item) {
 	var match=/@(\w+)$/g.exec(this.query);
 	
-	return match ? item[0].indexOf(match[1]) === 0 :false;
+	return match ? item[0].toLowerCase().indexOf(match[1].toLowerCase()) === 0 || item[1].toLowerCase().indexOf(match[1].toLowerCase()) === 0 :false;
   }
   
 });
