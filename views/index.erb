@@ -1,14 +1,18 @@
 	<%= yield%>
 	<div class="container-fluid" style="height:1000px">
-	  	<% tweets.each do |tweet| %>
-		<div class="panel panel-info">
-		  <div class="panel-body bg-info">
-		    <a href="/user/<%= tweet.user.name%>"><%= tweet.user.name.capitalize%></a>
-		  </div>
-		  <div class="panel-footer"><%= tweet.text%></div>
+
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		  	<% tweets.each do |tweet| %>
+			<%= erb :show_tweet,:locals=>{:tweet=>tweet} %>
+
+		  <% end %>
 		</div>
-		<% end %>
 	</div>
-<!--
+
+	<script>
+	$('.collapse').collapse()
+	</script>
+
+	<!--
 	<script src="js/jquery.stickyheader.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>-->

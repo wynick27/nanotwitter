@@ -15,7 +15,7 @@ class CreateModel < ActiveRecord::Migration
   	end
   	create_table :tweets do |t|
       t.text :text
-      t.time :create_time
+      t.datetime :create_time
       t.references :user
       t.integer :reference #referenced tweet
       t.integer :reply_to

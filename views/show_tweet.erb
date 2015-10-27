@@ -1,0 +1,35 @@
+			<div class="panel panel-default">
+		    <div class="panel-heading" role="tab" id="heading<%=tweet.id%>">	   
+		      	<a href="/user/<%= tweet.user.name%>"><%= tweet.user.display_name%></a>  @<%=tweet.user.name%>
+				<%=tweet.create_time%>
+		      	<br>
+		      	<%= tweet.text%>
+		      	<br>
+		        <a role="button" class="text-success" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=tweet.id%>" aria-expanded="true" aria-controls="collapse<%=tweet.id%>">
+		          <span class="glyphicon glyphicon-chevron-down" id="span<%=tweet.id%>"></span>
+		        </a>	      
+		    </div>
+		    <div id="collapse<%=tweet.id%>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%=tweet.id%>">
+		    	<ul class="list-group">
+				  <li class="list-group-item">
+				  	<span class="glyphicon glyphicon-share-alt"></span>
+				  	<a href="/user/<%= tweet.user.name%>"><%= tweet.user.name.capitalize%></a>:
+				  	<%= tweet.text%>
+				  </li>
+				  <li class="list-group-item"><span class="glyphicon glyphicon-share-alt"></span>Dapibus ac facilisis in</li>
+				  <li class="list-group-item"><span class="glyphicon glyphicon-share-alt"></span>Morbi leo risus</li>
+				  <li class="list-group-item"><span class="glyphicon glyphicon-share-alt"></span>Porta ac consectetur ac</li>
+				  <li class="list-group-item"><span class="glyphicon glyphicon-share-alt"></span>Vestibulum at eros</li>
+				</ul>
+		    </div>
+		  </div>
+		  	<script>
+				$('#collapse<%=tweet.id%>').on('show.bs.collapse', function () {
+					 $('#span<%=tweet.id%>').removeClass("glyphicon glyphicon-chevron-down");
+					 $('#span<%=tweet.id%>').addClass("glyphicon glyphicon-chevron-up");
+					})
+				$('#collapse<%=tweet.id%>').on('hidden.bs.collapse', function () {
+					  $('#span<%=tweet.id%>').removeClass("glyphicon glyphicon-chevron-up");
+					 $('#span<%=tweet.id%>').addClass("glyphicon glyphicon-chevron-down");
+					})
+			</script>
