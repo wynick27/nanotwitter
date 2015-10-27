@@ -286,6 +286,7 @@ post '/messages/?' do
   @curuser=uid && User.find(uid)
   (@curuser.chat_groups.map { |c|  
     {:id=>c.id,:time=>c.create_time,:html=>"<a role='button' class='btn btn-success' href='/messages/#{c.id}' >#{(c.users.map {|u| u.name }).join ', '}</a>"}}).to_json
+  binding.pry
 end
 
 get '/messages/:conversation_id/?' do
