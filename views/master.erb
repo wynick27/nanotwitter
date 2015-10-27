@@ -120,7 +120,7 @@
                   <form action="/tweet/new" method="POST">
                     <div class="form-group">
                       <label for="text" class="control-label">Tweet:</label>
-                      <textarea class="form-control user-autocomplete" maxlength="140" id="text" name="text" placeholder="What's in your mind?" required></textarea>
+                      <textarea class="form-control user-autocomplete" data-provide="typeahead" maxlength="140" id="text" name="text" placeholder="What's in your mind?" required></textarea>
                     </div>
                     <input type="submit" class="btn btn-info" id="submit" value="Send Tweet"/>
                     <span id="charleft"></span>
@@ -130,6 +130,7 @@
             </div>
           </div>
 
+		  
 <div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="msgModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -167,7 +168,7 @@ $('#tweetModal').on('show.bs.modal', function (event) {
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   var modal = $(this)
-
+  
   modal.find('.modal-body #charleft').html(charleft);
   modal.find('.modal-body #submit').prop('disabled', true);
 
