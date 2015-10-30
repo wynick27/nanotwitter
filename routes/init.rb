@@ -1,0 +1,7 @@
+require_relative 'authentication'
+require_relative 'main'
+require_relative 'test'
+require_relative 'restapi'
+require_relative 'messages'
+require_relative 'query'
+require_relative 'tweets'

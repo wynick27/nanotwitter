@@ -1,6 +1,8 @@
 
 #The environment variable DATABASE_URL should be in the following format:
 # => postgres://{user}:{password}@{host}:{port}/path
+
+class Configure < Sinatra::Base
 configure :production do
 	db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/nanotwitter')
 
@@ -16,4 +18,5 @@ end
 
 configure :development, :test do
   puts "[develoment or test Environment]"
+end
 end

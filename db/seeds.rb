@@ -7,3 +7,4 @@ users.each do |user|
   FakeData::gen_tweets(user,Random.rand(10))
   FakeData::gen_followers(user,Random.rand(30))
 end
+
