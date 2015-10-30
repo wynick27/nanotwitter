@@ -1,3 +1,7 @@
 <% @chatgroup.messages.each do |m| %>
-    <%=erb(:chat_message,:locals=>{:m=>m})%>
+	<% if @curuser.id == m.user_id %>
+	<%=erb(:chat_message_right,:locals=>{:m=>m})%>
+	<% else %>
+	<%=erb(:chat_message_left,:locals=>{:m=>m})%>
+	<%end%>
 <% end %>

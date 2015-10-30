@@ -169,6 +169,7 @@
                                 Sign Out</a></li>
                         </ul>
                     </div>
+                    <h2 class="text-info" id="chatgroup-title"></h2>
                 </div>
                 <div class="modal-body" id="msg-body">
                       <label for="chatgroups" class="control-label">Recent Chats:</label>
@@ -265,6 +266,7 @@
 <script>
 
 /* Modal JS */
+
 var charleft = 140;
 $('#tweetModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
@@ -301,12 +303,13 @@ function LoadChatgroups() {
     $('#msg-header').show();
     $('#msg-body').show();
     $('#msg-footer').show();
+
   $.post('/messages', function(data){
     
       $('#chatgroups').append(data.html);
 	$('#msgModal li a').click(function() {
-		LoadChat($( this ).attr( "href"))
-		
+		LoadChat($( this ).attr( "href"));
+    $('#chatgroup-title').html($(this).html());
 		return false;
 	});
   }, "json");
@@ -314,13 +317,22 @@ function LoadChatgroups() {
 }
 
 
-function LoadChat(url) {
+function LoadChat(url, recipients) {
     $('#msg-header').hide();
     $('#msg-body').hide();
     $('#msg-footer').hide();
+    $('#chatgroup-title').html(recipients);
     $('#chat-header').show();
     $('#chat-body').show();
     $('#chat-footer').show();
+    $("#chat-body").animate({ scrollTop: $("#chat-messages").height() + 150 }, 'slow');
+
+    $("#btn-input").keypress(function(event){
+      if(event.keyCode == 13){
+        $("#btn-chat").click();
+      }
+  });
+
 	$.post(url,function( data ) {
 			$('#chat-messages').empty();
 			$('#chat-messages').attr('data-id',data.group_id);
@@ -336,6 +348,7 @@ function AppendMessages(data) {
 /* Message Modal */
 
 $('#msgModal').on('show.bs.modal', function (event) {
+  $("#msg-body").animate({ scrollTop: $("#msg-body").height() + 150 }, 'slow');
 
   var button = $(event.relatedTarget);// Button that triggered the modal
   //var recipients = button.data('convs'); // Extract info from data-* attributes
@@ -349,7 +362,7 @@ $('#msgModal').on('show.bs.modal', function (event) {
   $('#recipients').tagsinput();
 
   var modal = $(this);
-  LoadChatgroups()
+  LoadChatgroups();
 
 });
 
@@ -359,14 +372,10 @@ $('#msgModal').on('hidden.bs.modal', function (event) {
 
 $('#msgFormSubmit').click(function(){
     var recipients = $('#recipients').val();
-    console.log(recipients);
     
     $.post('/messages/new', {users: recipients}, function(data){
-	  LoadChat('/messages/' + data.group_id);
+	  LoadChat('/messages/' + data.group_id, recipients);
     },'json');
-
-
-
 
   });
 
@@ -380,7 +389,9 @@ $('#msgFormSubmit').click(function(){
     $.post('/messages/'+$('#chat-messages').attr('data-id')+'/new', {text:$('#btn-input').val()},function(data){
 	AppendMessages(data);
     }, "json");
-    
+
+    $('#btn-input').val('');
+
   });
 
 

@@ -48,5 +48,5 @@
     cid=params['conversation_id']
     @chatgroup=cid && ChatGroup.find_by(:id=>cid)
     m=@chatgroup.messages.create(:user_id=>uid,:text=>text,:create_time=>Time.now)
-    {:created=>true,:html=>erb(:chat_message,:locals=>{:m=>m})}.to_json
+    {:created=>true,:html=>erb(:chat_message_right,:locals=>{:m=>m})}.to_json
   end
