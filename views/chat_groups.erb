@@ -1,0 +1,3 @@
+<% @curuser.chat_groups.each do |c| %>
+    <li class="list-group-item"><a href="/messages/<%= c.id %>" > <%= (c.users.map {|u| u.name }).join ', ' %> </a></li>
+<% end %>

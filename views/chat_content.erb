@@ -1,0 +1,3 @@
+<% @chatgroup.messages.each do |m| %>
+    <%=erb(:chat_message,:locals=>{:m=>m})%>
+<% end %>

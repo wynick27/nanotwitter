@@ -177,16 +177,12 @@
 
                     <div class="form-group">
                       <label for="recipients" class="control-label">Recipents:</label>
-<<<<<<< Updated upstream
-                      <textarea class="form-control" name="users" data-role="tagsinput" id="recipients" required></textarea>
-=======
-<<<<<<< HEAD
                       <input id="recipients" type="text" class="form-control" name="users" data-role="tagsinput" required/>
                     </div>
                 </div>
 
                 <div class="modal-body" id="chat-body">
-                    <ul class="chat">
+                    <ul class="chat" id="chat-messages">
                         <li class="left clearfix"><span class="chat-img pull-left">
                             <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
                         </span>
@@ -259,10 +255,6 @@
                             <button class="btn btn-success btn-sm" id="btn-chat">
                                 Send</button>
                         </span>
-=======
-                      <textarea class="form-control" name="users" data-role="tagsinput" id="recipients" required></textarea>
->>>>>>> origin/master
->>>>>>> Stashed changes
                     </div>
                 </div>
               </div>
@@ -301,6 +293,46 @@ $('#tweetModal').on('show.bs.modal', function (event) {
 })
 
 
+function LoadChatgroups() {
+  $('#chatgroups').empty();
+  $('#chat-header').hide();
+  $('#chat-body').hide();
+  $('#chat-footer').hide();
+    $('#msg-header').show();
+    $('#msg-body').show();
+    $('#msg-footer').show();
+  $.post('/messages', function(data){
+    
+      $('#chatgroups').append(data.html);
+	$('#msgModal li a').click(function() {
+		LoadChat($( this ).attr( "href"))
+		
+		return false;
+	});
+  }, "json");
+
+}
+
+
+function LoadChat(url) {
+    $('#msg-header').hide();
+    $('#msg-body').hide();
+    $('#msg-footer').hide();
+    $('#chat-header').show();
+    $('#chat-body').show();
+    $('#chat-footer').show();
+	$.post(url,function( data ) {
+			$('#chat-messages').empty();
+			$('#chat-messages').attr('data-id',data.group_id);
+			AppendMessages(data);
+		}, "json");
+	
+}
+
+function AppendMessages(data) {
+	$('#chat-messages').append(data.html);
+}
+
 /* Message Modal */
 
 $('#msgModal').on('show.bs.modal', function (event) {
@@ -311,114 +343,45 @@ $('#msgModal').on('show.bs.modal', function (event) {
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 
-  $('#chat-header').hide();
-  $('#chat-body').hide();
-  $('#chat-footer').hide();
+
 
 
   $('#recipients').tagsinput();
 
   var modal = $(this);
-  $.post('/messages', function(data){
-    data.forEach(function(chatgroup, index){
-      var list = document.createElement('li');
-      list.className = "list-group-item";
-      //console.log(chatgroup.html);
-      $(list).append(chatgroup.html);
-      $('#chatgroups').append(list);
-    });
-	$('#msgModal .li a').click(function() {
-		var element=$(this);
-		$.post($( this ).attr( "href"),function( data ) {
-			if (data.created)
-				element.children(0).css({'color':'green'});
-			else
-				element.children(0).css({'color':''});
-			element.children(1).text(data.count);
-		}, "json");
-		return false;
-	});
-  }, "json");
+  LoadChatgroups()
 
-  $('#msgFormSubmit').click(function(){
-    var recipients = $('#recipients').val();
-    console.log(recipients);
-    
-    $.post('messages/new', {users: recipients}, function(data){
-    });
-
-    $('#msg-header').hide();
-    $('#msg-body').hide();
-    $('#msg-footer').hide();
-    $('#chat-header').show();
-    $('#chat-body').show();
-    $('#chat-footer').show();
-
-
-  });
-
-  $('#back').click(function(){
-    $('#chat-header').hide();
-    $('#chat-body').hide();
-    $('#chat-footer').hide();
-    $('#msg-header').show();
-    $('#msg-body').show();
-    $('#msg-footer').show();
-  });
-
-
-  $('#btn-chat').click(function(){
-    /*
-    $.post('/messages/new', function(data){
-
-    });
-    }, "json");
-    */
-  });
-
-/*
-  $('#msgFormSubmit').click(function(){
-    $('#msgForm').remove();
-    var chatForm = document.createElement('form');
-    chatForm.method = "POST";
-    chatForm.id = "chatFrom";
-    chatForm.action = "/messages/new";
-
-    var formDiv = document.createElement('div');
-    formDiv.className = "form-group";
-
-    var formLabel = document.createElement('label');
-    formLabel.className = "control-label";
-    formLabel.innerHTML = "Message: ";
-    formLabel.htmlFor = "chatContent";
-
-    var chatArea = document.createElement('textarea');
-    chatArea.name = "chatContent";
-    chatArea.id = "chatContent";
-    chatArea.className = "form-control";
-
-    var send = document.createElement('input');
-    send.type = "submit";
-    send.className = "btn btn-info";
-    send.value = "Send";
-
-    formDiv.appendChild(formLabel);
-    formDiv.appendChild(chatArea);
-    chatForm.appendChild(formDiv);
-    chatForm.appendChild(send);
-
-    console.log(chatForm);
-    $('.modal-body').append(chatForm);
-  });
-*/
-
-  //modal.find('.modal-body #recipient-names').val(recipients);
-  //modal.find('modal-body input').tagsinput('add', 'mysgit');
 });
 
 $('#msgModal').on('hidden.bs.modal', function (event) {
   $('#chatgroups').empty();
 });
+
+$('#msgFormSubmit').click(function(){
+    var recipients = $('#recipients').val();
+    console.log(recipients);
+    
+    $.post('/messages/new', {users: recipients}, function(data){
+	  LoadChat('/messages/' + data.group_id);
+    },'json');
+
+
+
+
+  });
+
+  $('#back').click(function(){
+    LoadChatgroups();
+  });
+
+
+  $('#btn-chat').click(function(){
+    
+    $.post('/messages/'+$('#chat-messages').attr('data-id')+'/new', {text:$('#btn-input').val()},function(data){
+	AppendMessages(data);
+    }, "json");
+    
+  });
 
 
 $(function () {
