@@ -152,7 +152,7 @@ get '/api/v1/tweets' do
       else
         num = 10
       end
-      tweets[0..num].to_json
+      tweets[0..num-1].to_json
     else
       error 404, {:error => "user not found, check your params"}.to_json
     end
@@ -168,7 +168,7 @@ get '/api/v1/tweets' do
     else
       num = 50
     end
-    tweets[0..num].to_json
+    tweets[0..num-1].to_json
   end
 end
 
@@ -205,7 +205,7 @@ get '/api/v1/followers' do
       else
         num = 10
       end
-      followers[0..num].to_json
+      followers[0..num-1].to_json
     else
       error 404, {:error => "user not found"}.to_json
     end
@@ -229,12 +229,65 @@ get '/api/v1/followings' do
       else
         num = 10
       end
-      followings[0..num].to_json
+      followings[0..num-1].to_json
     else
       error 404, {:error => "user not found"}.to_json
     end
   else
     error 404, {:error => "user not found, check your params"}.to_json
   end
+end
 
+# params: userid, username, oneterm, terms, recent, limit
+get '/api/v1/search' do
+  if params[:username] || params[:userid]
+    if params[:username]
+      user = User.find_by name: params[:username]
+    else
+      user = User.find_by id: params[:userid]
+    end
+
+    if user
+      pattern1 = /^[a-zA-Z]+$/
+      if params[:oneterm] && pattern1 =~ params[:oneterm]
+        result = search_one(params[:oneterm],user)
+        if params[:limit]
+          result = result[0..params[:limit].to_i-1]
+        end
+        result.to_json
+      elsif params[:terms]
+        binding.pry
+        spliter = params[:terms].split
+      else
+        error 404, {:error => "please check your input search terms"}.to_json
+      end
+    else
+      error 404, {:error => "user not found"}.to_json
+    end
+
+  else
+    error 404, {:error => "user not found"}.to_json
+  end
+end
+
+################ methods are here ################
+def search_one(term,user)
+  result = []
+  tweets = user.tweets
+  tweets.each_with_index do |single|
+    if /#{term}/.match(single.text)
+      count = 0
+      spliter = single.text.split
+      spliter.each do |word|
+        if /#{term}/.match(word)
+          num = /#{term}/.match(word).length
+          count += num
+        end
+      end
+      pair = {:username => user.name, :tweet => single.text, :count => count}
+      result << pair
+    end
+  end
+  sorted_result = result.sort_by { |s| -s[:count] }
+  return sorted_result
 end
