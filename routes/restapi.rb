@@ -222,3 +222,56 @@ NanoTwitter.get '/api/v1/followings' do
   end
 
 end
+
+# params: userid, username, oneterm, terms, recent, limit
+NanoTwitter.get '/api/v1/search' do
+  if params[:username] || params[:userid]
+    if params[:username]
+      user = User.find_by name: params[:username]
+    else
+      user = User.find_by id: params[:userid]
+    end
+
+    if user
+      pattern1 = /^[a-zA-Z]+$/
+      if params[:oneterm] && pattern1 =~ params[:oneterm]
+        result = search_one(params[:oneterm],user)
+        if params[:limit]
+          result = result[0..params[:limit].to_i-1]
+        end
+        result.to_json
+      elsif params[:terms]
+        spliter = params[:terms].split
+      else
+        error 404, {:error => "please check your input search terms"}.to_json
+      end
+    else
+      error 404, {:error => "user not found"}.to_json
+    end
+
+  else
+    error 404, {:error => "user not found"}.to_json
+  end
+end
+
+################ methods are here ################
+def search_one(term,user)
+  result = []
+  tweets = user.tweets
+  tweets.each_with_index do |single|
+    if /#{term}/.match(single.text)
+      count = 0
+      spliter = single.text.split
+      spliter.each do |word|
+        if /#{term}/.match(word)
+          num = /#{term}/.match(word).length
+          count += num
+        end
+      end
+      pair = {:username => user.name, :tweet => single.text, :count => count}
+      result << pair
+    end
+  end
+  sorted_result = result.sort_by { |s| -s[:count] }
+  return sorted_result
+end
