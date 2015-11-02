@@ -253,6 +253,42 @@ NanoTwitter.get '/api/v1/search' do
   end
 end
 
+<<<<<<< HEAD
+=======
+end
+
+# params: userid, username, oneterm, terms, recent, limit
+NanoTwitter.get '/api/v1/search' do
+  if params[:username] || params[:userid]
+    if params[:username]
+      user = User.find_by name: params[:username]
+    else
+      user = User.find_by id: params[:userid]
+    end
+
+    if user
+      pattern1 = /^[a-zA-Z]+$/
+      if params[:oneterm] && pattern1 =~ params[:oneterm]
+        result = search_one(params[:oneterm],user)
+        if params[:limit]
+          result = result[0..params[:limit].to_i-1]
+        end
+        result.to_json
+      elsif params[:terms]
+        spliter = params[:terms].split
+      else
+        error 404, {:error => "please check your input search terms"}.to_json
+      end
+    else
+      error 404, {:error => "user not found"}.to_json
+    end
+
+  else
+    error 404, {:error => "user not found"}.to_json
+  end
+end
+
+>>>>>>> 53ffa75e052ec4e5c0842d64dbd0bc5f14396c0c
 ################ methods are here ################
 def search_one(term,user)
   result = []

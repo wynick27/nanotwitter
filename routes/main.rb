@@ -11,7 +11,7 @@
     end
   end
 
-  NanoTwitter.get '/following' do 
+  NanoTwitter.get '/following' do
     @curuser=get_cur_user
     if @curuser
       @user=@curuser
@@ -62,7 +62,7 @@
     end
   end
 
-  NanoTwitter.get '/user/:username/favourites/?' do 
+  NanoTwitter.get '/user/:username/favourites/?' do
     @user=User.find_by name: params['username']
     if @user
       @curuser=get_cur_user
@@ -76,7 +76,7 @@
     end
   end
 
-  NanoTwitter.get '/user/:username/following/?' do 
+  NanoTwitter.get '/user/:username/following/?' do
     @user=User.find_by name: params['username']
     if @user
       @curuser=get_cur_user
