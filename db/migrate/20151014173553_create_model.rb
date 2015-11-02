@@ -15,11 +15,14 @@ class CreateModel < ActiveRecord::Migration
   	end
   	create_table :tweets do |t|
       t.text :text
-      t.datetime :create_time
+      t.datetime :create_time,:index => true
       t.references :user
       t.integer :reference #referenced tweet
       t.integer :reply_to
-      t.integer :conversation_root
+      t.integer :conversation_root,:index => true
+      t.integer :reply_level,:default => 0
+      t.integer :retweets_count, :default => 0
+      t.integer :favourites_count, :default => 0
   	end
     create_table :retweets do |t|
       t.references :tweet

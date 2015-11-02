@@ -15,7 +15,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-        <li data-toggle="modal" data-target="#msgModal">
+<%if @curuser %>
+		<li data-toggle="modal" data-target="#msgModal">
           <a href="#" data-toggle="tooltip" data-placement="bottom" title="unread messages">Messages<span class="badge">15</span></a>
         </li>
         <li class="dropdown">
@@ -29,6 +30,7 @@
             <li role="separator" class="divider"></li>
             <li><a href="#">One more separated link</a></li>
           </ul>
+<% end %>
         </li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
@@ -183,62 +185,7 @@
 
                 <div class="modal-body" id="chat-body">
                     <ul class="chat" id="chat-messages">
-                        <li class="left clearfix"><span class="chat-img pull-left">
-                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
-                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="right clearfix"><span class="chat-img pull-right">
-                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
-                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="left clearfix"><span class="chat-img pull-left">
-                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
-                                        <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="right clearfix"><span class="chat-img pull-right">
-                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <small class="text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
-                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
-                                </p>
-                            </div>
-                        </li>
+                       
                     </ul>
                 </div>
 
@@ -382,8 +329,27 @@ $('#msgFormSubmit').click(function(){
     }, "json");
     
   });
-
-
+  
+	$( document ).on("click",".unfollow-btn",function() {
+		var element=$(this);
+		$.post($( this ).attr( "href"),function( data ) {
+			element.removeClass("unfollow-btn");
+			element.addClass("follow-btn");
+			element.attr( "href",'/follow/'+element.attr('data-user-name'));
+			element.text('Follow')
+		}, "json");
+		return false;
+	});
+	$( document ).on("click",".follow-btn",function() {
+		var element=$(this);
+		$.post($( this ).attr( "href"),function( data ) {
+			element.addClass("follow-btn");
+			element.addClass("unfollow-btn");
+			element.attr( "href",'/unfollow/'+element.attr('data-user-name'));
+			element.text('Unfollow')
+		}, "json");
+		return false;
+	});
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })

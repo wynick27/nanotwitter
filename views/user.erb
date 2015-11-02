@@ -1,5 +1,19 @@
-  <%=erb :follow,:locals=> {:user=>@user} %>
+  
 	<title><%=@user.name%></title>
 	<header><h1>Welcome to <%=@user.name%>'s Home!</h1></header>
-
-  <%= erb :show_tweet_list,:locals=>{:tweets=>@tweets} %>
+	<% if reply then %>
+	<ul class="nav nav-pills">
+	  <li><a href="/user/<%=@user.name%>">Tweets</a></li>
+	  <li class="active"><a href="#">Tweets & Replies</a></li>
+	  <li class="navbar-right"><%=erb :follow,:locals=> {:user=>@user} %></li>
+	</ul>
+	<%= erb :show_tweet_list,:locals=>{:tweets=>Tweet.user_tweets_with_replies(@user)} %>
+	<% else %>
+	<ul class="nav nav-pills">
+	  <li class="active"><a href="#">Tweets</a></li>
+	  <li><a href="/user/<%=@user.name%>/with_replies">Tweets & Replies</a></li>
+	  <li class="navbar-right"><%=erb :follow,:locals=> {:user=>@user} %></li>
+	</ul>
+	<%= erb :show_tweet_list,:locals=>{:tweets=>Tweet.user_tweets(@user)} %>
+	<% end %>
+  

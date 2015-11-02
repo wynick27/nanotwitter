@@ -39,11 +39,10 @@
   NanoTwitter.get '/user/:username/?' do
     @user=User.find_by name: params['username']
     if @user
-      @baseurl = "/user/#{@user.name}"
       @curuser=get_cur_user
-      @tweets=@user.tweets.where(reply_to:nil)
+      @tweets=Tweet.user_tweets(@user)
       erb :master, :layout=> :header do
-        erb :user 
+        erb :user ,locals:{reply:false}
       end
     else
       "Can't find user"
@@ -54,9 +53,9 @@
     @user=User.find_by name: params['username']
     if @user
       @curuser=get_cur_user
-      @tweets=@user.tweets
+      @tweets=Tweet.user_tweets_with_replies(@user)
       erb :master, :layout=> :header do
-        erb :user 
+        erb :user,locals:{reply:true}
       end
     else
       "Can't find user"
@@ -101,18 +100,18 @@
     end
   end
 
-  NanoTwitter.get '/follow/:username/?' do
+  NanoTwitter.post '/follow/:username/?' do
     @curuser=get_cur_user
     @user=User.find_by name: params['username']
     @curuser.followed_users << @user
-    redirect "/user/#{params['username']}"
+    {success:true,followstatus:true}.to_json
   end
 
-  NanoTwitter.get '/unfollow/:username/?' do
+  NanoTwitter.post '/unfollow/:username/?' do
     @curuser=get_cur_user
     @user=User.find_by name: params['username']
     @curuser.followed_users.destroy(@user)
-    redirect "/user/#{params['username']}"
+    {success:true,followstatus:false}.to_json
   end
 
   NanoTwitter.get '/settings' do

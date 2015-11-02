@@ -58,7 +58,13 @@ ActiveRecord::Schema.define(version: 20151014173553) do
     t.integer  "reference"
     t.integer  "reply_to"
     t.integer  "conversation_root"
+    t.integer  "reply_level",       default: 0
+    t.integer  "retweets_count",    default: 0
+    t.integer  "favourites_count",  default: 0
   end
+
+  add_index "tweets", ["conversation_root"], name: "index_tweets_on_conversation_root"
+  add_index "tweets", ["create_time"], name: "index_tweets_on_create_time"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

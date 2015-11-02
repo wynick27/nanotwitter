@@ -1,0 +1,14 @@
+<%@tweets.each do |tweet| %>
+	<li class="list-group-item">
+		<a href="/user/<%= tweet.user.name%>"><%= tweet.user.display_name%></a>  @<%=tweet.user.name%>
+		<%=tweet.create_time%>
+		<br>
+		<%= parse_tweet tweet.text%>
+		<br>
+		<a role="button" class="text-success reply-button-inside" data-tweet-id="<%=tweet.id%>">
+		  <span class="fa fa-reply tweet-comment"></span>
+		</a>
+		<a class="retweet-btn" role="button"  href="/tweet/<%=tweet.id%>/retweet"><span class="glyphicon glyphicon-retweet" <%=@curuser && tweet.retweeted_by?(@curuser) ? 'style="color:green"': nil%> /><span class="count"><%=tweet.retweets.size%></span></a>
+		<a class="fav-btn" role="button"  href="/tweet/<%=tweet.id%>/favourite"><span class="glyphicon glyphicon-star" <%=@curuser && tweet.favourited_by?(@curuser) ? 'style="color:yellow"': nil%> /><span class="count"><%=tweet.favourites.size%></span></a>	
+	</li>
+<% end %>		
