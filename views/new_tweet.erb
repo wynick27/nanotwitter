@@ -2,10 +2,10 @@
 	    <form action="/tweet/new" method="POST">
 		    <div class="form-group">
 			    <label for="text" class="control-label">Tweet:</label>
-			    <textarea class="form-control user-autocomplete" data-provide="typeahead" placeholder="What's in your mind?" maxlength="140" id="text" name="text" required></textarea>
+			    <textarea class="form-control user-autocomplete" data-provide="typeahead" placeholder="What's in your mind?" maxlength="140" id="tweet_text" name="text" required></textarea>
 
 		    </div>
-		    <input type="submit" class="btn btn-info" id="submit" value="New Tweet"/>
+		    <input type="submit" class="btn btn-info" id="tweet_submit" value="New Tweet"/>
 		    <span id="charleft"></span>
 	    </form>
 
@@ -33,9 +33,9 @@
 		$('#charleft').html(charleft);
 	});
 
-	
 
 
 
-  
+
+
   </script>

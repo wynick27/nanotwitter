@@ -33,6 +33,7 @@ class FakeData
     ActiveRecord::Base.transaction do  
       num.times do
         tweet=user.tweets.create(text:Faker::Lorem.paragraph(1, false, 4),create_time:Faker::Date.backward(10))
+        tweet.conversation_root=tweet.id
         tweet.save
       end
     end

@@ -1,0 +1,5 @@
+  <%=erb :follow,:locals=> {:user=>@user} %>
+	<title><%=@user.name%></title>
+	<header><h1>Welcome to <%=@user.name%>'s Home!</h1></header>
+
+  <%= erb :show_tweet_list,:locals=>{:tweets=>@tweets} %>

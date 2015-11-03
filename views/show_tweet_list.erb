@@ -10,9 +10,31 @@
 
 
 	<script>
-	$('.collapse').collapse()
 
-	$( ".retweet-btn" ).click(function() {
+	$(document).ready(function(){
+	$(".new-reply-btn").on("click",function() {
+		var element=$('.descendant-list',$(this).parents('.tweet-panel'))
+		$.post('/tweet/'+$( this ).attr( "data-reply-to")+'/comment/new',{comment:$(this).parent().children('textarea').val()},function( data ) {
+			element.append(data.html);
+			}, "json");
+	});
+    $(".reply-btn").click(function() {
+		var panel=$(this).parents('.tweet-panel');
+		if (panel.attr('data-loaded')=='false') {
+			$.post($( this ).attr( "href"),function( data ) {
+				if (data.ancestors)
+					$('.ancestor-list',panel).html(data.ancestors);
+				if (data.descendants)
+					$('.descendant-list',panel).html(data.descendants);
+				$('.collapse',panel).collapse();
+			}, "json");
+			panel.attr('data-loaded',true);
+		} else {
+			$('.collapse',panel).collapse("toggle");
+		};
+		return false;
+	});
+  	$( document ).on("click",".retweet-btn",function() {
 		var element=$(this);
 		$.post($( this ).attr( "href"),function( data ) {
 			if (data.created)
@@ -23,7 +45,7 @@
 		}, "json");
 		return false;
 	});
-	$( ".fav-btn" ).click(function() {
+	$( document ).on("click",".fav-btn",function() {
 		var element=$(this);
 		$.post($( this ).attr( "href"),function( data ) {
 			if (data.created)
@@ -34,4 +56,7 @@
 		}, "json");
 		return false;
 	});
+	});
+
+
 	</script>

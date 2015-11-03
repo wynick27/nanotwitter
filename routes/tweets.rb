@@ -22,19 +22,24 @@
     begin
       tweetid=params['tweet_id']
       comment=params['comment']
-      if comment
-        tweet=@curuser.tweets.create text:params['comment'],create_time:Time.now,reference:tweetid
-        tweet.save
-        {:created=>true,:count=>0}.to_json
-      else
-        retweet=@curuser.retweets.find_by tweet_id:tweetid
-        if retweet
-          retweet.destroy
-          {:created=>false,:count=>Tweet.find(tweetid).retweets.count}.to_json
+      curtweet=Tweet.find_by :id=>tweetid
+      if curtweet && curtweet.user_id != @curuser.id
+        if comment
+          tweet=@curuser.tweets.create text:params['comment'],create_time:Time.now,reference:tweetid
+          tweet.save
+          {:created=>true,:count=>0}.to_json
         else
-          @curuser.retweets.create tweet_id:tweetid,create_time:Time.now
-          {:created=>true,:count=>Tweet.find(tweetid).retweets.count}.to_json
+          retweet=@curuser.retweets.find_by tweet_id:tweetid
+          if retweet
+            retweet.destroy
+            {:created=>false,:count=>curtweet.retweets.count}.to_json
+          else
+            @curuser.retweets.create tweet_id:tweetid,create_time:Time.now
+            {:created=>true,:count=>curtweet.retweets.count}.to_json
+          end
         end
+      else
+        {:created=>false,:count=>(curtweet ? curtweet.retweets.count : 0)}.to_json
       end
     rescue
       404
@@ -48,28 +53,31 @@
       tweet=Tweet.find_by :id=>tweetid
       comment=params['comment']
       if comment && tweet
-        tweet=@curuser.tweets.create text:params['comment'],create_time:Time.now,reply_to:tweetid,conversation_root:tweet.conversation_root
+        tweet=@curuser.tweets.create text:params['comment'],create_time:Time.now,reply_to:tweetid,conversation_root:tweet.conversation_root,reply_level:(tweet.reply_level+1)
         tweet.save
+        @tweets=[tweet]
+        {:created=>true,:html=>(erb :reply_list)}.to_json
+      else
+        {:created=>false}.to_json
       end
     rescue
       404
     end
   end
 
-  NanoTwitter.post '/tweet/:tweet_id/expand' do
-    begin
+  NanoTwitter.post '/tweet/:tweet_id/comment' do
+    #begin
       tweetid=params['tweet_id']
       tweet=Tweet.find_by :id=>tweetid
-      if tweet && tweet.id==tweet.conversation_root
-        @tweets=Tweet.find_by(:conversation_root=>tweet.conversation_root).order(create_time: :desc)
-        {:ancestors=>nil,:descendants=>(erb :comments)}.to_json
-      elsif tweet && tweet.id!=tweet.conversation_root
-        @tweets=Tweet.find_by(:conversation_root=>tweet.conversation_root)
-        {:ancestors=>(erb :conversation),:descendants=>nil}.to_json
+      if tweet
+        @tweets=tweet.reply_ancestors() || []
+        ancestors=(erb :reply_list)
+        @tweets=tweet.reply_descendants() || []
+        {:ancestors=>ancestors,:descendants=>(erb :reply_list)}.to_json
       end
-    rescue
-      404
-    end
+    #rescue
+    #  404
+    #end
   end
 
 

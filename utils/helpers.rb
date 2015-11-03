@@ -23,6 +23,7 @@ module Helpers
       uid=session['user']
       uid && User.find(uid)
     end
+    
   end
 end
 end
