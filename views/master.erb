@@ -214,6 +214,7 @@
 /* Modal JS */
 
 var charleft = 140;
+
 $('#tweetModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
   var recipient = button.data('whatever') // Extract info from data-* attributes
@@ -291,6 +292,7 @@ function AppendMessages(data) {
 
 $('#msgModal').on('show.bs.modal', function (event) {
   $("#msg-body").animate({ scrollTop: $("#msg-body").height() + 150 }, 'slow');
+  $('#msgFormSubmit').prop('disabled', true);
 
   var button = $(event.relatedTarget);// Button that triggered the modal
   //var recipients = button.data('convs'); // Extract info from data-* attributes
@@ -307,6 +309,17 @@ $('#msgModal').on('show.bs.modal', function (event) {
   LoadChatgroups();
 
 });
+
+
+$('#recipients').change(function() {
+  var recipients = $('#recipients').val();
+  if (recipients.length > 0){
+    $('#msgFormSubmit').prop('disabled', false);
+  } else {
+    $('#msgFormSubmit').prop('disabled', true);
+  }
+});
+
 
 $('#msgModal').on('hidden.bs.modal', function (event) {
   $('#chatgroups').empty();
