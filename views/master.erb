@@ -360,20 +360,18 @@ $('#msgFormSubmit').click(function(){
   
 	$( document ).on("click",".unfollow-btn",function() {
 		var element=$(this);
-		$.post($( this ).attr( "href"),function( data ) {
+		$.post('/unfollow/'+$( this ).attr( "data-user-name"),function( data ) {
 			element.removeClass("unfollow-btn");
 			element.addClass("follow-btn");
-			element.attr( "href",'/follow/'+element.attr('data-user-name'));
 			element.text('Follow')
 		}, "json");
 		return false;
 	});
 	$( document ).on("click",".follow-btn",function() {
 		var element=$(this);
-		$.post($( this ).attr( "href"),function( data ) {
+		$.post('/follow/'+$( this ).attr( "data-user-name"),function( data ) {
 			element.addClass("follow-btn");
 			element.addClass("unfollow-btn");
-			element.attr( "href",'/unfollow/'+element.attr('data-user-name'));
 			element.text('Unfollow')
 		}, "json");
 		return false;
