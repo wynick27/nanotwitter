@@ -2,10 +2,10 @@
 	    <form action="/tweet/new" method="POST">
 		    <div class="form-group">
 			    <label for="text" class="control-label">Tweet:</label>
-			    <textarea class="form-control user-autocomplete" data-provide="typeahead" placeholder="What's in your mind?" maxlength="140" id="tweet_text" name="text" required></textarea>
+			    <textarea class="form-control user-autocomplete" data-provide="typeahead" placeholder="What's in your mind?" maxlength="140" id="tweet-text" name="text" required></textarea>
 
 		    </div>
-		    <input type="submit" class="btn btn-info" id="tweet_submit" value="New Tweet"/>
+		    <input type="submit" class="btn btn-info" id="tweet-submit" value="New Tweet"/>
 		    <span id="charleft"></span>
 	    </form>
 
@@ -15,14 +15,14 @@
 
 	var charleft = 140;
 	$('#charleft').html(charleft);
-	$('#submit').prop('disabled', true);
+	$('#tweet-submit').prop('disabled', true);
 
-	$('#text').bind('input propertychange', function() {
+	$('#tweet-text').bind('input propertychange', function() {
 		charleft = 140 - $(this).val().length;
 		if(charleft == 140){
-			$('#submit').prop('disabled', true);
+			$('#tweet-submit').prop('disabled', true);
 		}else{
-			$('#submit').prop('disabled', false);
+			$('#tweet-submit').prop('disabled', false);
 		}
 
     if(charleft <= 5){
