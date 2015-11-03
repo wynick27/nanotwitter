@@ -184,62 +184,6 @@
 
                 <div class="modal-body" id="chat-body">
                     <ul class="chat" id="chat-messages">
-                        <li class="left clearfix"><span class="chat-img pull-left">
-                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
-                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="right clearfix"><span class="chat-img pull-right">
-                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
-                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="left clearfix"><span class="chat-img pull-left">
-                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
-                                        <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="right clearfix"><span class="chat-img pull-right">
-                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <small class="text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
-                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
-                                </p>
-                            </div>
-                        </li>
                     </ul>
                 </div>
 
@@ -325,18 +269,14 @@ function LoadChat(url, recipients) {
     $('#chat-header').show();
     $('#chat-body').show();
     $('#chat-footer').show();
-    $("#chat-body").animate({ scrollTop: $("#chat-messages").height() + 150 }, 'slow');
 
-    $("#btn-input").keypress(function(event){
-      if(event.keyCode == 13){
-        $("#btn-chat").click();
-      }
-  });
 
 	$.post(url,function( data ) {
 			$('#chat-messages').empty();
 			$('#chat-messages').attr('data-id',data.group_id);
 			AppendMessages(data);
+      //console.log($("#chat-messages")[0].scrollHeight);
+      $("#chat-body").animate({ scrollTop: $("#chat-messages")[0].scrollHeight}, 'slow');
 		}, "json");
 	
 }
@@ -374,13 +314,20 @@ $('#msgFormSubmit').click(function(){
     var recipients = $('#recipients').val();
     
     $.post('/messages/new', {users: recipients}, function(data){
-	  LoadChat('/messages/' + data.group_id, recipients);
+        LoadChat('/messages/' + data.group_id, recipients);
     },'json');
+
 
   });
 
   $('#back').click(function(){
     LoadChatgroups();
+  });
+
+  $("#btn-input").keypress(function(event){
+      if(event.keyCode == 13){
+        $("#btn-chat").click();
+      }
   });
 
 
@@ -389,6 +336,8 @@ $('#msgFormSubmit').click(function(){
     $.post('/messages/'+$('#chat-messages').attr('data-id')+'/new', {text:$('#btn-input').val()},function(data){
 	AppendMessages(data);
     }, "json");
+
+    $("#chat-body").animate({ scrollTop: $("#chat-messages").height() + 150 }, 'slow');
 
     $('#btn-input').val('');
 
