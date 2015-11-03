@@ -171,6 +171,7 @@
                                 Sign Out</a></li>
                         </ul>
                     </div>
+                    <h2 class="text-info" id="chatgroup-title"></h2>
                 </div>
                 <div class="modal-body" id="msg-body">
                       <label for="chatgroups" class="control-label">Recent Chats:</label>
@@ -185,7 +186,6 @@
 
                 <div class="modal-body" id="chat-body">
                     <ul class="chat" id="chat-messages">
-                       
                     </ul>
                 </div>
 
@@ -212,7 +212,9 @@
 <script>
 
 /* Modal JS */
+
 var charleft = 140;
+
 $('#tweetModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
   var recipient = button.data('whatever') // Extract info from data-* attributes
@@ -248,12 +250,13 @@ function LoadChatgroups() {
     $('#msg-header').show();
     $('#msg-body').show();
     $('#msg-footer').show();
+
   $.post('/messages', function(data){
     
       $('#chatgroups').append(data.html);
 	$('#msgModal li a').click(function() {
-		LoadChat($( this ).attr( "href"))
-		
+		LoadChat($( this ).attr( "href"));
+    $('#chatgroup-title').html($(this).html());
 		return false;
 	});
   }, "json");
@@ -261,17 +264,22 @@ function LoadChatgroups() {
 }
 
 
-function LoadChat(url) {
+function LoadChat(url, recipients) {
     $('#msg-header').hide();
     $('#msg-body').hide();
     $('#msg-footer').hide();
+    $('#chatgroup-title').html(recipients);
     $('#chat-header').show();
     $('#chat-body').show();
     $('#chat-footer').show();
+
+
 	$.post(url,function( data ) {
 			$('#chat-messages').empty();
 			$('#chat-messages').attr('data-id',data.group_id);
 			AppendMessages(data);
+      //console.log($("#chat-messages")[0].scrollHeight);
+      $("#chat-body").animate({ scrollTop: $("#chat-messages")[0].scrollHeight}, 'slow');
 		}, "json");
 	
 }
@@ -283,6 +291,8 @@ function AppendMessages(data) {
 /* Message Modal */
 
 $('#msgModal').on('show.bs.modal', function (event) {
+  $("#msg-body").animate({ scrollTop: $("#msg-body").height() + 150 }, 'slow');
+  $('#msgFormSubmit').prop('disabled', true);
 
   var button = $(event.relatedTarget);// Button that triggered the modal
   //var recipients = button.data('convs'); // Extract info from data-* attributes
@@ -296,9 +306,20 @@ $('#msgModal').on('show.bs.modal', function (event) {
   $('#recipients').tagsinput();
 
   var modal = $(this);
-  LoadChatgroups()
+  LoadChatgroups();
 
 });
+
+
+$('#recipients').change(function() {
+  var recipients = $('#recipients').val();
+  if (recipients.length > 0){
+    $('#msgFormSubmit').prop('disabled', false);
+  } else {
+    $('#msgFormSubmit').prop('disabled', true);
+  }
+});
+
 
 $('#msgModal').on('hidden.bs.modal', function (event) {
   $('#chatgroups').empty();
@@ -306,13 +327,10 @@ $('#msgModal').on('hidden.bs.modal', function (event) {
 
 $('#msgFormSubmit').click(function(){
     var recipients = $('#recipients').val();
-    console.log(recipients);
     
     $.post('/messages/new', {users: recipients}, function(data){
-	  LoadChat('/messages/' + data.group_id);
+        LoadChat('/messages/' + data.group_id, recipients);
     },'json');
-
-
 
 
   });
@@ -321,31 +339,39 @@ $('#msgFormSubmit').click(function(){
     LoadChatgroups();
   });
 
+  $("#btn-input").keypress(function(event){
+      if(event.keyCode == 13){
+        $("#btn-chat").click();
+      }
+  });
+
 
   $('#btn-chat').click(function(){
     
     $.post('/messages/'+$('#chat-messages').attr('data-id')+'/new', {text:$('#btn-input').val()},function(data){
 	AppendMessages(data);
     }, "json");
-    
+
+    $("#chat-body").animate({ scrollTop: $("#chat-messages").height() + 150 }, 'slow');
+
+    $('#btn-input').val('');
+
   });
   
 	$( document ).on("click",".unfollow-btn",function() {
 		var element=$(this);
-		$.post($( this ).attr( "href"),function( data ) {
+		$.post('/unfollow/'+$( this ).attr( "data-user-name"),function( data ) {
 			element.removeClass("unfollow-btn");
 			element.addClass("follow-btn");
-			element.attr( "href",'/follow/'+element.attr('data-user-name'));
 			element.text('Follow')
 		}, "json");
 		return false;
 	});
 	$( document ).on("click",".follow-btn",function() {
 		var element=$(this);
-		$.post($( this ).attr( "href"),function( data ) {
+		$.post('/follow/'+$( this ).attr( "data-user-name"),function( data ) {
 			element.addClass("follow-btn");
 			element.addClass("unfollow-btn");
-			element.attr( "href",'/unfollow/'+element.attr('data-user-name'));
 			element.text('Unfollow')
 		}, "json");
 		return false;
