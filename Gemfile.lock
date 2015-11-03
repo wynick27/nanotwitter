@@ -16,13 +16,50 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.3)
     builder (3.2.2)
+    capybara (2.5.0)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
+    capybara-webkit (1.7.1)
+      capybara (>= 2.3.0, < 2.6.0)
+      json
+    capybara_minitest_spec (1.0.5)
+      capybara (>= 2)
+      minitest (>= 4)
+    childprocess (0.5.7)
+      ffi (~> 1.0, >= 1.0.11)
+    ffi (1.9.10)
+    ffi (1.9.10-x64-mingw32)
     i18n (0.7.0)
     json (1.8.3)
+    mime-types (2.6.2)
+    mini_portile (0.6.2)
     minitest (5.8.0)
+    minitest-capybara (0.7.2)
+      capybara (~> 2.2)
+      minitest (~> 5.0)
+      rake
+    multi_json (1.11.2)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
+    nokogiri (1.6.6.2-x64-mingw32)
+      mini_portile (~> 0.6.0)
+    pg (0.18.3)
     pg (0.18.3-x64-mingw32)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
+    rack-test (0.6.3)
+      rack (>= 1.0)
+    rake (10.4.2)
+    rubyzip (1.1.7)
+    selenium-webdriver (2.48.1)
+      childprocess (~> 0.5)
+      multi_json (~> 1.0)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -30,19 +67,31 @@ GEM
     sinatra-activerecord (2.0.8)
       activerecord (>= 3.2)
       sinatra (~> 1.0)
+    sqlite3 (1.3.11)
+    sqlite3 (1.3.11-x64-mingw32)
     thread_safe (0.3.5)
     tilt (2.0.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    websocket (1.2.2)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
+  ruby
   x64-mingw32
 
 DEPENDENCIES
   activerecord
+  capybara
+  capybara-webkit
+  capybara_minitest_spec
+  minitest-capybara
   pg
+  selenium-webdriver
   sinatra
   sinatra-activerecord
+  sqlite3
 
 BUNDLED WITH
    1.10.6
