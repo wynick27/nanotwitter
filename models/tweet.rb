@@ -4,17 +4,17 @@ class Tweet < ActiveRecord::Base
 	has_many :hashtags
   has_many :retweets
 	belongs_to :user
-  
-  def self.user_timeline(user) 
+
+  def self.user_timeline(user)
     Tweet.includes(:user).from("(#{user.tweets.to_sql} UNION #{Tweet.where(:user_id=>user.followed_users).to_sql}) as tweets")
   end
-  
+
   def self.user_tweets(user)
     Tweet.includes(:user,:retweets).order(create_time: :desc).from("(select tweets.* from tweets where tweets.user_id = #{user.id} and tweets.reply_to is null
 union
 select tweets.id,tweets.text,retweets.create_time,tweets.user_id,tweets.reference,tweets.reply_to,tweets.conversation_root,tweets.reply_level,tweets.retweets_count,tweets.favourites_count from tweets join retweets  where tweets.id = retweets.tweet_id and retweets.user_id = #{user.id})  as tweets")
   end
-  
+
   def self.user_tweets_with_replies(user)
     Tweet.includes(:user,:retweets).order(create_time: :desc).from("(select tweets.* from tweets where tweets.user_id = #{user.id}
 union
@@ -24,7 +24,7 @@ select tweets.id,tweets.text,retweets.create_time,tweets.user_id,tweets.referenc
     self.retweets.size== 0 ? false : self.retweets.any? {|r| r.user_id==user.id}
   end
   def favourited_by?(user)
-    self.favourites.size== 0 ? false : self.retweets.any? {|f| f.user_id==user.id}
+    self.favourites.size== 0 ? false : self.favourites.any? {|f| f.user_id==user.id}
   end
   def reply_ancestors()
     if self.id==self.conversation_root then

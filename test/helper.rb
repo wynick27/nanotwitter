@@ -15,6 +15,7 @@ require 'minitest/autorun' # optional but makes life easier
 require 'minitest/pride' # optional but why would you not
 require 'capybara'
 require 'capybara/dsl'
+require 'capybara-webkit'
 
 include Rack::Test::Methods
 
@@ -24,5 +25,5 @@ end
 
 Capybara.app = NanoTwitter # the name of your app class
 Capybara.register_driver :rack_test do |app|
-  Capybara::RackTest::Driver.new(app, :headers =>  { 'Sample' => 'Nano' })
+  Capybara::RackTest::Driver.new(app, :headers =>  { 'User-Agent' => 'Capybara' })
 end
