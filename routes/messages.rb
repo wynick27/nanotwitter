@@ -2,8 +2,6 @@
   NanoTwitter.post '/messages/?' do
     uid=session['user']
     @curuser=uid && User.find(uid)
-    # {@curuser.chat_groups.map { |c| {:id=>c.id,:time=>c.create_time}}.to_json
-    #binding.pry
     {:html=>(erb :chat_groups)}.to_json
   end
 

@@ -24,7 +24,7 @@ select tweets.id,tweets.text,retweets.create_time,tweets.user_id,tweets.referenc
     self.retweets.size== 0 ? false : self.retweets.any? {|r| r.user_id==user.id}
   end
   def favourited_by?(user)
-    self.favourites.size== 0 ? false : self.retweets.any? {|f| f.user_id==user.id}
+    self.favourites.size== 0 ? false : self.favourites.any? {|f| f.user_id==user.id}
   end
   def reply_ancestors()
     if self.id==self.conversation_root then
@@ -53,6 +53,13 @@ select tweets.id,tweets.text,retweets.create_time,tweets.user_id,tweets.referenc
       tweets.sort_by { |t| t.create_time}
       tweets
     end
+  end
+  def new_tweet(user)
+    tweet=user.tweets.create(text:params[:text],create_time:Time.now)
+    tweet.conversation_root=tweet.id
+    tweet.save
+    extract_hashtag params[:text] do |name| 
+        HashTag.create :name=>name,:tweet_id=>tweet.id
   end
   def to_html
     erb :show_tweet,:locals=>{:tweet=>self}
