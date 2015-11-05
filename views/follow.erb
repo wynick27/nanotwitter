@@ -1,7 +1,7 @@
 <% if @curuser && @curuser.id != user.id %>
 <% if @curuser.followed_users.find_by(:id=>user.id) %>
-<a role="button" data-user-name="<%=user.name%>" class="btn btn-info unfollow-btn" href="/unfollow/<%=user.name%>">Unfollow</a>
+<button data-user-name="<%=user.name%>" class="btn btn-sm btn-info unfollow-btn">Unfollow</button>
 <%else%>
-<a role="button" data-user-name="<%=user.name%>" class="btn btn-info follow-btn" href="/follow/<%=user.name%>">Follow</a>
+<button data-user-name="<%=user.name%>" class="btn btn-sm btn-info follow-btn">Follow</button>
 <%end%>
 <%end%>

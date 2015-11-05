@@ -1,4 +1,65 @@
-<nav class="navbar navbar-default" data-spy="affix" data-offset-top="297" role="navigation" id="navbar">
+<html><head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+   <link rel="shortcut icon" href="../favicon.ico">
+   <link href="http://fonts.googleapis.com/css?family=Nunito:400,300" rel="stylesheet" type="text/css">
+   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript"></script>
+   <script src="/js/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tipsy/1.0.2/jquery.tipsy.css">
+   <link href="https://fonts.googleapis.com/css?family=Roboto:900,500" rel="stylesheet" type="text/css">
+   <link href="/css/bootstrap-tagsinput.css" rel="stylesheet" type="text/css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tipsy/1.0.2/jquery.tipsy.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+   <script src="/js/bootstrap3-typeahead.js" type="text/javascript"></script>
+   <style>
+  /* Note: Try to remove the following lines to see the effect of CSS positioning */
+     #navbar.affix {
+         top: 0;
+         width: 100%;
+         z-index: 1040;
+     }
+
+     #sidebar.affix {
+          top: 72px;
+         z-index: 1040;
+     }
+
+     .affix + .container-fluid {
+         padding-top: 70px;
+     }
+
+     h1 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 900;
+     }
+
+     body {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+     }
+
+  </style>  
+</head>
+<body>
+   <div class="container-fluid" style="background:url('/background-title.png') no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover; 
+        color:#fff;
+        width:100%;
+        height:300px;">
+      <title>Welcome to Nanotwitter SampleUser!</title>
+      <header><h1>Welcome to Nanotwitter SampleUser!</h1></header>
+   </div>
+   <nav class="navbar navbar-default affix-top" data-spy="affix" data-offset-top="297" role="navigation" id="navbar">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -15,9 +76,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-<%if @curuser %>
 		<li data-toggle="modal" data-target="#msgModal">
-          <a href="#" data-toggle="tooltip" data-placement="bottom" title="unread messages">Messages<span class="badge">15</span></a>
+          <a href="#" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="unread messages">Messages<span class="badge">15</span></a>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
@@ -30,7 +90,6 @@
             <li role="separator" class="divider"></li>
             <li><a href="#">One more separated link</a></li>
           </ul>
-<% end %>
         </li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
@@ -40,11 +99,11 @@
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <%if @curuser %>
+        
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%=@curuser.name%><span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">sample<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/"><%=@curuser.name%>'s Home Page</a></li>
+            <li><a href="/">sample's Home Page</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="/following">Following</a></li>
             <li><a href="/followers">Followers</a></li>
@@ -55,13 +114,10 @@
           <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tweetModal" data-whatever="@fat">Tweet</button>
           </form>
         </li>
-        <% end %>
-        <%if @curuser %>
+        
+        
         <li><a href="/logout">Logout</a></li>
-        <% else %>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Register</a></li>
-        <% end %>
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -69,13 +125,12 @@
 
 <div class="container">
   <div class="row">
-<%if @user %>
     <nav class="col-sm-3">
-      <ul class="nav nav-pills nav-stacked" id="sidebar" data-spy="affix" data-offset-top="305">
+      <ul class="nav nav-pills nav-stacked affix-top" id="sidebar" data-spy="affix" data-offset-top="305">
         <li class="active">
           <a href="#section1">
             
-            <%=@user.name%>
+            sample1
             
           </a>
         </li>
@@ -84,16 +139,87 @@
           <img data-src="holder.js/100%x90" alt="100%x90" src="/pito.jpg" data-holder-rendered="true" style="height: 90px; display: block;">
         </a>
         </li>
-        <li><a href="<%="/user/#{@user.name}"%>">Tweets<span class="badge"><%= @user.tweets.count%></span></a>
-      <a href="<%="/user/#{@user.name}/following"%>">Following<span class="badge"><%= @user.followed_users.count%></span></a>
-      <a href="<%="/user/#{@user.name}/followers"%>">Followers<span class="badge"><%= @user.followers.count%></span></a>
-	  <a href="<%="/user/#{@user.name}/favourites"%>">Favourites<span class="badge"><%= @user.favourites.count%></span></a>
+        <li><a href="/user/sample1">Tweets<span class="badge">0</span></a>
+      <a href="/user/sample1/following">Following<span class="badge">0</span></a>
+      <a href="/user/sample1/followers">Followers<span class="badge">1</span></a>
+	  <a href="/user/sample1/favourites">Favourites<span class="badge">0</span></a>
     </li>
       </ul>
     </nav>
-	<%end%>
+	
   <div class="col-sm-9">
-    <%= yield%>
+      
+	<title>sample1</title>
+	<header><h1>Welcome to sample1's Home!</h1></header>
+	
+	<ul class="nav nav-pills">
+	  <li class="active"><a href="#">Tweets</a></li>
+	  <li><a href="/user/sample1/with_replies">Tweets &amp; Replies</a></li>
+	  <li class="navbar-right"><a role="button" data-user-name="sample1" class="btn btn-info unfollow-btn" href="/unfollow/sample1">Unfollow</a>
+</li>
+	</ul>
+		<div class="container-fluid" style="height:1000px">
+
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		  	
+		</div>
+	</div>
+
+
+	<script>
+
+	$(document).ready(function(){
+	$(".new-reply-btn").on("click",function() {
+		var element=$('.descendant-list',$(this).parents('.tweet-panel'))
+		$.post('/tweet/'+$( this ).attr( "data-reply-to")+'/comment/new',{comment:$(this).parent().children('textarea').val()},function( data ) {
+			element.append(data.html);
+			}, "json");
+	});
+    $(".reply-btn").click(function() {
+		var panel=$(this).parents('.tweet-panel');
+		if (panel.attr('data-loaded')=='false') {
+			$.post($( this ).attr( "href"),function( data ) {
+				if (data.ancestors)
+					$('.ancestor-list',panel).html(data.ancestors);
+				if (data.descendants)
+					$('.descendant-list',panel).html(data.descendants);
+				$('.collapse',panel).collapse();
+			}, "json");
+			panel.attr('data-loaded',true);
+		} else {
+			$('.collapse',panel).collapse("toggle");
+		};
+		return false;
+	});
+  	$( document ).on("click",".retweet-btn",function() {
+		var element=$(this);
+		$.post($( this ).attr( "href"),function( data ) {
+			if (data.created)
+				element.children(0).css({'color':'green'});
+			else
+				element.children(0).css({'color':''});
+			element.children(1).text(data.count);
+		}, "json");
+		return false;
+	});
+	$( document ).on("click",".fav-btn",function() {
+		var element=$(this);
+		$.post($( this ).attr( "href"),function( data ) {
+			if (data.created)
+				element.children(0).css({'color':'yellow'});
+			else
+				element.children(0).css({'color':''});
+			element.children(1).text(data.count);
+		}, "json");
+		return false;
+	});
+	});
+
+
+	</script>
+	
+  
+
   </div>
   <!-- Optional: clear the XS cols if their content doesn't match in height -->
   <div class="clearfix visible-xs-block"></div>
@@ -124,16 +250,16 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                   <h4 class="modal-title" id="tweetModalLabel">New message</h4>
                 </div>
                 <div class="modal-body">
                   <form action="/tweet/new" method="POST">
                     <div class="form-group">
                       <label for="text" class="control-label">Tweet:</label>
-                      <textarea class="form-control user-autocomplete" data-provide="typeahead" maxlength="140" id="text" name="text" placeholder="What's in your mind?" required></textarea>
+                      <textarea class="form-control user-autocomplete" data-provide="typeahead" maxlength="140" id="text" name="text" placeholder="What's in your mind?" required=""></textarea>
                     </div>
-                    <input type="submit" class="btn btn-info" id="submit" value="Send Tweet"/>
+                    <input type="submit" class="btn btn-info" id="submit" value="Send Tweet">
                     <span id="charleft"></span>
                   </form>
                 </div>
@@ -146,7 +272,7 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header" id="msg-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                   <h4 class="modal-title" id="msgModalLabel">New message</h4>
                 </div>
 
@@ -171,7 +297,6 @@
                                 Sign Out</a></li>
                         </ul>
                     </div>
-                    <h2 class="text-info" id="chatgroup-title"></h2>
                 </div>
                 <div class="modal-body" id="msg-body">
                       <label for="chatgroups" class="control-label">Recent Chats:</label>
@@ -180,24 +305,25 @@
 
                     <div class="form-group">
                       <label for="recipients" class="control-label">Recipents:</label>
-                      <input id="recipients" type="text" class="form-control" name="users" data-role="tagsinput" required/>
+                      <input id="recipients" type="text" class="form-control" name="users" data-role="tagsinput" required="" style="display: none; "><div class="bootstrap-tagsinput"><input type="text" placeholder="" style="width: 3em !important; "></div>
                     </div>
                 </div>
 
                 <div class="modal-body" id="chat-body">
                     <ul class="chat" id="chat-messages">
+                       
                     </ul>
                 </div>
 
                 
                 <div class="modal-footer" id="msg-footer">
-                  <input type="button" id="msgFormSubmit" class="btn btn-info" value="New Chat"/>
+                  <input type="button" id="msgFormSubmit" class="btn btn-info" value="New Chat">
                 </div>
             
 
                 <div class="modal-footer" id="chat-footer">
                     <div class="input-group">
-                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here...">
                         <span class="input-group-btn">
                             <button class="btn btn-success btn-sm" id="btn-chat">
                                 Send</button>
@@ -212,9 +338,7 @@
 <script>
 
 /* Modal JS */
-
 var charleft = 140;
-
 $('#tweetModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
   var recipient = button.data('whatever') // Extract info from data-* attributes
@@ -250,13 +374,12 @@ function LoadChatgroups() {
     $('#msg-header').show();
     $('#msg-body').show();
     $('#msg-footer').show();
-
   $.post('/messages', function(data){
     
       $('#chatgroups').append(data.html);
 	$('#msgModal li a').click(function() {
-		LoadChat($( this ).attr( "href"));
-    $('#chatgroup-title').html($(this).html());
+		LoadChat($( this ).attr( "href"))
+		
 		return false;
 	});
   }, "json");
@@ -264,22 +387,17 @@ function LoadChatgroups() {
 }
 
 
-function LoadChat(url, recipients) {
+function LoadChat(url) {
     $('#msg-header').hide();
     $('#msg-body').hide();
     $('#msg-footer').hide();
-    $('#chatgroup-title').html(recipients);
     $('#chat-header').show();
     $('#chat-body').show();
     $('#chat-footer').show();
-
-
 	$.post(url,function( data ) {
 			$('#chat-messages').empty();
 			$('#chat-messages').attr('data-id',data.group_id);
 			AppendMessages(data);
-      //console.log($("#chat-messages")[0].scrollHeight);
-      $("#chat-body").animate({ scrollTop: $("#chat-messages")[0].scrollHeight}, 'slow');
 		}, "json");
 	
 }
@@ -291,8 +409,6 @@ function AppendMessages(data) {
 /* Message Modal */
 
 $('#msgModal').on('show.bs.modal', function (event) {
-  $("#msg-body").animate({ scrollTop: $("#msg-body").height() + 150 }, 'slow');
-  $('#msgFormSubmit').prop('disabled', true);
 
   var button = $(event.relatedTarget);// Button that triggered the modal
   //var recipients = button.data('convs'); // Extract info from data-* attributes
@@ -306,20 +422,9 @@ $('#msgModal').on('show.bs.modal', function (event) {
   $('#recipients').tagsinput();
 
   var modal = $(this);
-  LoadChatgroups();
+  LoadChatgroups()
 
 });
-
-
-$('#recipients').change(function() {
-  var recipients = $('#recipients').val();
-  if (recipients.length > 0){
-    $('#msgFormSubmit').prop('disabled', false);
-  } else {
-    $('#msgFormSubmit').prop('disabled', true);
-  }
-});
-
 
 $('#msgModal').on('hidden.bs.modal', function (event) {
   $('#chatgroups').empty();
@@ -327,10 +432,13 @@ $('#msgModal').on('hidden.bs.modal', function (event) {
 
 $('#msgFormSubmit').click(function(){
     var recipients = $('#recipients').val();
+    console.log(recipients);
     
     $.post('/messages/new', {users: recipients}, function(data){
-        LoadChat('/messages/' + data.group_id, recipients);
+	  LoadChat('/messages/' + data.group_id);
     },'json');
+
+
 
 
   });
@@ -339,39 +447,31 @@ $('#msgFormSubmit').click(function(){
     LoadChatgroups();
   });
 
-  $("#btn-input").keypress(function(event){
-      if(event.keyCode == 13){
-        $("#btn-chat").click();
-      }
-  });
-
 
   $('#btn-chat').click(function(){
     
     $.post('/messages/'+$('#chat-messages').attr('data-id')+'/new', {text:$('#btn-input').val()},function(data){
 	AppendMessages(data);
     }, "json");
-
-    $("#chat-body").animate({ scrollTop: $("#chat-messages").height() + 150 }, 'slow');
-
-    $('#btn-input').val('');
-
+    
   });
   
 	$( document ).on("click",".unfollow-btn",function() {
 		var element=$(this);
-		$.post('/unfollow/'+$( this ).attr( "data-user-name"),function( data ) {
+		$.post($( this ).attr( "href"),function( data ) {
 			element.removeClass("unfollow-btn");
 			element.addClass("follow-btn");
+			element.attr( "href",'/follow/'+element.attr('data-user-name'));
 			element.text('Follow')
 		}, "json");
 		return false;
 	});
 	$( document ).on("click",".follow-btn",function() {
 		var element=$(this);
-		$.post('/follow/'+$( this ).attr( "data-user-name"),function( data ) {
+		$.post($( this ).attr( "href"),function( data ) {
 			element.addClass("follow-btn");
 			element.addClass("unfollow-btn");
+			element.attr( "href",'/unfollow/'+element.attr('data-user-name'));
 			element.text('Unfollow')
 		}, "json");
 		return false;
@@ -412,3 +512,5 @@ $('.user-autocomplete').typeahead({
 	
 
 
+
+</body></html>

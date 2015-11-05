@@ -253,6 +253,7 @@ NanoTwitter.get '/api/v1/search' do
   end
 end
 
+
 ################ methods are here ################
 def search_one(term,user)
   result = []

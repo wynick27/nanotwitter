@@ -1,25 +1,139 @@
-	<div class="container-fluid bg-info">
-	<header><h1>Register</h1></header>
-	<div>
-		<form action="/register" method="POST" class='ajax-form'>
-			<div class="form-group">
-				<h2>Your basic info</h2>
-				<div class="control-group">
-				<label for="name" class="control-label">Username:</label>
-				<input type="text" id="name" class="form-control" name="name">
-				</div>
-				<label for="display_name" class="control-label">Full Name:</label>
-				<input type="text" id="display_name" class="form-control" name="display_name">
-				<label for="email" class="control-label">Email:</label>
-				<input type="text" class="form-control" id="email" name="email">
-				<label for="password" class="control-label">Password:</label>
-				<input type="text" class="form-control" id="password" name="password">
-			</div>
-			    <input type="submit" class="btn btn-info" id='register-submit' value="Submit" />
-		</form>
-	</div>
-	</div>
-	<script src="js/bootstrap-form.js" type="text/javascript"></script>
-	<script>
-	$('form.ajax-form').form();
-	</script>
+<div class="container-fluid bg-info">
+<header><h1>Register</h1></header>
+<form action="/register" method="POST" id="basicBootstrapForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Username:</label>
+        <div class="col-xs-8">
+            <input type="text" class="form-control" name="name" placeholder="Name" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Full Name:</label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control" name="display_name" id="display_name" placeholder="Full Name" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Email:</label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control" name="email" id="email" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-xs-3 control-label">Password: </label>
+        <div class="col-xs-5">
+            <input type="password" class="form-control" name="password" id="password" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-xs-3 control-label" id="captchaOperation"></label>
+        <div class="col-xs-4">
+            <input type="text" class="form-control" name="captcha" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-6 col-xs-offset-3">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="agree" value="agree" /> Agree with the terms and conditions
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-9 col-xs-offset-3">
+            <button type="submit" class="btn btn-info" name="register-submit" value="Submit">Submit</button>
+        </div>
+    </div>
+</form>
+</div>
+
+<script>
+$(document).ready(function() {
+    // Generate a simple captcha
+    function randomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    $('#captchaOperation').html([randomNumber(1, 100), '+', randomNumber(1, 200), '='].join(' '));
+
+    $('#basicBootstrapForm').formValidation({
+        framework: 'bootstrap',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            name: {
+                row: '.col-xs-8',
+                validators: {
+                    notEmpty: {
+                        message: 'The username is required'
+                    }
+                }
+            },
+            display_name: {
+                validators: {
+                    notEmpty: {
+                        message: 'The display name is required'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: 'The display name must be more than 6 and less than 30 characters long'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'The display name can only consist of alphabetical, number, dot and underscore'
+                    }
+                }
+            },
+            email: {
+                validators: {
+                    notEmpty: {
+                        message: 'The email address is required'
+                    },
+                    emailAddress: {
+                        message: 'The input is not a valid email address'
+                    }
+                }
+            },
+            password: {
+                validators: {
+                    notEmpty: {
+                        message: 'The password is required'
+                    },
+                    different: {
+                        field: 'username',
+                        message: 'The password cannot be the same as username'
+                    }
+                }
+            },
+            captcha: {
+                validators: {
+                    callback: {
+                        message: 'Wrong answer',
+                        callback: function(value, validator, $field) {
+                            var items = $('#captchaOperation').html().split(' '), sum = parseInt(items[0]) + parseInt(items[2]);
+                            return value == sum;
+                        }
+                    }
+                }
+            },
+            agree: {
+                validators: {
+                    notEmpty: {
+                        message: 'You must agree with the terms and conditions'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
