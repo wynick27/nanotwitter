@@ -4,7 +4,6 @@ require_relative '../models/tweet'
 require_relative '../models/retweet'
 require_relative '../models/hashtag'
 require_relative '../models/follow'
-require_relative '../models/mention'
 require_relative '../models/favourite'
 
 class FakeData

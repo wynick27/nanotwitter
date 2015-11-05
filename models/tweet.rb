@@ -60,6 +60,7 @@ select tweets.id,tweets.text,retweets.create_time,tweets.user_id,tweets.referenc
     tweet.save
     extract_hashtag params[:text] do |name| 
         HashTag.create :name=>name,:tweet_id=>tweet.id
+    end
   end
   def to_html
     erb :show_tweet,:locals=>{:tweet=>self}
