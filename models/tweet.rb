@@ -31,6 +31,7 @@ select tweets.id,tweets.text,retweets.create_time,tweets.user_id,tweets.referenc
       nil
     else
       tmap=Tweet.includes(:user).where("conversation_root = ? and id != ? and create_time < ?",self.conversation_root,self.id,self.create_time).order(:create_time).map {|t| [t.id,t] }
+      puts tmap.inspect
       tmap=tmap.to_h
       plist=[self]
       while plist[0].reply_to
