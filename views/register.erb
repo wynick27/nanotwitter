@@ -30,23 +30,6 @@
     </div>
 
     <div class="form-group">
-        <label class="col-xs-3 control-label" id="captchaOperation"></label>
-        <div class="col-xs-4">
-            <input type="text" class="form-control" name="captcha" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-xs-6 col-xs-offset-3">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="agree" value="agree" /> Agree with the terms and conditions
-                </label>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
         <div class="col-xs-9 col-xs-offset-3">
             <button type="submit" class="btn btn-info" name="register-submit" value="Submit">Submit</button>
         </div>
@@ -87,10 +70,6 @@ $(document).ready(function() {
                         min: 6,
                         max: 30,
                         message: 'The display name must be more than 6 and less than 30 characters long'
-                    },
-                    regexp: {
-                        regexp: /^[a-zA-Z0-9_\.]+$/,
-                        message: 'The display name can only consist of alphabetical, number, dot and underscore'
                     }
                 }
             },
@@ -106,30 +85,12 @@ $(document).ready(function() {
             },
             password: {
                 validators: {
-                    notEmpty: {
-                        message: 'The password is required'
-                    },
+                   // notEmpty: {
+                  //      message: 'The password is required'
+                  //  },
                     different: {
                         field: 'username',
                         message: 'The password cannot be the same as username'
-                    }
-                }
-            },
-            captcha: {
-                validators: {
-                    callback: {
-                        message: 'Wrong answer',
-                        callback: function(value, validator, $field) {
-                            var items = $('#captchaOperation').html().split(' '), sum = parseInt(items[0]) + parseInt(items[2]);
-                            return value == sum;
-                        }
-                    }
-                }
-            },
-            agree: {
-                validators: {
-                    notEmpty: {
-                        message: 'You must agree with the terms and conditions'
                     }
                 }
             }

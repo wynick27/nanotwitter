@@ -3,7 +3,15 @@
     User.where("lower(name) like ? or lower(display_name) like ?",name+"%",name+"%").limit(5).pluck(:name,:display_name).to_json
   end
 
-
+  NanoTwitter.get '/search' do
+    @curuser=get_cur_user
+    query=params['q']
+    @tweets=Tweet.search(query)
+    erb :master, :layout=> :header do
+      erb :search_result 
+    end
+  end
+  
   NanoTwitter.get '/hashtag/:hashtag/?' do
     @curuser=get_cur_user
     @user=@curuser

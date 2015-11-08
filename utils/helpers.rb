@@ -13,7 +13,7 @@ module Helpers
       end
     end
     
-    def extract_hashtag(text)
+    def hashtag(text)
       text.scan(/#[\w\d]+/) do |s|
          yield s[1..-1]
       end

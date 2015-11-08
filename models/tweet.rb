@@ -4,6 +4,13 @@ class Tweet < ActiveRecord::Base
 	has_many :hashtags
   has_many :retweets
 	belongs_to :user
+  
+  def self.parse_tweet(text)
+  
+  text.gsub(/@([\w\d]|<b>|<\/b>)+|(?<!&)#([\w\d]|<b>|<\/b>)+/) do |s|
+       "<a href='/#{s[0]=='@'? 'user' : 'hashtag'}/#{s[1..-1]}'>#{s}</a>"
+    end
+  end
 
   def self.user_timeline(user)
     Tweet.includes(:user).from("(#{user.tweets.to_sql} UNION #{Tweet.where(:user_id=>user.followed_users).to_sql}) as tweets")
@@ -54,15 +61,22 @@ select tweets.id,tweets.text,retweets.create_time,tweets.user_id,tweets.referenc
       tweets
     end
   end
-  def new_tweet(user)
-    tweet=user.tweets.create(text:params[:text],create_time:Time.now)
-    tweet.conversation_root=tweet.id
-    tweet.save
-    extract_hashtag params[:text] do |name| 
-        HashTag.create :name=>name,:tweet_id=>tweet.id
+  def extract_hashtag 
+      text.scan(/#[\w\d]+/) do |s|
+         HashTag.create :name=>s[1..-1],:tweet_id=>self.id
+      end
+  end
+  def self.search(query)
+    
+    query=query.gsub(/[^\w&|!\s]+/) { |s|  ' ' }
+    query=query.gsub(/\w+\s+(?=\w)/) { |s| s+'& ' }
+    begin
+      Tweet.includes(:user).select("*,ts_headline('english', text, to_tsquery('english', '#{query}')) as highlight").where("to_tsvector('english', text) @@ to_tsquery('english', ?)", query).to_a
+    rescue
+      []
     end
   end
   def to_html
-    erb :show_tweet,:locals=>{:tweet=>self}
+    (self.respond_to? :highlight) ? Tweet.parse_tweet(highlight) : text
   end
 end

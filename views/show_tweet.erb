@@ -8,7 +8,7 @@
 		<a href="/user/<%= tweet.user.name%>"><%= tweet.user.display_name%></a>  @<%=tweet.user.name%>
 		<%=tweet.create_time%>
 		<br>
-		<%= parse_tweet tweet.text%>
+		<%= tweet.to_html%>
 		<br>
 		<a role="button" href="/tweet/<%=tweet.id%>/comment" class="text-success reply-btn" data-toggle="collapse" data-tweet-id="<%=tweet.id%>">
 		  <span class="fa fa-reply tweet-comment"></span>

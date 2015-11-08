@@ -4,12 +4,8 @@
   NanoTwitter.post '/tweet/new' do
     @curuser=get_cur_user
     if @curuser
-      tweet=@curuser.tweets.create(text:params[:text],create_time:Time.now)
-      tweet.conversation_root=tweet.id
+      tweet=@curuser.new_tweet(text:params[:text])
       tweet.save
-      extract_hashtag params[:text] do |name| 
-        HashTag.create :name=>name,:tweet_id=>tweet.id
-      end
       redirect '/'
     else
       redirect '/login'
@@ -25,7 +21,7 @@
       curtweet=Tweet.find_by :id=>tweetid
       if curtweet && curtweet.user_id != @curuser.id
         if comment
-          tweet=@curuser.tweets.create text:params['comment'],create_time:Time.now,reference:tweetid
+          tweet=@curuser.new_tweet text:params['comment'],reference:tweetid
           tweet.save
           {:created=>true,:count=>0}.to_json
         else
@@ -53,7 +49,7 @@
       tweet=Tweet.find_by :id=>tweetid
       comment=params['comment']
       if comment && tweet
-        tweet=@curuser.tweets.create text:params['comment'],create_time:Time.now,reply_to:tweetid,conversation_root:tweet.conversation_root,reply_level:(tweet.reply_level+1)
+        tweet=@curuser.new_reply tweet,params['comment']
         tweet.save
         @tweets=[tweet]
         {:created=>true,:html=>(erb :reply_list)}.to_json

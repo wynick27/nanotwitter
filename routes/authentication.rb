@@ -36,6 +36,6 @@
        @user.save
        [].to_json
      else
-       {name:@user.errors.messages[:name][0]}.to_json
+       @user.errors.messages.to_json
      end
   end

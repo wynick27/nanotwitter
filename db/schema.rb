@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014173553) do
+ActiveRecord::Schema.define(version: 20151102174025) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "chat_groups", force: :cascade do |t|
     t.datetime "create_time"
@@ -63,8 +66,8 @@ ActiveRecord::Schema.define(version: 20151014173553) do
     t.integer  "favourites_count",  default: 0
   end
 
-  add_index "tweets", ["conversation_root"], name: "index_tweets_on_conversation_root"
-  add_index "tweets", ["create_time"], name: "index_tweets_on_create_time"
+  add_index "tweets", ["conversation_root"], name: "index_tweets_on_conversation_root", using: :btree
+  add_index "tweets", ["create_time"], name: "index_tweets_on_create_time", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
