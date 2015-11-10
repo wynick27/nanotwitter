@@ -1,6 +1,9 @@
 
 
   #User Interface
+  NanoTwitter.get '/loaderio-476cc1bb3c2f091992b5dc49fe9f7c98' do
+  end
+
   NanoTwitter.get '/' do
     @curuser=get_cur_user
     @user=@curuser
