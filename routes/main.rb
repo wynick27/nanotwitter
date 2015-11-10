@@ -1,7 +1,7 @@
 
 
   #User Interface
-  NanoTwitter.get '/loaderio-476cc1bb3c2f091992b5dc49fe9f7c98' do
+  NanoTwitter.get '/loaderio-476cc1bb3c2f091992b5dc49fe9f7c98/?' do
     "loaderio-476cc1bb3c2f091992b5dc49fe9f7c98"
   end
 
