@@ -35,7 +35,10 @@
      if @user.valid?
        @user.save
        [].to_json
+       session['user']=@user.id
+       redirect '/'
      else
        @user.errors.messages.to_json
      end
+     
   end
