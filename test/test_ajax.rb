@@ -5,6 +5,12 @@ require_relative 'helper' # require the helper
 class UserAcceptanceTest < Minitest::Test
   include Capybara::DSL # gives you access to visit, etc.
 
+  def clear_all_in_database
+    Tweet.destroy_all
+    User.destroy_all
+    Follow.destroy_all
+  end
+
   def test_the_main_page
     visit '/logout'
     visit '/'
@@ -20,7 +26,7 @@ class UserAcceptanceTest < Minitest::Test
       fill_in('display_name', :with => 'SampleUser')
       fill_in('email', :with => 'sample@sample.com')
       fill_in('password', :with => 'password')
-      click_button('register_submit')
+      click_button('register-submit')
     end
   end
 
@@ -33,7 +39,7 @@ class UserAcceptanceTest < Minitest::Test
       fill_in('display_name', :with => 'AnotherUser')
       fill_in('email', :with => 'anothersample@sample.com')
       fill_in('password', :with => 'password')
-      click_button('register_submit')
+      click_button('register-submit')
     end
   end
 
@@ -46,37 +52,11 @@ class UserAcceptanceTest < Minitest::Test
       fill_in('display_name', :with => 'SecondUser')
       fill_in('email', :with => 'secondsample@sample.com')
       fill_in('password', :with => 'password')
-      click_button('register_submit')
+      click_button('register-submit')
     end
   end
 
-  def test_login_with_invalid_user
-    visit '/login'
-    page.has_content?('Your LogIn info')
-    fill_in('name', :with => 'sample3')
-    fill_in('password', :with => 'password')
-    click_on('login_submit')
-    assert page.has_content?('User not found or password is not correct')
-  end
 
-  def test_login_with_valid_user
-    visit '/login'
-    fill_in('name', :with => 'sample')
-    fill_in('password', :with => 'password')
-    click_on('login_submit')
-    assert page.has_content?('SampleUser')
-    assert page.has_content?('Home')
-  end
-
-  def test_post_new_tweet
-    visit '/login'
-    fill_in('name', :with => 'sample')
-    fill_in('password', :with => 'password')
-    click_on('login_submit')
-    fill_in('tweet_text', :with => 'This is just a sample, running with minitest')
-    click_on('tweet_submit')
-    assert page.has_content?('This is just a sample, running with minitest')
-  end
 
   # this is failed and need improvements
   def test_followship
@@ -84,7 +64,7 @@ class UserAcceptanceTest < Minitest::Test
     visit '/login'
     fill_in('name', :with => 'sample')
     fill_in('password', :with => 'password')
-    click_on('login_submit')
+    click_on('login-submit')
     visit '/user/sample1'
     user_sample1 = User.find_by name: "sample1"
     #binding.pry
@@ -100,21 +80,12 @@ class UserAcceptanceTest < Minitest::Test
     end
   end
 
-  def test_tweets
-    visit '/login'
-    fill_in('name', :with => 'sample')
-    fill_in('password', :with => 'password')
-    click_on('login_submit')
-    click_on('Tweets')
-    assert page.has_content?('This is just a sample, running with minitest')
-  end
-
   def test_followers
     Capybara.current_driver = :webkit
     visit '/login'
     fill_in('name', :with => 'sample2')
     fill_in('password', :with => 'password')
-    click_on('login_submit')
+    click_on('login-submit')
     visit '/user/sample1'
     if page.has_css?('.follow-btn')
       find('.follow-btn').click
@@ -124,7 +95,7 @@ class UserAcceptanceTest < Minitest::Test
     visit '/login'
     fill_in('name', :with => 'sample1')
     fill_in('password', :with => 'password')
-    click_on('login_submit')
+    click_on('login-submit')
     click_on('Followers')
     assert page.has_content?('SecondUser')
   end
@@ -134,7 +105,7 @@ class UserAcceptanceTest < Minitest::Test
     visit '/login'
     fill_in('name', :with => 'sample2')
     fill_in('password', :with => 'password')
-    click_on('login_submit')
+    click_on('login-submit')
     visit '/user/sample1'
     if page.has_css?('.follow-btn')
       find('.follow-btn').click
@@ -150,7 +121,7 @@ class UserAcceptanceTest < Minitest::Test
     visit '/login'
     fill_in('name', :with => 'sample')
     fill_in('password', :with => 'password')
-    click_on('login_submit')
+    click_on('login-submit')
     fill_in('tweet_text', :with => 'Sampel for favorites')
     click_on('tweet_submit')
     visit '/'
