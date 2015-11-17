@@ -72,6 +72,7 @@ Test 3: Some Analysis
 Home page before login is relatively more expensive, and 
 the number of tweets is much more than the selected user's page.
 
+Home page can be optimized by using Reddis.
 
 
 
