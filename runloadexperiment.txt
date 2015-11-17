@@ -1,0 +1,110 @@
+Test1: Simple display of home page
+
+0-250 clients over 1 min.
+err rate threshold: 70%
+
+Avg. Reponse Time: 5911ms
+err rate: 57.5%
+
+Response Times:
+	Average: 7166 ms
+	Min/Max: 128/10003 ms
+
+Response Counts:
+	Success: 375	Timeout: 203
+	400/500: 0/305	Network: 0
+
+Bandwidth:
+	Sent 543.2KB
+	Received 25.20MB
+
+============================================
+
+Test2: Display of weiyun’s home page
+
+0-250 clients over 1 min.
+err rate threshold: 70%
+
+Avg. Reponse Time: 3348ms
+err rate: 0.0%
+
+Response Times:
+	Average: 3348 ms
+	Min/Max: 56/7611 ms
+
+Response Counts:
+	Success: 2055	Timeout: 0
+	400/500: 0/0	Network: 0
+
+Bandwidth:
+	Sent 1.26MB
+	Received 45.93MB
+
+Test2: Display of monserratstrosinjr’s home page
+
+0-250 clients over 1 min.
+err rate threshold: 70%
+
+Avg. Reponse Time: 3733ms
+err rate: 0.0%
+
+Response Times:
+	Average: 4117 ms
+	Min/Max: 75/7390 ms
+
+Response Counts:
+	Success: 1680	Timeout: 0
+	400/500: 0/0	Network: 0
+
+Bandwidth:
+	Sent 1.06MB
+	Received 38.33MB
+
+==========================================
+Test 3: Some Analysis
+(heroku pg:outliers has problem)
+
+
+
+
+
+##############################################################
+Home page before login is relatively more expensive, and 
+the number of tweets is much more than the selected user's page.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
