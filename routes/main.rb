@@ -7,6 +7,7 @@
 
   NanoTwitter.get '/' do
     @curuser=get_cur_user
+    @curpage='home'
     @user=@curuser
     @tweets=@curuser ? Tweet.user_timeline(@curuser) : Tweet.includes(:user).all.limit(50)
     @tweets=@tweets.order(create_time: :desc)
@@ -120,9 +121,27 @@
 
   NanoTwitter.get '/settings' do
     @curuser=get_cur_user
-    erb :settings
+    @curpage='settings'
+    erb :master, :layout=> :header do
+      erb :settings
+    end
   end
 
   NanoTwitter.post '/settings' do
-
+    @curuser=get_cur_user
+    [:display_name,:email,:bio].each do |param|
+      if params[param] then
+        @curuser.update(param=>params[param])
+      end
+    end
+    binding.pry
+    if params['oldpwd']==@curuser.password  then
+      @curuser.password=params['newpwd']
+    end
+    if @curuser.valid? then
+      @curuser.save
+      redirect '/'
+    else
+      @curuser.errors.messages.to_json
+    end
   end

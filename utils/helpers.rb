@@ -6,12 +6,6 @@ module Helpers
       Rack::Utils.escape_html(text)
     end
     
-    def parse_tweet(text)
-      text=html(text)
-      text.gsub(/@[\w\d]+|#[\w\d]+/) do |s|
-         "<a href='/#{s[0]=='@'? 'user' : 'hashtag'}/#{s[1..-1]}'>#{s}</a>"
-      end
-    end
     
     def hashtag(text)
       text.scan(/#[\w\d]+/) do |s|

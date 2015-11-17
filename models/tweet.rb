@@ -27,12 +27,15 @@ select tweets.id,tweets.text,retweets.create_time,tweets.user_id,tweets.referenc
 union
 select tweets.id,tweets.text,retweets.create_time,tweets.user_id,tweets.reference,tweets.reply_to,tweets.conversation_root,tweets.reply_level,tweets.retweets_count,tweets.favourites_count from tweets join retweets on tweets.id = retweets.tweet_id and retweets.user_id = #{user.id})  as tweets")
   end
+  
   def retweeted_by?(user)
     self.retweets.size== 0 ? false : self.retweets.any? {|r| r.user_id==user.id}
   end
+  
   def favourited_by?(user)
     self.favourites.size== 0 ? false : self.favourites.any? {|f| f.user_id==user.id}
   end
+  
   def reply_ancestors()
     if self.id==self.conversation_root then
       nil
@@ -47,6 +50,7 @@ select tweets.id,tweets.text,retweets.create_time,tweets.user_id,tweets.referenc
       plist
     end
   end
+  
   def reply_descendants()
     if self.id==self.conversation_root then
       Tweet.includes(:user).where("conversation_root = ? and id != ?",self.conversation_root,self.id).order(:create_time)
