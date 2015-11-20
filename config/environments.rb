@@ -1,7 +1,7 @@
 
 #The environment variable DATABASE_URL should be in the following format:
 # => postgres://{user}:{password}@{host}:{port}/path
-
+require 'newrelic_rpm'
 class Configure < Sinatra::Base
 configure :production do
 	db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/nanotwitter')
