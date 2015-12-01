@@ -1,7 +1,7 @@
 Test1: Simple display of home page
 
 0-250 clients over 1 min.
-err rate threshold: 70%
+err rate threshold: 70% timeout: 10s
 
 Avg. Reponse Time: 5911ms
 err rate: 57.5%
@@ -23,7 +23,7 @@ Bandwidth:
 Test2: Display of weiyun’s home page
 
 0-250 clients over 1 min.
-err rate threshold: 70%
+err rate threshold: 70% timeout: 10s
 
 Avg. Reponse Time: 3348ms
 err rate: 0.0%
@@ -43,7 +43,7 @@ Bandwidth:
 Test2: Display of monserratstrosinjr’s home page
 
 0-250 clients over 1 min.
-err rate threshold: 70%
+err rate threshold: 70% timeout: 10s
 
 Avg. Reponse Time: 3733ms
 err rate: 0.0%
@@ -75,11 +75,46 @@ the number of tweets is much more than the selected user's page.
 Home page can be optimized by using Reddis.
 
 
+/test/seed/u - create “u” new users
+/test/tweets/t - have testuser tweet “t” times
+/test/follow/f - have f users follow testuser
+
+Test case 1: u = 100, t = 500, f = 30
+/: 
+avg_resp: 8433ms  err_rate: 69.5%
+
+/user/testuser/: 
+avg_resp: 2819ms  err_rate: 0.0%
+
+/user/testuser/tweet:
+N/A
 
 
 
 
 
+Test case 2: u = 500, t = 500, f = 100
+/: 
+avg_resp: 6725ms  err_rate: 43.9%
+
+/user/testuser/: 
+avg_resp: 445ms  err_rate: 71.8% (Failed)
+
+/user/testuser/tweet:
+
+
+
+
+
+
+Test case 3: u = 3000, t = 2000, f = 1000
+/: 
+avg_resp:   err_rate: % (cannot generate 3000 users)
+
+/user/testuser/: 
+avg_resp: ms  err_rate: %
+
+/user/testuser/tweet:
 
 
 
