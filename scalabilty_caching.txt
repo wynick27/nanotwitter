@@ -1,0 +1,2 @@
+
+Our caching focused on the main page, we cached the most recent 50 tweets’ id and save them into the Redis list with key called :recenttweets. And we also cached these most recent 50 tweets with html into Redis called tweet_#{tweet.id}. when the first time a user open the main page, nano twitter will create the most-recent 50 tweets list and whenever some one post a new tweet, then the last tweet will be deleted and the new post one will be added to this list. 
