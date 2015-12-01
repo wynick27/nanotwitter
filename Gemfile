@@ -6,6 +6,7 @@ gem "sinatra-activerecord"
 gem "pry-byebug"
 gem "faker"
 gem "newrelic_rpm"
+gem "redis"
 group :production do
   gem "pg"
 end
