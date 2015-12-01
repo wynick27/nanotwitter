@@ -2,7 +2,7 @@
 
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 		  	<% tweets.each do |tweet| %>
-			<%= erb :show_tweet,:locals=>{:tweet=>tweet} %>
+			<%=(tweet.is_a? String) ? tweet : (erb :show_tweet,:locals=>{:tweet=>tweet}) %>
 
 		  <% end %>
 		</div>

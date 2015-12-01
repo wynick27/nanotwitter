@@ -6,6 +6,7 @@
     if @curuser
       tweet=@curuser.new_tweet(text:params[:text])
       tweet.save
+      update_tweet_cache tweet
       redirect '/'
     else
       redirect '/login'

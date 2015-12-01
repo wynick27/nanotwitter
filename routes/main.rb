@@ -9,8 +9,25 @@
     @curuser=get_cur_user
     @curpage='home'
     @user=@curuser
-    @tweets=@curuser ? Tweet.user_timeline(@curuser) : Tweet.includes(:user).all.limit(50)
-    @tweets=@tweets.order(create_time: :desc)
+    @redis=settings.redis
+    if @curuser then
+      @tweets=Tweet.user_timeline(@curuser).limit(50).order(create_time: :desc)
+    else
+      if @redis.exists :recenttweets
+        @tweets=@redis.lrange(:recenttweets,0,49).map{|i| @redis.get "tweet_#{i}"}
+      else
+         @tweets=Tweet.includes(:user).all.limit(50)
+         @tweets=@tweets.order(create_time: :desc).map do |t| 
+           html=erb :show_tweet,:locals=>{:tweet=>t}
+           @redis.rpush :recenttweets,t.id
+           @redis.set "tweet_#{t.id}",html
+           html
+         end
+      end
+      
+    end
+   
+    
     erb :master, :layout=> :header do
       erb :index
     end
