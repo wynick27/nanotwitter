@@ -19,7 +19,6 @@ module Helpers
     end
     
     def update_tweet_cache(tweet,isnew=true)
-    binding.pry
       settings.redis.set "tweet_#{tweet.id}",(erb :show_tweet,:locals=>{:tweet=>tweet})
       if isnew && settings.redis.exists(:recenttweets)
         settings.redis.rpop :recenttweets
