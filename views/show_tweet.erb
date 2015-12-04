@@ -10,11 +10,19 @@
 		<br>
 		<%= tweet.to_html%>
 		<br>
+	<div class="container-fluid">
+		<div class="col-xs-2">
 		<a role="button" href="/tweet/<%=tweet.id%>/comment" class="text-success reply-btn" data-toggle="collapse" data-tweet-id="<%=tweet.id%>">
 		  <span class="fa fa-reply tweet-comment"></span>
 		</a>
-		<a class="retweet-btn" role="button"  href="/tweet/<%=tweet.id%>/retweet"><span class="glyphicon glyphicon-retweet" <%=@curuser && tweet.retweeted_by?(@curuser) ? 'style="color:green"': nil%> /><span class="count"><%=tweet.retweets.size%></span></a>
-		<a class="fav-btn" role="button"  href="/tweet/<%=tweet.id%>/favourite"><span class="glyphicon glyphicon-star" <%=@curuser && tweet.favourited_by?(@curuser) ? 'style="color:yellow"': nil%> /><span class="count"><%=tweet.favourites.size%></span></a>	      
+		</div>
+		<div class="col-xs-2">
+		<a class="retweet-btn" role="button"  href="/tweet/<%=tweet.id%>/retweet"><span class="glyphicon glyphicon-retweet" <%=@curuser && tweet.retweeted_by?(@curuser) ? 'style="color:green"': nil%> />&nbsp;<span class="count badge"><%=tweet.retweets.size%></span></a>
+		</div>
+		<div class="col-xs-2">
+		<a class="fav-btn" role="button"  href="/tweet/<%=tweet.id%>/favourite"><span class="glyphicon glyphicon-star" <%=@curuser && tweet.favourited_by?(@curuser) ? 'style="color:yellow"': nil%> />&nbsp;<span class="count badge"><%=tweet.favourites.size%></span></a>
+		</div>
+	</div>	      
 	</div>
       <div class="panel-collapse collapse">
 		<% if @curuser %>
