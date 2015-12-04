@@ -99,3 +99,173 @@
 [2015-12-03 23:08:00 -0500 lizhongqideMacBook-Pro.local (7325)] INFO : Doing deferred dependency-detection before Rack startup
 [2015-12-03 23:08:00 -0500 lizhongqideMacBook-Pro.local (7325)] INFO : Installing Redis Instrumentation
 [2015-12-03 23:08:01 -0500 lizhongqideMacBook-Pro.local (7325)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 01:28:57 -0500 lizhongqideMacBook-Pro.local (9337)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-04 01:28:57 -0500 lizhongqideMacBook-Pro.local (9337)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-04 01:28:57 -0500 lizhongqideMacBook-Pro.local (9337)] INFO : Reading configuration from config/newrelic.yml (/Users/lizhongqi/Dropbox/cosi105b_zhongqili/nanotwitter)
+[2015-12-04 01:28:57 -0500 lizhongqideMacBook-Pro.local (9337)] INFO : Environment: development
+[2015-12-04 01:28:57 -0500 lizhongqideMacBook-Pro.local (9337)] INFO : No known dispatcher detected.
+[2015-12-04 01:28:57 -0500 lizhongqideMacBook-Pro.local (9337)] INFO : Application: My Application (Development)
+[2015-12-04 01:28:57 -0500 lizhongqideMacBook-Pro.local (9337)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-04 01:28:57 -0500 lizhongqideMacBook-Pro.local (9337)] INFO : Installing Net instrumentation
+[2015-12-04 01:28:57 -0500 lizhongqideMacBook-Pro.local (9337)] INFO : Installing Sinatra instrumentation
+[2015-12-04 01:28:57 -0500 lizhongqideMacBook-Pro.local (9337)] INFO : Installing deferred Rack instrumentation
+[2015-12-04 01:28:57 -0500 lizhongqideMacBook-Pro.local (9337)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-04 01:28:57 -0500 lizhongqideMacBook-Pro.local (9337)] INFO : Finished instrumentation
+[2015-12-04 01:28:58 -0500 lizhongqideMacBook-Pro.local (9337)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-04 01:29:02 -0500 lizhongqideMacBook-Pro.local (9337)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-04 01:29:02 -0500 lizhongqideMacBook-Pro.local (9337)] INFO : Installing Redis Instrumentation
+[2015-12-04 14:25:56 -0500 lizhongqideMacBook-Pro.local (15190)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-04 14:25:56 -0500 lizhongqideMacBook-Pro.local (15190)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-04 14:25:56 -0500 lizhongqideMacBook-Pro.local (15190)] INFO : Reading configuration from config/newrelic.yml (/Users/lizhongqi/Dropbox/cosi105b_zhongqili/nanotwitter)
+[2015-12-04 14:25:56 -0500 lizhongqideMacBook-Pro.local (15190)] INFO : Environment: development
+[2015-12-04 14:25:56 -0500 lizhongqideMacBook-Pro.local (15190)] INFO : No known dispatcher detected.
+[2015-12-04 14:25:56 -0500 lizhongqideMacBook-Pro.local (15190)] INFO : Application: My Application (Development)
+[2015-12-04 14:25:57 -0500 lizhongqideMacBook-Pro.local (15190)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-04 14:25:57 -0500 lizhongqideMacBook-Pro.local (15190)] INFO : Installing Net instrumentation
+[2015-12-04 14:25:57 -0500 lizhongqideMacBook-Pro.local (15190)] INFO : Installing Sinatra instrumentation
+[2015-12-04 14:25:57 -0500 lizhongqideMacBook-Pro.local (15190)] INFO : Installing deferred Rack instrumentation
+[2015-12-04 14:25:57 -0500 lizhongqideMacBook-Pro.local (15190)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-04 14:25:57 -0500 lizhongqideMacBook-Pro.local (15190)] INFO : Finished instrumentation
+[2015-12-04 14:25:58 -0500 lizhongqideMacBook-Pro.local (15190)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-04 14:26:04 -0500 lizhongqideMacBook-Pro.local (15190)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-04 14:26:04 -0500 lizhongqideMacBook-Pro.local (15190)] INFO : Installing Redis Instrumentation
+[2015-12-04 14:27:18 -0500 lizhongqideMacBook-Pro.local (15289)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-04 14:27:18 -0500 lizhongqideMacBook-Pro.local (15289)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-04 14:27:18 -0500 lizhongqideMacBook-Pro.local (15289)] INFO : Reading configuration from config/newrelic.yml (/Users/lizhongqi/Dropbox/cosi105b_zhongqili/nanotwitter)
+[2015-12-04 14:27:18 -0500 lizhongqideMacBook-Pro.local (15289)] INFO : Environment: development
+[2015-12-04 14:27:18 -0500 lizhongqideMacBook-Pro.local (15289)] INFO : No known dispatcher detected.
+[2015-12-04 14:27:18 -0500 lizhongqideMacBook-Pro.local (15289)] INFO : Application: My Application (Development)
+[2015-12-04 14:27:18 -0500 lizhongqideMacBook-Pro.local (15289)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-04 14:27:18 -0500 lizhongqideMacBook-Pro.local (15289)] INFO : Installing Net instrumentation
+[2015-12-04 14:27:18 -0500 lizhongqideMacBook-Pro.local (15289)] INFO : Installing Sinatra instrumentation
+[2015-12-04 14:27:18 -0500 lizhongqideMacBook-Pro.local (15289)] INFO : Installing deferred Rack instrumentation
+[2015-12-04 14:27:18 -0500 lizhongqideMacBook-Pro.local (15289)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-04 14:27:18 -0500 lizhongqideMacBook-Pro.local (15289)] INFO : Finished instrumentation
+[2015-12-04 14:27:20 -0500 lizhongqideMacBook-Pro.local (15289)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-04 14:27:21 -0500 lizhongqideMacBook-Pro.local (15289)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-04 14:27:21 -0500 lizhongqideMacBook-Pro.local (15289)] INFO : Installing Redis Instrumentation
+[2015-12-04 16:09:26 -0500 lizhongqideMacBook-Pro.local (18393)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-04 16:09:26 -0500 lizhongqideMacBook-Pro.local (18393)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-04 16:09:26 -0500 lizhongqideMacBook-Pro.local (18393)] INFO : Reading configuration from config/newrelic.yml (/Users/lizhongqi/Dropbox/cosi105b_zhongqili/nanotwitter)
+[2015-12-04 16:09:26 -0500 lizhongqideMacBook-Pro.local (18393)] INFO : Environment: development
+[2015-12-04 16:09:26 -0500 lizhongqideMacBook-Pro.local (18393)] INFO : No known dispatcher detected.
+[2015-12-04 16:09:26 -0500 lizhongqideMacBook-Pro.local (18393)] INFO : Application: My Application (Development)
+[2015-12-04 16:09:26 -0500 lizhongqideMacBook-Pro.local (18393)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-04 16:09:26 -0500 lizhongqideMacBook-Pro.local (18393)] INFO : Installing Net instrumentation
+[2015-12-04 16:09:26 -0500 lizhongqideMacBook-Pro.local (18393)] INFO : Installing Sinatra instrumentation
+[2015-12-04 16:09:26 -0500 lizhongqideMacBook-Pro.local (18393)] INFO : Installing deferred Rack instrumentation
+[2015-12-04 16:09:26 -0500 lizhongqideMacBook-Pro.local (18393)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-04 16:09:26 -0500 lizhongqideMacBook-Pro.local (18393)] INFO : Finished instrumentation
+[2015-12-04 16:09:27 -0500 lizhongqideMacBook-Pro.local (18393)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-04 16:09:32 -0500 lizhongqideMacBook-Pro.local (18393)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-04 16:09:32 -0500 lizhongqideMacBook-Pro.local (18393)] INFO : Installing Redis Instrumentation
+[2015-12-04 16:09:32 -0500 lizhongqideMacBook-Pro.local (18393)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 16:10:31 -0500 lizhongqideMacBook-Pro.local (18393)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 16:14:06 -0500 lizhongqideMacBook-Pro.local (18393)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 16:18:02 -0500 lizhongqideMacBook-Pro.local (18393)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 16:24:20 -0500 lizhongqideMacBook-Pro.local (18393)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 16:24:32 -0500 lizhongqideMacBook-Pro.local (18393)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 16:35:32 -0500 lizhongqideMacBook-Pro.local (18393)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 16:41:55 -0500 lizhongqideMacBook-Pro.local (18393)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 16:51:43 -0500 lizhongqideMacBook-Pro.local (18393)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 16:53:56 -0500 lizhongqideMacBook-Pro.local (18393)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 16:55:53 -0500 lizhongqideMacBook-Pro.local (18393)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 16:59:22 -0500 lizhongqideMacBook-Pro.local (18393)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:01:38 -0500 lizhongqideMacBook-Pro.local (18393)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:03:25 -0500 lizhongqideMacBook-Pro.local (18393)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:04:24 -0500 lizhongqideMacBook-Pro.local (18393)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:08:41 -0500 lizhongqideMacBook-Pro.local (19072)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-04 17:08:41 -0500 lizhongqideMacBook-Pro.local (19072)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-04 17:08:41 -0500 lizhongqideMacBook-Pro.local (19072)] INFO : Reading configuration from config/newrelic.yml (/Users/lizhongqi/Dropbox/cosi105b_zhongqili/nanotwitter)
+[2015-12-04 17:08:41 -0500 lizhongqideMacBook-Pro.local (19072)] INFO : Environment: development
+[2015-12-04 17:08:41 -0500 lizhongqideMacBook-Pro.local (19072)] INFO : No known dispatcher detected.
+[2015-12-04 17:08:41 -0500 lizhongqideMacBook-Pro.local (19072)] INFO : Application: My Application (Development)
+[2015-12-04 17:08:41 -0500 lizhongqideMacBook-Pro.local (19072)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-04 17:08:41 -0500 lizhongqideMacBook-Pro.local (19072)] INFO : Installing Net instrumentation
+[2015-12-04 17:08:41 -0500 lizhongqideMacBook-Pro.local (19072)] INFO : Installing Sinatra instrumentation
+[2015-12-04 17:08:41 -0500 lizhongqideMacBook-Pro.local (19072)] INFO : Installing deferred Rack instrumentation
+[2015-12-04 17:08:41 -0500 lizhongqideMacBook-Pro.local (19072)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-04 17:08:41 -0500 lizhongqideMacBook-Pro.local (19072)] INFO : Finished instrumentation
+[2015-12-04 17:08:43 -0500 lizhongqideMacBook-Pro.local (19072)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-04 17:08:59 -0500 lizhongqideMacBook-Pro.local (19072)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-04 17:08:59 -0500 lizhongqideMacBook-Pro.local (19072)] INFO : Installing Redis Instrumentation
+[2015-12-04 17:21:43 -0500 lizhongqideMacBook-Pro.local (19072)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:21:54 -0500 lizhongqideMacBook-Pro.local (19072)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:23:29 -0500 lizhongqideMacBook-Pro.local (19072)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:24:47 -0500 lizhongqideMacBook-Pro.local (19072)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:30:11 -0500 lizhongqideMacBook-Pro.local (19072)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:30:59 -0500 lizhongqideMacBook-Pro.local (19072)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:31:39 -0500 lizhongqideMacBook-Pro.local (19340)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-04 17:31:39 -0500 lizhongqideMacBook-Pro.local (19340)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-04 17:31:39 -0500 lizhongqideMacBook-Pro.local (19340)] INFO : Reading configuration from config/newrelic.yml (/Users/lizhongqi/Dropbox/cosi105b_zhongqili/nanotwitter)
+[2015-12-04 17:31:39 -0500 lizhongqideMacBook-Pro.local (19340)] INFO : Environment: development
+[2015-12-04 17:31:39 -0500 lizhongqideMacBook-Pro.local (19340)] INFO : No known dispatcher detected.
+[2015-12-04 17:31:39 -0500 lizhongqideMacBook-Pro.local (19340)] INFO : Application: My Application (Development)
+[2015-12-04 17:31:39 -0500 lizhongqideMacBook-Pro.local (19340)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-04 17:31:39 -0500 lizhongqideMacBook-Pro.local (19340)] INFO : Installing Net instrumentation
+[2015-12-04 17:31:39 -0500 lizhongqideMacBook-Pro.local (19340)] INFO : Installing Sinatra instrumentation
+[2015-12-04 17:31:39 -0500 lizhongqideMacBook-Pro.local (19340)] INFO : Installing deferred Rack instrumentation
+[2015-12-04 17:31:39 -0500 lizhongqideMacBook-Pro.local (19340)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-04 17:31:39 -0500 lizhongqideMacBook-Pro.local (19340)] INFO : Finished instrumentation
+[2015-12-04 17:31:41 -0500 lizhongqideMacBook-Pro.local (19340)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-04 17:31:43 -0500 lizhongqideMacBook-Pro.local (19340)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-04 17:31:43 -0500 lizhongqideMacBook-Pro.local (19340)] INFO : Installing Redis Instrumentation
+[2015-12-04 17:31:48 -0500 lizhongqideMacBook-Pro.local (19340)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:33:47 -0500 lizhongqideMacBook-Pro.local (19340)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:34:57 -0500 lizhongqideMacBook-Pro.local (19399)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-04 17:34:57 -0500 lizhongqideMacBook-Pro.local (19399)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-04 17:34:57 -0500 lizhongqideMacBook-Pro.local (19399)] INFO : Reading configuration from config/newrelic.yml (/Users/lizhongqi/Dropbox/cosi105b_zhongqili/nanotwitter)
+[2015-12-04 17:34:57 -0500 lizhongqideMacBook-Pro.local (19399)] INFO : Environment: development
+[2015-12-04 17:34:57 -0500 lizhongqideMacBook-Pro.local (19399)] INFO : No known dispatcher detected.
+[2015-12-04 17:34:57 -0500 lizhongqideMacBook-Pro.local (19399)] INFO : Application: My Application (Development)
+[2015-12-04 17:34:57 -0500 lizhongqideMacBook-Pro.local (19399)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-04 17:34:57 -0500 lizhongqideMacBook-Pro.local (19399)] INFO : Installing Net instrumentation
+[2015-12-04 17:34:57 -0500 lizhongqideMacBook-Pro.local (19399)] INFO : Installing Sinatra instrumentation
+[2015-12-04 17:34:57 -0500 lizhongqideMacBook-Pro.local (19399)] INFO : Installing deferred Rack instrumentation
+[2015-12-04 17:34:57 -0500 lizhongqideMacBook-Pro.local (19399)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-04 17:34:57 -0500 lizhongqideMacBook-Pro.local (19399)] INFO : Finished instrumentation
+[2015-12-04 17:34:58 -0500 lizhongqideMacBook-Pro.local (19399)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-04 17:35:05 -0500 lizhongqideMacBook-Pro.local (19399)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-04 17:35:05 -0500 lizhongqideMacBook-Pro.local (19399)] INFO : Installing Redis Instrumentation
+[2015-12-04 17:35:05 -0500 lizhongqideMacBook-Pro.local (19399)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:37:14 -0500 lizhongqideMacBook-Pro.local (19399)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:38:18 -0500 lizhongqideMacBook-Pro.local (19399)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:39:32 -0500 lizhongqideMacBook-Pro.local (19399)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:40:50 -0500 lizhongqideMacBook-Pro.local (19474)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-04 17:40:50 -0500 lizhongqideMacBook-Pro.local (19474)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-04 17:40:50 -0500 lizhongqideMacBook-Pro.local (19474)] INFO : Reading configuration from config/newrelic.yml (/Users/lizhongqi/Dropbox/cosi105b_zhongqili/nanotwitter)
+[2015-12-04 17:40:50 -0500 lizhongqideMacBook-Pro.local (19474)] INFO : Environment: development
+[2015-12-04 17:40:50 -0500 lizhongqideMacBook-Pro.local (19474)] INFO : No known dispatcher detected.
+[2015-12-04 17:40:50 -0500 lizhongqideMacBook-Pro.local (19474)] INFO : Application: My Application (Development)
+[2015-12-04 17:40:50 -0500 lizhongqideMacBook-Pro.local (19474)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-04 17:40:50 -0500 lizhongqideMacBook-Pro.local (19474)] INFO : Installing Net instrumentation
+[2015-12-04 17:40:50 -0500 lizhongqideMacBook-Pro.local (19474)] INFO : Installing Sinatra instrumentation
+[2015-12-04 17:40:50 -0500 lizhongqideMacBook-Pro.local (19474)] INFO : Installing deferred Rack instrumentation
+[2015-12-04 17:40:50 -0500 lizhongqideMacBook-Pro.local (19474)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-04 17:40:50 -0500 lizhongqideMacBook-Pro.local (19474)] INFO : Finished instrumentation
+[2015-12-04 17:40:52 -0500 lizhongqideMacBook-Pro.local (19474)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-04 17:41:01 -0500 lizhongqideMacBook-Pro.local (19474)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-04 17:41:01 -0500 lizhongqideMacBook-Pro.local (19474)] INFO : Installing Redis Instrumentation
+[2015-12-04 17:41:01 -0500 lizhongqideMacBook-Pro.local (19474)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:42:13 -0500 lizhongqideMacBook-Pro.local (19474)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:43:29 -0500 lizhongqideMacBook-Pro.local (19513)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-04 17:43:29 -0500 lizhongqideMacBook-Pro.local (19513)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-04 17:43:29 -0500 lizhongqideMacBook-Pro.local (19513)] INFO : Reading configuration from config/newrelic.yml (/Users/lizhongqi/Dropbox/cosi105b_zhongqili/nanotwitter)
+[2015-12-04 17:43:29 -0500 lizhongqideMacBook-Pro.local (19513)] INFO : Environment: development
+[2015-12-04 17:43:29 -0500 lizhongqideMacBook-Pro.local (19513)] INFO : No known dispatcher detected.
+[2015-12-04 17:43:29 -0500 lizhongqideMacBook-Pro.local (19513)] INFO : Application: My Application (Development)
+[2015-12-04 17:43:29 -0500 lizhongqideMacBook-Pro.local (19513)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-04 17:43:29 -0500 lizhongqideMacBook-Pro.local (19513)] INFO : Installing Net instrumentation
+[2015-12-04 17:43:29 -0500 lizhongqideMacBook-Pro.local (19513)] INFO : Installing Sinatra instrumentation
+[2015-12-04 17:43:29 -0500 lizhongqideMacBook-Pro.local (19513)] INFO : Installing deferred Rack instrumentation
+[2015-12-04 17:43:29 -0500 lizhongqideMacBook-Pro.local (19513)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-04 17:43:29 -0500 lizhongqideMacBook-Pro.local (19513)] INFO : Finished instrumentation
+[2015-12-04 17:43:31 -0500 lizhongqideMacBook-Pro.local (19513)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-04 17:44:06 -0500 lizhongqideMacBook-Pro.local (19513)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-04 17:44:06 -0500 lizhongqideMacBook-Pro.local (19513)] INFO : Installing Redis Instrumentation
+[2015-12-04 17:44:52 -0500 lizhongqideMacBook-Pro.local (19513)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:46:29 -0500 lizhongqideMacBook-Pro.local (19513)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:46:59 -0500 lizhongqideMacBook-Pro.local (19513)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:48:18 -0500 lizhongqideMacBook-Pro.local (19513)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:48:41 -0500 lizhongqideMacBook-Pro.local (19513)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-04 17:49:47 -0500 lizhongqideMacBook-Pro.local (19513)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.

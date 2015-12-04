@@ -30,11 +30,11 @@ end
 # find the user time_line by username
 NanoTwitter.get '/api/v1/tweets/username/:name' do
 	user = User.find_by name: params[:name]
-	user_id = user.id
-	comb_user = user_id && User.find(user_id)
-	tweets = comb_user ? Tweet.user_timeline(comb_user) : Tweet.all
 	# tweets=tweets.order(create_time: :desc)
   if user
+    user_id = user.id
+    comb_user = user_id && User.find(user_id)
+    tweets = comb_user ? Tweet.user_timeline(comb_user) : Tweet.all
     tweets.to_json
   else
     error 404, {:error => "user not found"}.to_json
@@ -44,11 +44,11 @@ end
 # find the user time_line by user_id
 NanoTwitter.get '/api/v1/tweets/userid/:id' do
 	user = User.find_by id: params[:id]
-	user_id = user.id
-	comb_user = user_id && User.find(user_id)
-	tweets = comb_user ? Tweet.user_timeline(comb_user) : Tweet.all
 	# tweets=tweets.order(create_time: :desc)
   if user
+    user_id = user.id
+    comb_user = user_id && User.find(user_id)
+    tweets = comb_user ? Tweet.user_timeline(comb_user) : Tweet.all
     tweets.to_json
   else
     error 404, {:error => "user not found"}.to_json
@@ -70,8 +70,8 @@ end
 # find the followers of a user by username
 NanoTwitter.get '/api/v1/followers/username/:name' do
 	user = User.find_by name: params[:name]
-  followers = user.followers
 	if user
+    followers = user.followers
     followers.to_json
   else
     error 404, {:error => "user not found"}.to_json
@@ -81,8 +81,8 @@ end
 # find the followers of a user by userid
 NanoTwitter.get '/api/v1/followers/userid/:id' do
 	user = User.find_by id: params[:id]
-  followers = user.followers
 	if user
+    followers = user.followers
     followers.to_json
   else
     error 404, {:error => "user not found"}.to_json
@@ -92,8 +92,8 @@ end
 # find the people that user following by the username
 NanoTwitter.get '/api/v1/followings/username/:name' do
   user = User.find_by name: params[:name]
-  following = user.followed_users
   if user
+    following = user.followed_users
     following .to_json
   else
     error 404, {:error => "user not found"}.to_json
@@ -103,8 +103,8 @@ end
 # find the people that user following by the userid
 NanoTwitter.get '/api/v1/followings/userid/:id' do
   user = User.find_by id: params[:id]
-  following = user.followed_users
   if user
+    following = user.followed_users
     following .to_json
   else
     error 404, {:error => "user not found"}.to_json

@@ -4,7 +4,6 @@ ENV['RACK_ENV'] = 'test'
 require 'rspec'
 require_relative '../app'
 require_relative '..//models/tweet'
-require 'rspec'
 require 'rack/test'
 require 'pry-byebug'
 
