@@ -284,3 +284,327 @@
 [2015-12-04 17:55:17 -0500 lizhongqideMacBook-Pro.local (19676)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
 [2015-12-04 17:55:21 -0500 lizhongqideMacBook-Pro.local (19676)] INFO : Doing deferred dependency-detection before Rack startup
 [2015-12-04 17:55:21 -0500 lizhongqideMacBook-Pro.local (19676)] INFO : Installing Redis Instrumentation
+[2015-12-05 22:19:57 -0500 weiyun-PC (26540)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 22:19:57 -0500 weiyun-PC (26540)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 22:19:57 -0500 weiyun-PC (26540)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 22:19:57 -0500 weiyun-PC (26540)] INFO : Environment: development
+[2015-12-05 22:19:57 -0500 weiyun-PC (26540)] INFO : No known dispatcher detected.
+[2015-12-05 22:19:57 -0500 weiyun-PC (26540)] INFO : Application: My Application (Development)
+[2015-12-05 22:19:57 -0500 weiyun-PC (26540)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 22:19:57 -0500 weiyun-PC (26540)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 22:19:57 -0500 weiyun-PC (26540)] INFO : Installing Net instrumentation
+[2015-12-05 22:19:57 -0500 weiyun-PC (26540)] INFO : Installing Sinatra instrumentation
+[2015-12-05 22:19:57 -0500 weiyun-PC (26540)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 22:19:57 -0500 weiyun-PC (26540)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 22:19:57 -0500 weiyun-PC (26540)] INFO : Finished instrumentation
+[2015-12-05 22:21:33 -0500 weiyun-PC (28712)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 22:21:33 -0500 weiyun-PC (28712)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 22:21:33 -0500 weiyun-PC (28712)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 22:21:33 -0500 weiyun-PC (28712)] INFO : Environment: development
+[2015-12-05 22:21:33 -0500 weiyun-PC (28712)] INFO : No known dispatcher detected.
+[2015-12-05 22:21:33 -0500 weiyun-PC (28712)] INFO : Application: My Application (Development)
+[2015-12-05 22:21:33 -0500 weiyun-PC (28712)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 22:21:34 -0500 weiyun-PC (28712)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 22:21:34 -0500 weiyun-PC (28712)] INFO : Installing Net instrumentation
+[2015-12-05 22:21:34 -0500 weiyun-PC (28712)] INFO : Installing Sinatra instrumentation
+[2015-12-05 22:21:34 -0500 weiyun-PC (28712)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 22:21:34 -0500 weiyun-PC (28712)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 22:21:34 -0500 weiyun-PC (28712)] INFO : Finished instrumentation
+[2015-12-05 22:21:36 -0500 weiyun-PC (28712)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-05 22:21:36 -0500 weiyun-PC (28712)] INFO : Installing Redis Instrumentation
+[2015-12-05 22:21:55 -0500 weiyun-PC (28712)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-05 22:22:08 -0500 weiyun-PC (28712)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-05 22:23:14 -0500 weiyun-PC (28712)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-05 22:24:07 -0500 weiyun-PC (28516)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 22:24:07 -0500 weiyun-PC (28516)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 22:24:07 -0500 weiyun-PC (28516)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 22:24:07 -0500 weiyun-PC (28516)] INFO : Environment: development
+[2015-12-05 22:24:07 -0500 weiyun-PC (28516)] INFO : No known dispatcher detected.
+[2015-12-05 22:24:07 -0500 weiyun-PC (28516)] INFO : Application: My Application (Development)
+[2015-12-05 22:24:07 -0500 weiyun-PC (28516)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 22:24:07 -0500 weiyun-PC (28516)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 22:24:07 -0500 weiyun-PC (28516)] INFO : Installing Net instrumentation
+[2015-12-05 22:24:07 -0500 weiyun-PC (28516)] INFO : Installing Sinatra instrumentation
+[2015-12-05 22:24:07 -0500 weiyun-PC (28516)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 22:24:07 -0500 weiyun-PC (28516)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 22:24:07 -0500 weiyun-PC (28516)] INFO : Finished instrumentation
+[2015-12-05 22:24:09 -0500 weiyun-PC (28516)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-05 22:24:09 -0500 weiyun-PC (28516)] INFO : Installing Redis Instrumentation
+[2015-12-05 22:24:29 -0500 weiyun-PC (28516)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-05 22:25:15 -0500 weiyun-PC (28516)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-05 22:25:44 -0500 weiyun-PC (28516)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-05 22:28:09 -0500 weiyun-PC (28516)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-05 22:46:02 -0500 weiyun-PC (28516)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-05 22:47:54 -0500 weiyun-PC (27260)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 22:47:54 -0500 weiyun-PC (27260)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 22:47:54 -0500 weiyun-PC (27260)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 22:47:54 -0500 weiyun-PC (27260)] INFO : Environment: development
+[2015-12-05 22:47:54 -0500 weiyun-PC (27260)] INFO : No known dispatcher detected.
+[2015-12-05 22:47:54 -0500 weiyun-PC (27260)] INFO : Application: My Application (Development)
+[2015-12-05 22:47:54 -0500 weiyun-PC (27260)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 22:47:54 -0500 weiyun-PC (27260)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 22:47:54 -0500 weiyun-PC (27260)] INFO : Installing Net instrumentation
+[2015-12-05 22:47:54 -0500 weiyun-PC (27260)] INFO : Installing Sinatra instrumentation
+[2015-12-05 22:47:54 -0500 weiyun-PC (27260)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 22:47:54 -0500 weiyun-PC (27260)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 22:47:54 -0500 weiyun-PC (27260)] INFO : Finished instrumentation
+[2015-12-05 22:52:36 -0500 weiyun-PC (29780)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 22:52:36 -0500 weiyun-PC (29780)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 22:52:36 -0500 weiyun-PC (29780)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 22:52:36 -0500 weiyun-PC (29780)] INFO : Environment: development
+[2015-12-05 22:52:36 -0500 weiyun-PC (29780)] INFO : No known dispatcher detected.
+[2015-12-05 22:52:36 -0500 weiyun-PC (29780)] INFO : Application: My Application (Development)
+[2015-12-05 22:52:36 -0500 weiyun-PC (29780)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 22:52:36 -0500 weiyun-PC (29780)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 22:52:36 -0500 weiyun-PC (29780)] INFO : Installing Net instrumentation
+[2015-12-05 22:52:36 -0500 weiyun-PC (29780)] INFO : Installing Sinatra instrumentation
+[2015-12-05 22:52:36 -0500 weiyun-PC (29780)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 22:52:36 -0500 weiyun-PC (29780)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 22:52:36 -0500 weiyun-PC (29780)] INFO : Finished instrumentation
+[2015-12-05 22:53:20 -0500 weiyun-PC (30716)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 22:53:20 -0500 weiyun-PC (30716)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 22:53:20 -0500 weiyun-PC (30716)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 22:53:20 -0500 weiyun-PC (30716)] INFO : Environment: development
+[2015-12-05 22:53:20 -0500 weiyun-PC (30716)] INFO : No known dispatcher detected.
+[2015-12-05 22:53:20 -0500 weiyun-PC (30716)] INFO : Application: My Application (Development)
+[2015-12-05 22:53:20 -0500 weiyun-PC (30716)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 22:53:20 -0500 weiyun-PC (30716)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 22:53:20 -0500 weiyun-PC (30716)] INFO : Installing Net instrumentation
+[2015-12-05 22:53:20 -0500 weiyun-PC (30716)] INFO : Installing Sinatra instrumentation
+[2015-12-05 22:53:20 -0500 weiyun-PC (30716)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 22:53:20 -0500 weiyun-PC (30716)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 22:53:20 -0500 weiyun-PC (30716)] INFO : Finished instrumentation
+[2015-12-05 22:53:22 -0500 weiyun-PC (30716)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-05 22:53:22 -0500 weiyun-PC (30716)] INFO : Installing Redis Instrumentation
+[2015-12-05 22:53:41 -0500 weiyun-PC (30716)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-05 22:54:01 -0500 weiyun-PC (30716)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-05 22:55:23 -0500 weiyun-PC (30716)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-05 22:57:21 -0500 weiyun-PC (30716)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-05 23:05:59 -0500 weiyun-PC (29652)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 23:05:59 -0500 weiyun-PC (29652)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 23:05:59 -0500 weiyun-PC (29652)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 23:05:59 -0500 weiyun-PC (29652)] INFO : Environment: development
+[2015-12-05 23:05:59 -0500 weiyun-PC (29652)] INFO : No known dispatcher detected.
+[2015-12-05 23:05:59 -0500 weiyun-PC (29652)] INFO : Application: My Application (Development)
+[2015-12-05 23:05:59 -0500 weiyun-PC (29652)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 23:05:59 -0500 weiyun-PC (29652)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 23:05:59 -0500 weiyun-PC (29652)] INFO : Installing Net instrumentation
+[2015-12-05 23:05:59 -0500 weiyun-PC (29652)] INFO : Installing Sinatra instrumentation
+[2015-12-05 23:05:59 -0500 weiyun-PC (29652)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 23:05:59 -0500 weiyun-PC (29652)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 23:05:59 -0500 weiyun-PC (29652)] INFO : Finished instrumentation
+[2015-12-05 23:06:06 -0500 weiyun-PC (29652)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-05 23:06:06 -0500 weiyun-PC (29652)] INFO : Installing Redis Instrumentation
+[2015-12-05 23:06:20 -0500 weiyun-PC (29652)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-05 23:06:39 -0500 weiyun-PC (29652)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-05 23:08:13 -0500 weiyun-PC (28516)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 23:08:13 -0500 weiyun-PC (28516)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 23:08:13 -0500 weiyun-PC (28516)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 23:08:13 -0500 weiyun-PC (28516)] INFO : Environment: development
+[2015-12-05 23:08:13 -0500 weiyun-PC (28516)] INFO : No known dispatcher detected.
+[2015-12-05 23:08:13 -0500 weiyun-PC (28516)] INFO : Application: My Application (Development)
+[2015-12-05 23:08:13 -0500 weiyun-PC (28516)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 23:08:13 -0500 weiyun-PC (28516)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 23:08:13 -0500 weiyun-PC (28516)] INFO : Installing Net instrumentation
+[2015-12-05 23:08:13 -0500 weiyun-PC (28516)] INFO : Installing Sinatra instrumentation
+[2015-12-05 23:08:13 -0500 weiyun-PC (28516)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 23:08:13 -0500 weiyun-PC (28516)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 23:08:13 -0500 weiyun-PC (28516)] INFO : Finished instrumentation
+[2015-12-05 23:11:28 -0500 weiyun-PC (31144)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 23:11:28 -0500 weiyun-PC (31144)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 23:11:28 -0500 weiyun-PC (31144)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 23:11:28 -0500 weiyun-PC (31144)] INFO : Environment: development
+[2015-12-05 23:11:28 -0500 weiyun-PC (31144)] INFO : No known dispatcher detected.
+[2015-12-05 23:11:28 -0500 weiyun-PC (31144)] INFO : Application: My Application (Development)
+[2015-12-05 23:11:28 -0500 weiyun-PC (31144)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 23:11:28 -0500 weiyun-PC (31144)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 23:11:28 -0500 weiyun-PC (31144)] INFO : Installing Net instrumentation
+[2015-12-05 23:11:28 -0500 weiyun-PC (31144)] INFO : Installing Sinatra instrumentation
+[2015-12-05 23:11:28 -0500 weiyun-PC (31144)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 23:11:28 -0500 weiyun-PC (31144)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 23:11:28 -0500 weiyun-PC (31144)] INFO : Finished instrumentation
+[2015-12-05 23:12:19 -0500 weiyun-PC (29872)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 23:12:19 -0500 weiyun-PC (29872)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 23:12:19 -0500 weiyun-PC (29872)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 23:12:19 -0500 weiyun-PC (29872)] INFO : Environment: development
+[2015-12-05 23:12:19 -0500 weiyun-PC (29872)] INFO : No known dispatcher detected.
+[2015-12-05 23:12:19 -0500 weiyun-PC (29872)] INFO : Application: My Application (Development)
+[2015-12-05 23:12:19 -0500 weiyun-PC (29872)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 23:12:20 -0500 weiyun-PC (29872)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 23:12:20 -0500 weiyun-PC (29872)] INFO : Installing Net instrumentation
+[2015-12-05 23:12:20 -0500 weiyun-PC (29872)] INFO : Installing Sinatra instrumentation
+[2015-12-05 23:12:20 -0500 weiyun-PC (29872)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 23:12:20 -0500 weiyun-PC (29872)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 23:12:20 -0500 weiyun-PC (29872)] INFO : Finished instrumentation
+[2015-12-05 23:12:57 -0500 weiyun-PC (30372)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 23:12:57 -0500 weiyun-PC (30372)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 23:12:57 -0500 weiyun-PC (30372)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 23:12:57 -0500 weiyun-PC (30372)] INFO : Environment: development
+[2015-12-05 23:12:57 -0500 weiyun-PC (30372)] INFO : No known dispatcher detected.
+[2015-12-05 23:12:57 -0500 weiyun-PC (30372)] INFO : Application: My Application (Development)
+[2015-12-05 23:12:57 -0500 weiyun-PC (30372)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 23:12:57 -0500 weiyun-PC (30372)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 23:12:57 -0500 weiyun-PC (30372)] INFO : Installing Net instrumentation
+[2015-12-05 23:12:57 -0500 weiyun-PC (30372)] INFO : Installing Sinatra instrumentation
+[2015-12-05 23:12:57 -0500 weiyun-PC (30372)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 23:12:57 -0500 weiyun-PC (30372)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 23:12:57 -0500 weiyun-PC (30372)] INFO : Finished instrumentation
+[2015-12-05 23:13:31 -0500 weiyun-PC (31856)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 23:13:31 -0500 weiyun-PC (31856)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 23:13:31 -0500 weiyun-PC (31856)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 23:13:31 -0500 weiyun-PC (31856)] INFO : Environment: development
+[2015-12-05 23:13:31 -0500 weiyun-PC (31856)] INFO : No known dispatcher detected.
+[2015-12-05 23:13:31 -0500 weiyun-PC (31856)] INFO : Application: My Application (Development)
+[2015-12-05 23:13:31 -0500 weiyun-PC (31856)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 23:13:31 -0500 weiyun-PC (31856)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 23:13:31 -0500 weiyun-PC (31856)] INFO : Installing Net instrumentation
+[2015-12-05 23:13:31 -0500 weiyun-PC (31856)] INFO : Installing Sinatra instrumentation
+[2015-12-05 23:13:31 -0500 weiyun-PC (31856)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 23:13:31 -0500 weiyun-PC (31856)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 23:13:31 -0500 weiyun-PC (31856)] INFO : Finished instrumentation
+[2015-12-05 23:14:11 -0500 weiyun-PC (31216)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 23:14:11 -0500 weiyun-PC (31216)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 23:14:11 -0500 weiyun-PC (31216)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 23:14:11 -0500 weiyun-PC (31216)] INFO : Environment: development
+[2015-12-05 23:14:11 -0500 weiyun-PC (31216)] INFO : No known dispatcher detected.
+[2015-12-05 23:14:11 -0500 weiyun-PC (31216)] INFO : Application: My Application (Development)
+[2015-12-05 23:14:11 -0500 weiyun-PC (31216)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 23:14:11 -0500 weiyun-PC (31216)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 23:14:12 -0500 weiyun-PC (31216)] INFO : Installing Net instrumentation
+[2015-12-05 23:14:12 -0500 weiyun-PC (31216)] INFO : Installing Sinatra instrumentation
+[2015-12-05 23:14:12 -0500 weiyun-PC (31216)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 23:14:12 -0500 weiyun-PC (31216)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 23:14:12 -0500 weiyun-PC (31216)] INFO : Finished instrumentation
+[2015-12-05 23:16:46 -0500 weiyun-PC (23468)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 23:16:46 -0500 weiyun-PC (23468)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 23:16:46 -0500 weiyun-PC (23468)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 23:16:46 -0500 weiyun-PC (23468)] INFO : Environment: development
+[2015-12-05 23:16:46 -0500 weiyun-PC (23468)] INFO : No known dispatcher detected.
+[2015-12-05 23:16:46 -0500 weiyun-PC (23468)] INFO : Application: My Application (Development)
+[2015-12-05 23:16:46 -0500 weiyun-PC (23468)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 23:16:46 -0500 weiyun-PC (23468)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 23:16:46 -0500 weiyun-PC (23468)] INFO : Installing Net instrumentation
+[2015-12-05 23:16:46 -0500 weiyun-PC (23468)] INFO : Installing Sinatra instrumentation
+[2015-12-05 23:16:46 -0500 weiyun-PC (23468)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 23:16:46 -0500 weiyun-PC (23468)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 23:16:46 -0500 weiyun-PC (23468)] INFO : Finished instrumentation
+[2015-12-05 23:17:43 -0500 weiyun-PC (30796)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 23:17:43 -0500 weiyun-PC (30796)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 23:17:43 -0500 weiyun-PC (30796)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 23:17:43 -0500 weiyun-PC (30796)] INFO : Environment: development
+[2015-12-05 23:17:43 -0500 weiyun-PC (30796)] INFO : No known dispatcher detected.
+[2015-12-05 23:17:43 -0500 weiyun-PC (30796)] INFO : Application: My Application (Development)
+[2015-12-05 23:17:43 -0500 weiyun-PC (30796)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 23:17:43 -0500 weiyun-PC (30796)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 23:17:43 -0500 weiyun-PC (30796)] INFO : Installing Net instrumentation
+[2015-12-05 23:17:43 -0500 weiyun-PC (30796)] INFO : Installing Sinatra instrumentation
+[2015-12-05 23:17:43 -0500 weiyun-PC (30796)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 23:17:43 -0500 weiyun-PC (30796)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 23:17:43 -0500 weiyun-PC (30796)] INFO : Finished instrumentation
+[2015-12-05 23:18:12 -0500 weiyun-PC (32152)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 23:18:12 -0500 weiyun-PC (32152)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 23:18:12 -0500 weiyun-PC (32152)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 23:18:12 -0500 weiyun-PC (32152)] INFO : Environment: development
+[2015-12-05 23:18:12 -0500 weiyun-PC (32152)] INFO : No known dispatcher detected.
+[2015-12-05 23:18:12 -0500 weiyun-PC (32152)] INFO : Application: My Application (Development)
+[2015-12-05 23:18:12 -0500 weiyun-PC (32152)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 23:18:12 -0500 weiyun-PC (32152)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 23:18:12 -0500 weiyun-PC (32152)] INFO : Installing Net instrumentation
+[2015-12-05 23:18:12 -0500 weiyun-PC (32152)] INFO : Installing Sinatra instrumentation
+[2015-12-05 23:18:12 -0500 weiyun-PC (32152)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 23:18:12 -0500 weiyun-PC (32152)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 23:18:12 -0500 weiyun-PC (32152)] INFO : Finished instrumentation
+[2015-12-05 23:18:18 -0500 weiyun-PC (32152)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-05 23:18:18 -0500 weiyun-PC (32152)] INFO : Installing Redis Instrumentation
+[2015-12-05 23:18:33 -0500 weiyun-PC (32152)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-05 23:19:54 -0500 weiyun-PC (32152)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-05 23:27:32 -0500 weiyun-PC (11796)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 23:27:32 -0500 weiyun-PC (11796)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 23:27:32 -0500 weiyun-PC (11796)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 23:27:32 -0500 weiyun-PC (11796)] INFO : Environment: development
+[2015-12-05 23:27:32 -0500 weiyun-PC (11796)] INFO : No known dispatcher detected.
+[2015-12-05 23:27:32 -0500 weiyun-PC (11796)] INFO : Application: My Application (Development)
+[2015-12-05 23:27:32 -0500 weiyun-PC (11796)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 23:27:32 -0500 weiyun-PC (11796)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 23:27:32 -0500 weiyun-PC (11796)] INFO : Installing Net instrumentation
+[2015-12-05 23:27:32 -0500 weiyun-PC (11796)] INFO : Installing Sinatra instrumentation
+[2015-12-05 23:27:32 -0500 weiyun-PC (11796)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 23:27:32 -0500 weiyun-PC (11796)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 23:27:32 -0500 weiyun-PC (11796)] INFO : Finished instrumentation
+[2015-12-05 23:27:36 -0500 weiyun-PC (11796)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-05 23:27:36 -0500 weiyun-PC (11796)] INFO : Installing Redis Instrumentation
+[2015-12-05 23:27:53 -0500 weiyun-PC (11796)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-05 23:30:44 -0500 weiyun-PC (11796)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-05 23:33:00 -0500 weiyun-PC (11796)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-05 23:37:21 -0500 weiyun-PC (11796)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-05 23:38:45 -0500 weiyun-PC (30496)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 23:38:45 -0500 weiyun-PC (30496)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 23:38:45 -0500 weiyun-PC (30496)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 23:38:45 -0500 weiyun-PC (30496)] INFO : Environment: development
+[2015-12-05 23:38:45 -0500 weiyun-PC (30496)] INFO : No known dispatcher detected.
+[2015-12-05 23:38:45 -0500 weiyun-PC (30496)] INFO : Application: My Application (Development)
+[2015-12-05 23:38:45 -0500 weiyun-PC (30496)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 23:38:45 -0500 weiyun-PC (30496)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 23:38:45 -0500 weiyun-PC (30496)] INFO : Installing Net instrumentation
+[2015-12-05 23:38:45 -0500 weiyun-PC (30496)] INFO : Installing Sinatra instrumentation
+[2015-12-05 23:38:45 -0500 weiyun-PC (30496)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 23:38:45 -0500 weiyun-PC (30496)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 23:38:45 -0500 weiyun-PC (30496)] INFO : Finished instrumentation
+[2015-12-05 23:38:48 -0500 weiyun-PC (30496)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-05 23:38:48 -0500 weiyun-PC (30496)] INFO : Installing Redis Instrumentation
+[2015-12-05 23:39:06 -0500 weiyun-PC (30496)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-05 23:40:59 -0500 weiyun-PC (30496)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-05 23:46:52 -0500 weiyun-PC (30496)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-05 23:48:16 -0500 weiyun-PC (30496)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-05 23:55:20 -0500 weiyun-PC (33096)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 23:55:20 -0500 weiyun-PC (33096)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 23:55:20 -0500 weiyun-PC (33096)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 23:55:20 -0500 weiyun-PC (33096)] INFO : Environment: development
+[2015-12-05 23:55:20 -0500 weiyun-PC (33096)] INFO : No known dispatcher detected.
+[2015-12-05 23:55:20 -0500 weiyun-PC (33096)] INFO : Application: My Application (Development)
+[2015-12-05 23:55:20 -0500 weiyun-PC (33096)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 23:55:20 -0500 weiyun-PC (33096)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 23:55:20 -0500 weiyun-PC (33096)] INFO : Installing Net instrumentation
+[2015-12-05 23:55:20 -0500 weiyun-PC (33096)] INFO : Installing Sinatra instrumentation
+[2015-12-05 23:55:20 -0500 weiyun-PC (33096)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 23:55:20 -0500 weiyun-PC (33096)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 23:55:20 -0500 weiyun-PC (33096)] INFO : Finished instrumentation
+[2015-12-05 23:55:26 -0500 weiyun-PC (33096)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-05 23:55:26 -0500 weiyun-PC (33096)] INFO : Installing Redis Instrumentation
+[2015-12-05 23:55:41 -0500 weiyun-PC (33096)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-05 23:57:02 -0500 weiyun-PC (33592)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-05 23:57:02 -0500 weiyun-PC (33592)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-05 23:57:02 -0500 weiyun-PC (33592)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-05 23:57:02 -0500 weiyun-PC (33592)] INFO : Environment: development
+[2015-12-05 23:57:02 -0500 weiyun-PC (33592)] INFO : No known dispatcher detected.
+[2015-12-05 23:57:02 -0500 weiyun-PC (33592)] INFO : Application: My Application (Development)
+[2015-12-05 23:57:02 -0500 weiyun-PC (33592)] WARN : Failed to determine processor count, assuming 1
+[2015-12-05 23:57:02 -0500 weiyun-PC (33592)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-05 23:57:02 -0500 weiyun-PC (33592)] INFO : Installing Net instrumentation
+[2015-12-05 23:57:02 -0500 weiyun-PC (33592)] INFO : Installing Sinatra instrumentation
+[2015-12-05 23:57:02 -0500 weiyun-PC (33592)] INFO : Installing deferred Rack instrumentation
+[2015-12-05 23:57:02 -0500 weiyun-PC (33592)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-05 23:57:02 -0500 weiyun-PC (33592)] INFO : Finished instrumentation
+[2015-12-05 23:57:06 -0500 weiyun-PC (33592)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-05 23:57:06 -0500 weiyun-PC (33592)] INFO : Installing Redis Instrumentation
+[2015-12-05 23:57:24 -0500 weiyun-PC (33592)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-05 23:57:57 -0500 weiyun-PC (33592)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-06 00:08:38 -0500 weiyun-PC (26724)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-06 00:08:38 -0500 weiyun-PC (26724)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-06 00:08:38 -0500 weiyun-PC (26724)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-06 00:08:38 -0500 weiyun-PC (26724)] INFO : Environment: development
+[2015-12-06 00:08:38 -0500 weiyun-PC (26724)] INFO : No known dispatcher detected.
+[2015-12-06 00:08:38 -0500 weiyun-PC (26724)] INFO : Application: My Application (Development)
+[2015-12-06 00:08:38 -0500 weiyun-PC (26724)] WARN : Failed to determine processor count, assuming 1
+[2015-12-06 00:08:38 -0500 weiyun-PC (26724)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-06 00:08:38 -0500 weiyun-PC (26724)] INFO : Installing Net instrumentation
+[2015-12-06 00:08:38 -0500 weiyun-PC (26724)] INFO : Installing Sinatra instrumentation
+[2015-12-06 00:08:38 -0500 weiyun-PC (26724)] INFO : Installing deferred Rack instrumentation
+[2015-12-06 00:08:38 -0500 weiyun-PC (26724)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-06 00:08:38 -0500 weiyun-PC (26724)] INFO : Finished instrumentation
+[2015-12-06 00:08:42 -0500 weiyun-PC (26724)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-06 00:08:42 -0500 weiyun-PC (26724)] INFO : Installing Redis Instrumentation
+[2015-12-06 00:08:59 -0500 weiyun-PC (26724)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-06 00:10:48 -0500 weiyun-PC (26724)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-06 00:11:09 -0500 weiyun-PC (26724)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-06 00:12:10 -0500 weiyun-PC (26724)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.

@@ -57,11 +57,10 @@ end
 
 NanoTwitter.get '/api/v1/tweets/recent/:number' do
   tweets = Tweet.all
-  tweets=tweets.order(create_time: :desc)
   count = params[:number].to_i
-  tweets_return = tweets[0...count]
+  tweets=tweets.order(create_time: :desc).limit(count)
   if tweets
-    tweets_return.to_json
+    tweets.to_json
   else
     error 404, {:error => "no tweets founds"}.to_json
   end
@@ -222,6 +221,19 @@ NanoTwitter.get '/api/v1/followings' do
   end
 end
 
+NanoTwitter.get '/api/v1/search' do
+  if params[:terms]
+    result = Tweet.search(params[:terms])
+    if params[:limit]
+      result = result[0..params[:limit].to_i-1]
+    end
+    result.to_json
+  else
+    error 404, {:error => "please check your input search terms"}.to_json
+  end
+end
+
+=begin
 # params: userid, username, oneterm, terms, recent, limit
 NanoTwitter.get '/api/v1/search' do
   if params[:username] || params[:userid]
@@ -275,3 +287,4 @@ def search_one(term,user)
   sorted_result = result.sort_by { |s| -s[:count] }
   return sorted_result
 end
+=end

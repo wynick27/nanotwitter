@@ -74,10 +74,10 @@
           <img data-src="holder.js/100%x90" alt="100%x90" src="/pito.jpg" data-holder-rendered="true" style="height: 90px; display: block;">
         </a>
         </li>
-        <li><a href="<%="/user/#{@user.name}"%>">Tweets<span class="badge"><%= @user.tweets.count%></span></a>
-      <a href="<%="/user/#{@user.name}/following"%>">Following<span class="badge"><%= @user.followed_users.count%></span></a>
-      <a href="<%="/user/#{@user.name}/followers"%>">Followers<span class="badge"><%= @user.followers.count%></span></a>
-	  <a href="<%="/user/#{@user.name}/favourites"%>">Favourites<span class="badge"><%= @user.favourites.count%></span></a>
+        <li><a href="<%="/user/#{@user.name}"%>">Tweets<span class="badge"><%= @user.tweets_count%></span></a>
+      <a href="<%="/user/#{@user.name}/following"%>">Following<span class="badge"><%= @user.followed_users_count%></span></a>
+      <a href="<%="/user/#{@user.name}/followers"%>">Followers<span class="badge"><%= @user.followers_count%></span></a>
+	  <a href="<%="/user/#{@user.name}/favourites"%>">Favourites<span class="badge"><%= @user.favourites_count%></span></a>
     </li>
       </ul>
     </nav>

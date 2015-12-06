@@ -58,13 +58,27 @@
   end
 
   #if user logged in return its tweets otherwise return all recent tweets of the site
+  
+  NanoTwitter.get '/user/:username/timeline/?' do
+    @user=User.find_by name: params['username']
+    if @user
+      @curuser=get_cur_user
+      @tweets=Tweet.user_tweets(@user)
+      erb :master, :layout=> :header do
+        erb :user ,locals:{content:0}
+      end
+    else
+      "Can't find user"
+    end
+  end
+  
   NanoTwitter.get '/user/:username/?' do
     @user=User.find_by name: params['username']
     if @user
       @curuser=get_cur_user
       @tweets=Tweet.user_tweets(@user)
       erb :master, :layout=> :header do
-        erb :user ,locals:{reply:false}
+        erb :user ,locals:{content:2}
       end
     else
       "Can't find user"
@@ -77,7 +91,7 @@
       @curuser=get_cur_user
       @tweets=Tweet.user_tweets_with_replies(@user)
       erb :master, :layout=> :header do
-        erb :user,locals:{reply:true}
+        erb :user,locals:{content:1}
       end
     else
       "Can't find user"
