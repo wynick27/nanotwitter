@@ -29,7 +29,12 @@
    <script src="/js/moment.js"></script>
    <script>
    function interpretDate(id, time){
-      $('#moment' + id).html(moment(new Date(time)).format('MMMM Do YYYY, h:mm:ss a'));
+      var create_time = new Date(time);
+      if (moment(create_time).diff(moment(), 'days') <=  -1){
+        $('#moment' + id).html(moment(create_time).format('MMMM Do YYYY, h:mm:ss a'));
+      } else {
+        $('#moment' + id).html(moment.duration(moment(create_time).diff(moment())).humanize(true));
+      }
     }
   </script>
 
