@@ -47,16 +47,12 @@ require './utils/seed_generator'
     Retweet.delete_all
     Conversation.delete_all
     ChatGroup.delete_all
-    settings.redis.flushdb
-    testuser=User.create name: 'testuser',display_name:'Test User',password:'',email:'test@example.com',create_time:Time.now
-    testuser.save
     "Done"
   end
   #test interface
   NanoTwitter.get '/test/reset/testuser' do
     
     testuser=User.find_by name: 'testuser'
-    settings.redis.flushdb
     if !testuser.nil?
       ActiveRecord::Base.transaction do 
         testuser.tweets.destroy_all
@@ -65,7 +61,6 @@ require './utils/seed_generator'
       end
     else
       testuser=User.create name: 'testuser',display_name:'Test User',password:'',email:'test@example.com',create_time:Time.now
-      testuser.save
     end
     testuser.to_json
   end

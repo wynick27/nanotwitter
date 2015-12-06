@@ -3,7 +3,7 @@ class Tweet < ActiveRecord::Base
 	has_many :favourites
 	has_many :hashtags
   has_many :retweets
-	belongs_to :user, counter_cache: :tweets_count
+	belongs_to :user
   
   def self.parse_tweet(text)
   

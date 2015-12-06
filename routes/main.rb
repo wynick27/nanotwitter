@@ -58,27 +58,13 @@
   end
 
   #if user logged in return its tweets otherwise return all recent tweets of the site
-  
-  NanoTwitter.get '/user/:username/timeline/?' do
-    @user=User.find_by name: params['username']
-    if @user
-      @curuser=get_cur_user
-      @tweets=Tweet.user_tweets(@user)
-      erb :master, :layout=> :header do
-        erb :user ,locals:{content:0}
-      end
-    else
-      "Can't find user"
-    end
-  end
-  
   NanoTwitter.get '/user/:username/?' do
     @user=User.find_by name: params['username']
     if @user
       @curuser=get_cur_user
       @tweets=Tweet.user_tweets(@user)
       erb :master, :layout=> :header do
-        erb :user ,locals:{content:2}
+        erb :user ,locals:{reply:false}
       end
     else
       "Can't find user"
@@ -91,7 +77,7 @@
       @curuser=get_cur_user
       @tweets=Tweet.user_tweets_with_replies(@user)
       erb :master, :layout=> :header do
-        erb :user,locals:{content:1}
+        erb :user,locals:{reply:true}
       end
     else
       "Can't find user"
@@ -165,7 +151,6 @@
         @curuser.update(param=>params[param])
       end
     end
-    binding.pry
     if params['oldpwd']==@curuser.password  then
       @curuser.password=params['newpwd']
     end

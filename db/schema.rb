@@ -36,9 +36,6 @@ ActiveRecord::Schema.define(version: 20151102174025) do
     t.integer "follower_id"
   end
 
-  add_index "follows", ["follower_id"], name: "index_follows_on_follower_id", using: :btree
-  add_index "follows", ["user_id"], name: "index_follows_on_user_id", using: :btree
-
   create_table "hash_tags", force: :cascade do |t|
     t.string  "name"
     t.integer "tweet_id"
@@ -71,7 +68,6 @@ ActiveRecord::Schema.define(version: 20151102174025) do
 
   add_index "tweets", ["conversation_root"], name: "index_tweets_on_conversation_root", using: :btree
   add_index "tweets", ["create_time"], name: "index_tweets_on_create_time", using: :btree
-  add_index "tweets", ["user_id"], name: "index_tweets_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -81,10 +77,6 @@ ActiveRecord::Schema.define(version: 20151102174025) do
     t.text     "bio"
     t.date     "birthday"
     t.datetime "create_time"
-    t.integer  "tweets_count",         default: 0
-    t.integer  "favourites_count",     default: 0
-    t.integer  "followers_count",      default: 0
-    t.integer  "followed_users_count", default: 0
   end
 
 end
