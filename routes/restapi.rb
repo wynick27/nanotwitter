@@ -57,11 +57,10 @@ end
 
 NanoTwitter.get '/api/v1/tweets/recent/:number' do
   tweets = Tweet.all
-  tweets=tweets.order(create_time: :desc)
   count = params[:number].to_i
-  tweets_return = tweets[0...count]
+  tweets=tweets.order(create_time: :desc).limit(count)
   if tweets
-    tweets_return.to_json
+    tweets.to_json
   else
     error 404, {:error => "no tweets founds"}.to_json
   end
@@ -265,7 +264,7 @@ NanoTwitter.get '/api/v1/search' do
     error 404, {:error => "user not found"}.to_json
   end
 end
-=end
+
 
 ################ methods are here ################
 def search_one(term,user)
@@ -288,3 +287,4 @@ def search_one(term,user)
   sorted_result = result.sort_by { |s| -s[:count] }
   return sorted_result
 end
+=end

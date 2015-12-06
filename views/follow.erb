@@ -1,5 +1,5 @@
 <% if @curuser && @curuser.id != user.id %>
-<% if @curuser.followed_users.find_by(:id=>user.id) %>
+<% if @curuser.followed_users.find { |u| u.id ==user.id } %>
 <button data-user-name="<%=user.name%>" class="btn btn-sm btn-info unfollow-btn">Unfollow</button>
 <%else%>
 <button data-user-name="<%=user.name%>" class="btn btn-sm btn-info follow-btn">Follow</button>
