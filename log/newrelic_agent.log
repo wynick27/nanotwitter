@@ -608,3 +608,18 @@
 [2015-12-06 00:10:48 -0500 weiyun-PC (26724)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
 [2015-12-06 00:11:09 -0500 weiyun-PC (26724)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
 [2015-12-06 00:12:10 -0500 weiyun-PC (26724)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-06 01:54:37 -0500 lizhongqideMacBook-Pro.local (20399)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-06 01:54:37 -0500 lizhongqideMacBook-Pro.local (20399)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-06 01:54:37 -0500 lizhongqideMacBook-Pro.local (20399)] INFO : Reading configuration from config/newrelic.yml (/Users/lizhongqi/Dropbox/cosi105b_zhongqili/nanotwitter)
+[2015-12-06 01:54:37 -0500 lizhongqideMacBook-Pro.local (20399)] INFO : Environment: development
+[2015-12-06 01:54:37 -0500 lizhongqideMacBook-Pro.local (20399)] INFO : No known dispatcher detected.
+[2015-12-06 01:54:37 -0500 lizhongqideMacBook-Pro.local (20399)] INFO : Application: My Application (Development)
+[2015-12-06 01:54:37 -0500 lizhongqideMacBook-Pro.local (20399)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-06 01:54:37 -0500 lizhongqideMacBook-Pro.local (20399)] INFO : Installing Net instrumentation
+[2015-12-06 01:54:37 -0500 lizhongqideMacBook-Pro.local (20399)] INFO : Installing Sinatra instrumentation
+[2015-12-06 01:54:37 -0500 lizhongqideMacBook-Pro.local (20399)] INFO : Installing deferred Rack instrumentation
+[2015-12-06 01:54:37 -0500 lizhongqideMacBook-Pro.local (20399)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-06 01:54:37 -0500 lizhongqideMacBook-Pro.local (20399)] INFO : Finished instrumentation
+[2015-12-06 01:54:38 -0500 lizhongqideMacBook-Pro.local (20399)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-06 01:54:39 -0500 lizhongqideMacBook-Pro.local (20399)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-06 01:54:39 -0500 lizhongqideMacBook-Pro.local (20399)] INFO : Installing Redis Instrumentation
