@@ -222,6 +222,19 @@ NanoTwitter.get '/api/v1/followings' do
   end
 end
 
+NanoTwitter.get '/api/v1/search' do
+  if params[:terms]
+    result = Tweet.search(params[:terms])
+    if params[:limit]
+      result = result[0..params[:limit].to_i-1]
+    end
+    result.to_json
+  else
+    error 404, {:error => "please check your input search terms"}.to_json
+  end
+end
+
+=begin
 # params: userid, username, oneterm, terms, recent, limit
 NanoTwitter.get '/api/v1/search' do
   if params[:username] || params[:userid]
@@ -252,7 +265,7 @@ NanoTwitter.get '/api/v1/search' do
     error 404, {:error => "user not found"}.to_json
   end
 end
-
+=end
 
 ################ methods are here ################
 def search_one(term,user)
