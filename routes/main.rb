@@ -151,7 +151,6 @@
         @curuser.update(param=>params[param])
       end
     end
-    binding.pry
     if params['oldpwd']==@curuser.password  then
       @curuser.password=params['newpwd']
     end
