@@ -26,6 +26,13 @@
    <script src="/js/bootstrap3-typeahead.js" type="text/javascript"></script>
    <script src="/js/formValidation.min.js"></script>
    <script src="/js/framework/bootstrap.min.js"></script>
+   <script src="/js/moment.js"></script>
+   <script>
+   function interpretDate(id, time){
+      $('#moment' + id).html(moment(new Date(time)).format('MMMM Do YYYY, h:mm:ss a'));
+    }
+  </script>
+
    <style>
   /* Note: Try to remove the following lines to see the effect of CSS positioning */
      #navbar.affix {

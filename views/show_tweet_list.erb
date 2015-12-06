@@ -3,14 +3,11 @@
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 		  	<% tweets.each do |tweet| %>
 			<%=(tweet.is_a? String) ? tweet : (erb :show_tweet,:locals=>{:tweet=>tweet}) %>
-
+			<script> interpretDate('<%=tweet.id%>', '<%=tweet.create_time%>');</script>
 		  <% end %>
 		</div>
 	</div>
-
-
 	<script>
-
 	$(document).ready(function(){
 	$(".new-reply-btn").on("click",function() {
 		var element=$('.descendant-list',$(this).parents('.tweet-panel'))
