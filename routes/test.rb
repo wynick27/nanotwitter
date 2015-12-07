@@ -35,6 +35,11 @@ require './utils/seed_generator'
     testuser_following:testuser ? testuser.followed_users.count : 0,
     testuser_tweets:testuser ? testuser.tweets.count : 0}.to_json
   end
+  
+  NanoTwitter.get '/test/reset/redis' do
+  
+    settings.redis.flushdb
+  end
 
   NanoTwitter.get '/test/reset/all' do
     
