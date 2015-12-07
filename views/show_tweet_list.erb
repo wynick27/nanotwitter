@@ -1,6 +1,6 @@
 	<div class="container-fluid" style="height:1000px">
 
-		<div class="panel-group" id="accordion" role="tablist" data-post-url="<%=@post_url%>" aria-multiselectable="true">
+		<div class="panel-group" id="accordion" role="tablist" <%=@post_url && 'data-post-url="' + @post_url + '"' %> aria-multiselectable="true">
 		  	<% tweets.each do |tweet| %>
 			<%=(tweet.is_a? String) ? tweet : (erb :show_tweet,:locals=>{:tweet=>tweet}) %>
 		  <% end %>
@@ -9,33 +9,37 @@
 	<script>
 	var cur_tweet_num = 0;
 	var hasmore = true;
-	var TRIGGER_DISTANCE = 50;
+	var TRIGGER_DISTANCE = 10;
 
 	$(document).ready(function(){
-		if(hasmore) {
+		
 			$( window ).scroll(function() {
-				var scrollPosition = window.pageYOffset;
-				var windowSize     = window.innerHeight;
-				var bodyHeight     = document.body.offsetHeight;
-				var dist = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
+			if(hasmore) {
+				var dist = $(document).height() - $(window).scrollTop() - $(window).height();
+				console.log($(document).height());
+				console.log($(window).scrollTop() + $(window).height());
 				if (dist < TRIGGER_DISTANCE){
+				        hasmore = false;
 						loadmore($('#accordion').attr('data-post-url'));
 				}
+			}
 			});
-		}
+		
 
 		function loadmore(url){
 			$.post(url, {offset: cur_tweet_num, limit: 50}, function(data){
 				if(data.has_more){
-					$('#accordion').append(data);
+				    cur_tweet_num += data.count;
+					$('#accordion').append(data.html);
 					$('.moment').each(function(i, obj){
 						interpretDate(obj);
-						cur_tweet_num += 1;
+						
 					});
+					hasmore=true;
 				} else {
 					hasmore = false;
 				}
-			});
+			},"json");
 		}
 
 		$('.moment').each(function(i, obj){

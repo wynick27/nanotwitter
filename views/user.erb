@@ -10,7 +10,7 @@
 	</ul>
 	<div class="tab-content">
 		<div id="timeline" class="tab-pane fade in active">
-			<%= erb :show_tweet_list,:locals=>{:tweets=>Tweet.user_timeline(@user)} %>
+			<%= erb :show_tweet_list,:locals=>{:tweets=>@tweets} %>
 		</div>
 	</div>
 	<% elsif content==1 %>
@@ -22,7 +22,7 @@
 	</ul>
 	<div class="tab-content">
 		<div id="tweets-replies" class="tab-pane fade in active">
-			<%= erb :show_tweet_list,:locals=>{:tweets=>Tweet.user_tweets_with_replies(@user)} %>
+			<%= erb :show_tweet_list,:locals=>{:tweets=>@tweets} %>
 		</div>
 	</div>
 	<% else %>
@@ -34,7 +34,7 @@
 	</ul>
 	<div class="tab-content">
 		<div id="tweets" class="tab-pane fade in active">
-			<%= erb :show_tweet_list,:locals=>{:tweets=>Tweet.user_tweets(@user)} %>
+			<%= erb :show_tweet_list,:locals=>{:tweets=>@tweets} %>
 		</div>
 	</div>
 	<% end %>

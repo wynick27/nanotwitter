@@ -72,10 +72,22 @@
     @user=User.find_by name: params['username']
     if @user
       @curuser=get_cur_user
-      @tweets=Tweet.user_tweets(@user)
+      @tweets=Tweet.user_timeline(@user).limit(50)
       erb :master, :layout=> :header do
         erb :user ,locals:{content:0}
       end
+    else
+      "Can't find user"
+    end
+  end
+  
+  NanoTwitter.post '/user/:username/timeline' do
+    @post_url="/user/#{params[:username]}/timeline"
+    @user=User.find_by name: params['username']
+    if @user
+      @curuser=get_cur_user
+      @tweets=Tweet.user_timeline(@user).limit(params[:limit].to_i).offset(params[:offset].to_i)
+      {html:erb(:raw_tweet_list),has_more:@tweets.count==params[:limit].to_i,count:@tweets.count}.to_json
     else
       "Can't find user"
     end
@@ -85,10 +97,22 @@
     @user=User.find_by name: params['username']
     if @user
       @curuser=get_cur_user
-      @tweets=Tweet.user_tweets(@user)
+      @tweets=Tweet.user_tweets(@user).limit(50)
       erb :master, :layout=> :header do
         erb :user ,locals:{content:2}
       end
+    else
+      "Can't find user"
+    end
+  end
+  
+  NanoTwitter.post '/user/:username' do
+    @post_url="/user/#{params[:username]}"
+    @user=User.find_by name: params['username']
+    if @user
+      @curuser=get_cur_user
+      @tweets=Tweet.user_tweets(@user).limit(params[:limit].to_i).offset(params[:offset].to_i)
+      {html:erb(:raw_tweet_list),has_more:@tweets.count==params[:limit].to_i,count:@tweets.count}.to_json
     else
       "Can't find user"
     end
@@ -98,10 +122,22 @@
     @user=User.find_by name: params['username']
     if @user
       @curuser=get_cur_user
-      @tweets=Tweet.user_tweets_with_replies(@user)
+      @tweets=Tweet.user_tweets_with_replies(@user).limit(50)
       erb :master, :layout=> :header do
         erb :user,locals:{content:1}
       end
+    else
+      "Can't find user"
+    end
+  end
+  
+  NanoTwitter.post '/user/:username/with_replies' do
+    @post_url="/user/#{params[:username]}/with_replies"
+    @user=User.find_by name: params['username']
+    if @user
+      @curuser=get_cur_user
+      @tweets=Tweet.user_tweets_with_replies(@user).limit(params[:limit].to_i).offset(params[:offset].to_i)
+      {html:erb(:raw_tweet_list),has_more:@tweets.count==params[:limit].to_i,count:@tweets.count}.to_json
     else
       "Can't find user"
     end
