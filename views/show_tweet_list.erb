@@ -1,6 +1,6 @@
 	<div class="container-fluid" style="height:1000px">
 
-		<div class="panel-group" id="accordion" role="tablist" data-post-url="<%=@post_url%>" aria-multiselectable="true">
+		<div class="panel-group" id="accordion" role="tablist" <%=@post_url && 'data-post-url="' + @post_url + '"' %> aria-multiselectable="true">
 		  	<% tweets.each do |tweet| %>
 			<%=(tweet.is_a? String) ? tweet : (erb :show_tweet,:locals=>{:tweet=>tweet}) %>
 		  <% end %>
@@ -35,7 +35,7 @@
 				} else {
 					hasmore = false;
 				}
-			});
+			},"json");
 		}
 
 		$('.moment').each(function(i, obj){
