@@ -1,14 +1,14 @@
 <div class="container-fluid">
 <header><h1>Settings</h1></header>
 <div id="img-uploader"></div>
-<form action="/settings" method="POST" class="form-horizontal">
+<form action="/settings" method="POST" class="form-horizontal" enctype='multipart/form-data'>
     <div class="form-group text-center">
-        <img id="profile-pic" src="http://placehold.it/90x90" alt="your image" width="90" height="90"/>
+        <img id="profile-pic" src="/static/user_avatars/<=%@curuser.name%>.jpg" alt="your image" width="90" height="90"/>
     </div>
     <div class="form-group text-center">
         <div class="file-upload btn btn-success btn-small">
             <span>Upload</span>
-        <input type='file' class="upload" onchange="readURL(this);" accept="image/*">
+        <input type='file' name='avatar' class="upload" onchange="readURL(this);" accept="image/*">
         </div>
     </div>
     <div class="form-group">

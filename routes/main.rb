@@ -160,12 +160,17 @@
 
   NanoTwitter.post '/settings' do
     @curuser=get_cur_user
+    if params['avatar'] then
+    File.open("static/user_avatars/#{@curuser.name}.jpg", "wb") do |f|
+      f.write(params['avatar'][:tempfile].read)
+    end
+
+    end
     [:display_name,:email,:bio].each do |param|
       if params[param] then
         @curuser.update(param=>params[param])
       end
     end
-    binding.pry
     if params['oldpwd']==@curuser.password  then
       @curuser.password=params['newpwd']
     end

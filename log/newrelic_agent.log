@@ -608,3 +608,158 @@
 [2015-12-06 00:10:48 -0500 weiyun-PC (26724)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
 [2015-12-06 00:11:09 -0500 weiyun-PC (26724)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
 [2015-12-06 00:12:10 -0500 weiyun-PC (26724)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
+[2015-12-06 00:30:21 -0500 weiyun-PC (35616)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-06 00:30:21 -0500 weiyun-PC (35616)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-06 00:30:21 -0500 weiyun-PC (35616)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-06 00:30:21 -0500 weiyun-PC (35616)] INFO : Environment: development
+[2015-12-06 00:30:21 -0500 weiyun-PC (35616)] INFO : No known dispatcher detected.
+[2015-12-06 00:30:21 -0500 weiyun-PC (35616)] INFO : Application: My Application (Development)
+[2015-12-06 00:30:21 -0500 weiyun-PC (35616)] WARN : Failed to determine processor count, assuming 1
+[2015-12-06 00:30:21 -0500 weiyun-PC (35616)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-06 00:30:21 -0500 weiyun-PC (35616)] INFO : Installing Net instrumentation
+[2015-12-06 00:30:21 -0500 weiyun-PC (35616)] INFO : Installing Sinatra instrumentation
+[2015-12-06 00:30:21 -0500 weiyun-PC (35616)] INFO : Installing deferred Rack instrumentation
+[2015-12-06 00:30:21 -0500 weiyun-PC (35616)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-06 00:30:21 -0500 weiyun-PC (35616)] INFO : Finished instrumentation
+[2015-12-06 00:30:28 -0500 weiyun-PC (35616)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-06 00:30:28 -0500 weiyun-PC (35616)] INFO : Installing Redis Instrumentation
+[2015-12-06 00:30:43 -0500 weiyun-PC (35616)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-06 00:45:21 -0500 weiyun-PC (35920)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-06 00:45:21 -0500 weiyun-PC (35920)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-06 00:45:21 -0500 weiyun-PC (35920)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-06 00:45:21 -0500 weiyun-PC (35920)] INFO : Environment: development
+[2015-12-06 00:45:21 -0500 weiyun-PC (35920)] INFO : No known dispatcher detected.
+[2015-12-06 00:45:21 -0500 weiyun-PC (35920)] INFO : Application: My Application (Development)
+[2015-12-06 00:45:21 -0500 weiyun-PC (35920)] WARN : Failed to determine processor count, assuming 1
+[2015-12-06 00:45:21 -0500 weiyun-PC (35920)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-06 00:45:21 -0500 weiyun-PC (35920)] INFO : Installing Net instrumentation
+[2015-12-06 00:45:21 -0500 weiyun-PC (35920)] INFO : Installing Sinatra instrumentation
+[2015-12-06 00:45:21 -0500 weiyun-PC (35920)] INFO : Installing deferred Rack instrumentation
+[2015-12-06 00:45:21 -0500 weiyun-PC (35920)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-06 00:45:21 -0500 weiyun-PC (35920)] INFO : Finished instrumentation
+[2015-12-06 01:13:08 -0500 weiyun-PC (38784)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-06 01:13:08 -0500 weiyun-PC (38784)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-06 01:13:08 -0500 weiyun-PC (38784)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-06 01:13:08 -0500 weiyun-PC (38784)] INFO : Environment: development
+[2015-12-06 01:13:08 -0500 weiyun-PC (38784)] INFO : No known dispatcher detected.
+[2015-12-06 01:13:08 -0500 weiyun-PC (38784)] INFO : Application: My Application (Development)
+[2015-12-06 01:13:08 -0500 weiyun-PC (38784)] WARN : Failed to determine processor count, assuming 1
+[2015-12-06 01:13:08 -0500 weiyun-PC (38784)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-06 01:13:08 -0500 weiyun-PC (38784)] INFO : Installing Net instrumentation
+[2015-12-06 01:13:08 -0500 weiyun-PC (38784)] INFO : Installing Sinatra instrumentation
+[2015-12-06 01:13:08 -0500 weiyun-PC (38784)] INFO : Installing deferred Rack instrumentation
+[2015-12-06 01:13:08 -0500 weiyun-PC (38784)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-06 01:13:08 -0500 weiyun-PC (38784)] INFO : Finished instrumentation
+[2015-12-06 01:13:11 -0500 weiyun-PC (38784)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-06 01:13:11 -0500 weiyun-PC (38784)] INFO : Installing Redis Instrumentation
+[2015-12-06 01:21:00 -0500 weiyun-PC (38784)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-06 01:36:37 -0500 weiyun-PC (36316)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-06 01:36:37 -0500 weiyun-PC (36316)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-06 01:36:37 -0500 weiyun-PC (36316)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-06 01:36:37 -0500 weiyun-PC (36316)] INFO : Environment: development
+[2015-12-06 01:36:37 -0500 weiyun-PC (36316)] INFO : No known dispatcher detected.
+[2015-12-06 01:36:37 -0500 weiyun-PC (36316)] INFO : Application: My Application (Development)
+[2015-12-06 01:36:37 -0500 weiyun-PC (36316)] WARN : Failed to determine processor count, assuming 1
+[2015-12-06 01:36:37 -0500 weiyun-PC (36316)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-06 01:36:37 -0500 weiyun-PC (36316)] INFO : Installing Net instrumentation
+[2015-12-06 01:36:37 -0500 weiyun-PC (36316)] INFO : Installing Sinatra instrumentation
+[2015-12-06 01:36:37 -0500 weiyun-PC (36316)] INFO : Installing deferred Rack instrumentation
+[2015-12-06 01:36:37 -0500 weiyun-PC (36316)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-06 01:36:37 -0500 weiyun-PC (36316)] INFO : Finished instrumentation
+[2015-12-06 01:36:39 -0500 weiyun-PC (36316)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-06 01:36:39 -0500 weiyun-PC (36316)] INFO : Installing Redis Instrumentation
+[2015-12-06 01:36:58 -0500 weiyun-PC (36316)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-06 01:38:38 -0500 weiyun-PC (37368)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-06 01:38:38 -0500 weiyun-PC (37368)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-06 01:38:38 -0500 weiyun-PC (37368)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-06 01:38:38 -0500 weiyun-PC (37368)] INFO : Environment: development
+[2015-12-06 01:38:38 -0500 weiyun-PC (37368)] INFO : No known dispatcher detected.
+[2015-12-06 01:38:38 -0500 weiyun-PC (37368)] INFO : Application: My Application (Development)
+[2015-12-06 01:38:38 -0500 weiyun-PC (37368)] WARN : Failed to determine processor count, assuming 1
+[2015-12-06 01:38:38 -0500 weiyun-PC (37368)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-06 01:38:38 -0500 weiyun-PC (37368)] INFO : Installing Net instrumentation
+[2015-12-06 01:38:38 -0500 weiyun-PC (37368)] INFO : Installing Sinatra instrumentation
+[2015-12-06 01:38:38 -0500 weiyun-PC (37368)] INFO : Installing deferred Rack instrumentation
+[2015-12-06 01:38:38 -0500 weiyun-PC (37368)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-06 01:38:38 -0500 weiyun-PC (37368)] INFO : Finished instrumentation
+[2015-12-06 01:38:39 -0500 weiyun-PC (37368)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-06 01:38:39 -0500 weiyun-PC (37368)] INFO : Installing Redis Instrumentation
+[2015-12-06 01:38:59 -0500 weiyun-PC (37368)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-06 01:51:44 -0500 weiyun-PC (39088)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-06 01:51:44 -0500 weiyun-PC (39088)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-06 01:51:44 -0500 weiyun-PC (39088)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-06 01:51:44 -0500 weiyun-PC (39088)] INFO : Environment: development
+[2015-12-06 01:51:44 -0500 weiyun-PC (39088)] INFO : No known dispatcher detected.
+[2015-12-06 01:51:44 -0500 weiyun-PC (39088)] INFO : Application: My Application (Development)
+[2015-12-06 01:51:44 -0500 weiyun-PC (39088)] WARN : Failed to determine processor count, assuming 1
+[2015-12-06 01:51:44 -0500 weiyun-PC (39088)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-06 01:51:44 -0500 weiyun-PC (39088)] INFO : Installing Net instrumentation
+[2015-12-06 01:51:44 -0500 weiyun-PC (39088)] INFO : Installing Sinatra instrumentation
+[2015-12-06 01:51:44 -0500 weiyun-PC (39088)] INFO : Installing deferred Rack instrumentation
+[2015-12-06 01:51:44 -0500 weiyun-PC (39088)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-06 01:51:44 -0500 weiyun-PC (39088)] INFO : Finished instrumentation
+[2015-12-06 01:51:58 -0500 weiyun-PC (39088)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-06 01:51:58 -0500 weiyun-PC (39088)] INFO : Installing Redis Instrumentation
+[2015-12-06 01:52:05 -0500 weiyun-PC (39088)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-06 01:53:35 -0500 weiyun-PC (39296)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-06 01:53:35 -0500 weiyun-PC (39296)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-06 01:53:35 -0500 weiyun-PC (39296)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-06 01:53:35 -0500 weiyun-PC (39296)] INFO : Environment: development
+[2015-12-06 01:53:35 -0500 weiyun-PC (39296)] INFO : No known dispatcher detected.
+[2015-12-06 01:53:35 -0500 weiyun-PC (39296)] INFO : Application: My Application (Development)
+[2015-12-06 01:53:35 -0500 weiyun-PC (39296)] WARN : Failed to determine processor count, assuming 1
+[2015-12-06 01:53:35 -0500 weiyun-PC (39296)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-06 01:53:35 -0500 weiyun-PC (39296)] INFO : Installing Net instrumentation
+[2015-12-06 01:53:35 -0500 weiyun-PC (39296)] INFO : Installing Sinatra instrumentation
+[2015-12-06 01:53:35 -0500 weiyun-PC (39296)] INFO : Installing deferred Rack instrumentation
+[2015-12-06 01:53:35 -0500 weiyun-PC (39296)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-06 01:53:35 -0500 weiyun-PC (39296)] INFO : Finished instrumentation
+[2015-12-06 01:53:39 -0500 weiyun-PC (39296)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-06 01:53:39 -0500 weiyun-PC (39296)] INFO : Installing Redis Instrumentation
+[2015-12-06 01:53:56 -0500 weiyun-PC (39296)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-06 01:56:26 -0500 weiyun-PC (39092)] INFO : Starting the New Relic agent in "development" environment.
+[2015-12-06 01:56:26 -0500 weiyun-PC (39092)] INFO : To prevent agent startup add a NEWRELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2015-12-06 01:56:26 -0500 weiyun-PC (39092)] INFO : Reading configuration from config/newrelic.yml (C:/Users/yun/Dropbox/cosi105b_weiyun/nanotwitter)
+[2015-12-06 01:56:26 -0500 weiyun-PC (39092)] INFO : Environment: development
+[2015-12-06 01:56:26 -0500 weiyun-PC (39092)] INFO : No known dispatcher detected.
+[2015-12-06 01:56:26 -0500 weiyun-PC (39092)] INFO : Application: My Application (Development)
+[2015-12-06 01:56:26 -0500 weiyun-PC (39092)] WARN : Failed to determine processor count, assuming 1
+[2015-12-06 01:56:26 -0500 weiyun-PC (39092)] INFO : Installing ActiveRecord 4 instrumentation
+[2015-12-06 01:56:26 -0500 weiyun-PC (39092)] INFO : Installing Net instrumentation
+[2015-12-06 01:56:26 -0500 weiyun-PC (39092)] INFO : Installing Sinatra instrumentation
+[2015-12-06 01:56:26 -0500 weiyun-PC (39092)] INFO : Installing deferred Rack instrumentation
+[2015-12-06 01:56:26 -0500 weiyun-PC (39092)] INFO : Installing Rack::Builder middleware instrumentation
+[2015-12-06 01:56:26 -0500 weiyun-PC (39092)] INFO : Finished instrumentation
+[2015-12-06 01:56:33 -0500 weiyun-PC (39092)] INFO : Doing deferred dependency-detection before Rack startup
+[2015-12-06 01:56:33 -0500 weiyun-PC (39092)] INFO : Installing Redis Instrumentation
+[2015-12-06 01:56:47 -0500 weiyun-PC (39092)] INFO : Reporting to: https://rpm.newrelic.com/accounts/1150700/applications/11516352
+[2015-12-06 04:41:46 -0500 weiyun-PC (39092)] ERROR : 1 error(s) running task for event 'report_event_data' in Agent Event Loop:
+[2015-12-06 04:41:46 -0500 weiyun-PC (39092)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error connecting to collector-172.newrelic.com:443 after 0.000499 seconds: getaddrinfo: No such host is known. 
+[2015-12-06 11:40:34 -0500 weiyun-PC (39092)] ERROR : 1 error(s) running task for event 'report_event_data' in Agent Event Loop:
+[2015-12-06 11:40:34 -0500 weiyun-PC (39092)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error connecting to collector-172.newrelic.com:443 after 0.002502 seconds: getaddrinfo: No such host is known. 
+[2015-12-06 11:43:29 -0500 weiyun-PC (39092)] ERROR : 1 error(s) running task for event 'report_data' in Agent Event Loop:
+[2015-12-06 11:43:29 -0500 weiyun-PC (39092)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error connecting to collector-172.newrelic.com:443 after 0.008011 seconds: getaddrinfo: No such host is known. 
+[2015-12-06 11:43:29 -0500 weiyun-PC (39092)] ERROR : 1 error(s) running task for event 'report_event_data' in Agent Event Loop:
+[2015-12-06 11:43:29 -0500 weiyun-PC (39092)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error connecting to collector-172.newrelic.com:443 after 0.001003 seconds: getaddrinfo: No such host is known. 
+[2015-12-06 12:43:14 -0500 weiyun-PC (39092)] ERROR : 1 error(s) running task for event 'report_event_data' in Agent Event Loop:
+[2015-12-06 12:43:14 -0500 weiyun-PC (39092)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error connecting to collector-172.newrelic.com:443 after 0.001499 seconds: getaddrinfo: No such host is known. 
+[2015-12-06 13:01:42 -0500 weiyun-PC (39092)] ERROR : 1 error(s) running task for event 'report_event_data' in Agent Event Loop:
+[2015-12-06 13:01:42 -0500 weiyun-PC (39092)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error connecting to collector-172.newrelic.com:443 after 0.002501 seconds: getaddrinfo: No such host is known. 
+[2015-12-06 13:36:19 -0500 weiyun-PC (39092)] ERROR : 1 error(s) running task for event 'report_event_data' in Agent Event Loop:
+[2015-12-06 13:36:19 -0500 weiyun-PC (39092)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error connecting to collector-172.newrelic.com:443 after 0.0015 seconds: getaddrinfo: No such host is known. 
+[2015-12-06 15:27:38 -0500 weiyun-PC (39092)] ERROR : 1 error(s) running task for event 'report_event_data' in Agent Event Loop:
+[2015-12-06 15:27:38 -0500 weiyun-PC (39092)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error connecting to collector-172.newrelic.com:443 after 0.0 seconds: getaddrinfo: No such host is known. 
+[2015-12-06 15:28:19 -0500 weiyun-PC (39092)] ERROR : 1 error(s) running task for event 'report_data' in Agent Event Loop:
+[2015-12-06 15:28:19 -0500 weiyun-PC (39092)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error connecting to collector-172.newrelic.com:443 after 0.001001 seconds: getaddrinfo: No such host is known. 
+[2015-12-06 15:28:19 -0500 weiyun-PC (39092)] ERROR : 1 error(s) running task for event 'report_event_data' in Agent Event Loop:
+[2015-12-06 15:28:19 -0500 weiyun-PC (39092)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error connecting to collector-172.newrelic.com:443 after 0.0 seconds: getaddrinfo: No such host is known. 
+[2015-12-06 15:29:19 -0500 weiyun-PC (39092)] ERROR : 1 error(s) running task for event 'report_data' in Agent Event Loop:
+[2015-12-06 15:29:19 -0500 weiyun-PC (39092)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error connecting to collector-172.newrelic.com:443 after 0.001001 seconds: getaddrinfo: No such host is known. 
+[2015-12-06 15:29:19 -0500 weiyun-PC (39092)] ERROR : 1 error(s) running task for event 'report_event_data' in Agent Event Loop:
+[2015-12-06 15:29:19 -0500 weiyun-PC (39092)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error connecting to collector-172.newrelic.com:443 after 0.001001 seconds: getaddrinfo: No such host is known. 
+[2015-12-06 15:30:19 -0500 weiyun-PC (39092)] ERROR : 1 error(s) running task for event 'report_data' in Agent Event Loop:
+[2015-12-06 15:30:19 -0500 weiyun-PC (39092)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error connecting to collector-172.newrelic.com:443 after 0.0 seconds: getaddrinfo: No such host is known. 
+[2015-12-06 15:30:19 -0500 weiyun-PC (39092)] ERROR : 1 error(s) running task for event 'report_event_data' in Agent Event Loop:
+[2015-12-06 15:30:19 -0500 weiyun-PC (39092)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error connecting to collector-172.newrelic.com:443 after 0.0 seconds: getaddrinfo: No such host is known. 
+[2015-12-06 21:10:49 -0500 weiyun-PC (39092)] ERROR : 1 error(s) running task for event 'report_event_data' in Agent Event Loop:
+[2015-12-06 21:10:49 -0500 weiyun-PC (39092)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error connecting to collector-172.newrelic.com:443 after 0.002002 seconds: getaddrinfo: No such host is known. 
