@@ -26,6 +26,18 @@
    <script src="/js/bootstrap3-typeahead.js" type="text/javascript"></script>
    <script src="/js/formValidation.min.js"></script>
    <script src="/js/framework/bootstrap.min.js"></script>
+   <script src="/js/moment.js"></script>
+   <script>
+   function interpretDate(id, time){
+      var create_time = new Date(time);
+      if (moment(create_time).diff(moment(), 'days') <=  -1){
+        $('#moment' + id).html(moment(create_time).format('MMMM Do YYYY, h:mm:ss a'));
+      } else {
+        $('#moment' + id).html(moment.duration(moment(create_time).diff(moment())).humanize(true));
+      }
+    }
+  </script>
+
    <style>
   /* Note: Try to remove the following lines to see the effect of CSS positioning */
      #navbar.affix {

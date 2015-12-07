@@ -1,7 +1,8 @@
 <%@tweets.each do |tweet| %>
 	<li class="list-group-item">
 		<a href="/user/<%= tweet.user.name%>"><%= tweet.user.display_name%></a>  @<%=tweet.user.name%>
-		<%=tweet.create_time%>
+		<span id="moment<%=tweet.id%>"><%=tweet.create_time%></span>
+		<script> interpretDate('<%=tweet.id%>', '<%=tweet.create_time%>');</script>
 		<br>
 		<%= tweet.to_html%>
 		<br>

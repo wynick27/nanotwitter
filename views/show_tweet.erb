@@ -4,9 +4,12 @@
         <ul class="list-group ancestor-list">
         </ul>
       </div>
-	<div class="panel-heading" >	   
+	<div class="panel-heading" >
+		<div class="col-xs-2">
+	    <img id="profile-pic" src="http://placehold.it/50x50" alt="your image" width="50" height="50"/>
+	    </div> 
 		<a href="/user/<%= tweet.user.name%>"><%= tweet.user.display_name%></a>  @<%=tweet.user.name%>
-		<%=tweet.create_time%>
+		<span id="moment<%= tweet.id %>" ><%=tweet.create_time%></span>
 		<br>
 		<%= tweet.to_html%>
 		<br>
