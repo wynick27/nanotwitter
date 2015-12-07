@@ -4,6 +4,15 @@
   NanoTwitter.get '/loaderio-a7b57ae62ee883c50113f255febc07de/?' do
     "loaderio-a7b57ae62ee883c50113f255febc07de"
   end
+  
+  NanoTwitter.get '/user_avatars/:file' do
+    if File.exist? "static/user_avatars/#{params[:file]}"
+      send_file("static/user_avatars/#{params[:file]}", :disposition => 'inline')
+    else
+      send_file("static/images/profile.jpg", :disposition => 'inline')
+    end
+    
+  end
 
   NanoTwitter.get '/' do
     @curuser=get_cur_user
