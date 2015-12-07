@@ -87,7 +87,7 @@
     if @user
       @curuser=get_cur_user
       @tweets=Tweet.user_timeline(@user).limit(params[:limit].to_i).offset(params[:offset].to_i)
-      {html:erb(:raw_tweet_list),has_more:@tweets.count==params[:limit].to_i}.to_json
+      {html:erb(:raw_tweet_list),has_more:@tweets.count==params[:limit].to_i,count:@tweets.count}.to_json
     else
       "Can't find user"
     end
@@ -112,7 +112,7 @@
     if @user
       @curuser=get_cur_user
       @tweets=Tweet.user_tweets(@user).limit(params[:limit].to_i).offset(params[:offset].to_i)
-      {html:erb(:raw_tweet_list),has_more:@tweets.count==params[:limit].to_i}.to_json
+      {html:erb(:raw_tweet_list),has_more:@tweets.count==params[:limit].to_i,count:@tweets.count}.to_json
     else
       "Can't find user"
     end
@@ -137,7 +137,7 @@
     if @user
       @curuser=get_cur_user
       @tweets=Tweet.user_tweets_with_replies(@user).limit(params[:limit].to_i).offset(params[:offset].to_i)
-      {html:erb(:raw_tweet_list),has_more:@tweets.count==params[:limit].to_i}.to_json
+      {html:erb(:raw_tweet_list),has_more:@tweets.count==params[:limit].to_i,count:@tweets.count}.to_json
     else
       "Can't find user"
     end
