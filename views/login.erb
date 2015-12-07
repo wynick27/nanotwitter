@@ -3,6 +3,8 @@
 		<form action="/login" id="login-form" method="POST">
 			<div class="form-group">
 				<h2>Your LogIn info</h2>
+				<div id="showAlert">
+				</div>
 				<br>
 				<label for="name" class="control-label">Username or Email</label>
 				<input type="text" class="form-control" id="name" name="name" required>
@@ -17,7 +19,12 @@
 						event.preventDefault();
 						$.post('/login', {name:$('#name').val(), password:$('#password').val()}, function(data){
 							if (data == "User not found or password is not correct"){
-									alert(data);
+								var div = document.createElement("div");
+								div.className = "alert alert-danger";
+								var strong = document.createElement("strong");
+								strong.innerHTML = data;
+								div.appendChild(strong);
+								$('#showAlert').append(div);
 								} else {
 									console.log("submit");
 									window.location.replace('/');
