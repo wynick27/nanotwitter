@@ -12,22 +12,26 @@
 	var TRIGGER_DISTANCE = 50;
 
 	$(document).ready(function(){
-		$( window ).scroll(function() {
-			var scrollPosition = window.pageYOffset;
-			var windowSize     = window.innerHeight;
-			var bodyHeight     = document.body.offsetHeight;
-			var dist = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
-			if (dist < TRIGGER_DISTANCE){
-				if (hasmore){
-					loadmore($('accordion').attr('data-post-url'), lastTweetTime);
+		if(hasmore) {
+			$( window ).scroll(function() {
+				var scrollPosition = window.pageYOffset;
+				var windowSize     = window.innerHeight;
+				var bodyHeight     = document.body.offsetHeight;
+				var dist = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
+				if (dist < TRIGGER_DISTANCE){
+						loadmore($('accordion').attr('data-post-url'));
 				}
-			}
-		});
+			});
+		}
 
-		function loadmore(url, time){
+		function loadmore(url){
 			$.post(url, {offset: cur_tweet_num, limit: 50}, function(data){
 				if(data.has_more){
 					$('#accordion').append(data);
+					$('.moment').each(function(i, obj){
+						interpretDate(obj);
+						cur_tweet_num += 1;
+					});
 				} else {
 					hasmore = false;
 				}
