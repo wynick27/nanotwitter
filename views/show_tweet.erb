@@ -9,7 +9,7 @@
 	    <img id="profile-pic" src="http://placehold.it/50x50" alt="your image" width="50" height="50"/>
 	    </div> 
 		<a href="/user/<%= tweet.user.name%>"><%= tweet.user.display_name%></a>  @<%=tweet.user.name%>
-		<span id="moment<%= tweet.id %>" ><%=tweet.create_time%></span>
+		<span id="moment<%= tweet.id %>" class="moment"><%=tweet.create_time%></span>
 		<br>
 		<%= tweet.to_html%>
 		<br>
