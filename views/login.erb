@@ -1,9 +1,6 @@
 	<div class="container-fluid">
 	<header><h1>Log In</h1></header>
-	<div class="alert alert-danger">
-				  <strong><%= @err%></strong>
-				</div>
-		<form action="/login" method="POST">
+		<form action="/login" id="login-form" method="POST">
 			<div class="form-group">
 				<h2>Your LogIn info</h2>
 				<br>
@@ -15,3 +12,16 @@
 			    <input type="submit" class="btn btn-info" id='login-submit' value="Submit" />
 		</form>
 	</div>
+	<script>
+					$('form#login-form').submit(function(event){
+						event.preventDefault();
+						$.post('/login', {name:$('#name').val(), password:$('#password').val()}, function(data){
+							if (data == "User not found or password is not correct"){
+									alert(data);
+								} else {
+									console.log("submit");
+									window.location.replace('/');
+								}
+						}, "json");
+					});
+	</script>

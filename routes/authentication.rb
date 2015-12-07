@@ -12,9 +12,10 @@
     @user=@user || User.find_by(email: params['name'],password:params['password'])
     if @user
       session['user']=@user.id
-      redirect '/'
+      @success = "Success".to_json
+      #redirect '/'
     else
-      "User not found or password is not correct"
+      @err = "User not found or password is not correct".to_json
     end
   end
   #Checks user login information and puts session.
