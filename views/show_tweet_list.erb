@@ -19,7 +19,7 @@
 				var bodyHeight     = document.body.offsetHeight;
 				var dist = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
 				if (dist < TRIGGER_DISTANCE){
-						loadmore($('accordion').attr('data-post-url'));
+						loadmore($('#accordion').attr('data-post-url'));
 				}
 			});
 		}
