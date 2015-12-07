@@ -2,15 +2,28 @@
 		<% index=1 %>
 	  	<% @user.followers.each do |u| %>
 		<div class="panel panel-info">
-		  <div class="panel-body bg-info">
+		  <div class="panel-body bg-primary">
+		  	<div class="row">
+		  	<div class="col-xs-1">
+		  	<img id="profile-pic" src="http://placehold.it/50x50" alt="your image" width="50" height="50"/>
+		  	</div>
+		  	<div class="col-xs-5">
 		    <%= index%>
 		    <a href="/user/<%= u.name%>"><span style="color:#000000;"><%= u.display_name%></span></a>
 		    <br>
-		    <a href="/user/<%= u.name%>">@<%= u.name%></a>
+		    <a href="/user/<%= u.name%>" style="color:#000000;">@<%= u.name%></a>
+		  	</div>
 		  </div>
+		</div>
 		  <div class="panel-footer">
+		  	<div class="row">
+		  	<div class="col-xs-1">
+		  	</div>
 		  	Bio:<%= u.bio%>
-		  	<br>
+		  	</div>
+		  	<div class="row">
+		  	<div class="col-xs-1">
+		  	</div>
 		  	<%= erb :follow,:locals=>{:user=>u}%>
 		  </div>
 		</div>

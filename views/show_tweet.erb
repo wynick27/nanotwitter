@@ -5,6 +5,7 @@
         </ul>
       </div>
 	<div class="panel-heading" >
+		<div class="row">
 		<div class="col-xs-2">
 	    <img id="profile-pic" src="http://placehold.it/50x50" alt="your image" width="50" height="50"/>
 	    </div> 
@@ -13,7 +14,11 @@
 		<br>
 		<%= tweet.to_html%>
 		<br>
+		</div>
 	<div class="container-fluid">
+		<div class="row">
+		<div class="col-xs-2">
+		</div>
 		<div class="col-xs-2">
 		<a role="button" href="/tweet/<%=tweet.id%>/comment" class="text-success reply-btn" data-toggle="collapse" data-tweet-id="<%=tweet.id%>">
 		  <span class="fa fa-reply tweet-comment"></span>
@@ -24,6 +29,7 @@
 		</div>
 		<div class="col-xs-2">
 		<a class="fav-btn" role="button"  href="/tweet/<%=tweet.id%>/favourite"><span class="glyphicon glyphicon-star" <%=@curuser && tweet.favourited_by?(@curuser) ? 'style="color:yellow"': nil%> /></a>&nbsp;<span class="count badge"><%=tweet.favourites.size%></span>
+		</div>
 		</div>
 	</div>	      
 	</div>

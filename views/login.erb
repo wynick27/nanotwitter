@@ -1,5 +1,8 @@
 	<div class="container-fluid">
 	<header><h1>Log In</h1></header>
+	<div class="alert alert-danger">
+				  <strong><%= @err%></strong>
+				</div>
 		<form action="/login" method="POST">
 			<div class="form-group">
 				<h2>Your LogIn info</h2>
