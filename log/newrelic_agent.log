@@ -763,3 +763,4 @@
 [2015-12-06 15:30:19 -0500 weiyun-PC (39092)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error connecting to collector-172.newrelic.com:443 after 0.0 seconds: getaddrinfo: No such host is known. 
 [2015-12-06 21:10:49 -0500 weiyun-PC (39092)] ERROR : 1 error(s) running task for event 'report_event_data' in Agent Event Loop:
 [2015-12-06 21:10:49 -0500 weiyun-PC (39092)] ERROR : NewRelic::Agent::ServerConnectionException: Recoverable error connecting to collector-172.newrelic.com:443 after 0.002002 seconds: getaddrinfo: No such host is known. 
+[2015-12-06 21:54:11 -0500 weiyun-PC (39092)] WARN : Skipping RUM instrumentation. Unable to find <body> tag in first 50000 bytes of document.
