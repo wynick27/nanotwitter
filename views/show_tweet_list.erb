@@ -3,12 +3,15 @@
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 		  	<% tweets.each do |tweet| %>
 			<%=(tweet.is_a? String) ? tweet : (erb :show_tweet,:locals=>{:tweet=>tweet}) %>
-			<script> interpretDate('<%=tweet.id%>', '<%=tweet.create_time%>');</script>
+			<!--<script> interpretDate('<%=tweet.id%>', '<%=tweet.create_time%>');</script>-->
 		  <% end %>
 		</div>
 	</div>
 	<script>
 	$(document).ready(function(){
+		$('.moment').each(function(i, obj){
+			interpretDate(obj);
+		});
 	$(".new-reply-btn").on("click",function() {
 		var element=$('.descendant-list',$(this).parents('.tweet-panel'))
 		$.post('/tweet/'+$( this ).attr( "data-reply-to")+'/comment/new',{comment:$(this).parent().children('textarea').val()},function( data ) {
