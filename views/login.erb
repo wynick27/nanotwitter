@@ -24,7 +24,9 @@
 								var strong = document.createElement("strong");
 								strong.innerHTML = data;
 								div.appendChild(strong);
-								$('#showAlert').append(div);
+								if ($('#showAlert').children().length < 1) {
+									$('#showAlert').append(div);
+								}
 								} else {
 									console.log("submit");
 									window.location.replace('/');
