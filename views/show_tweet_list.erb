@@ -69,7 +69,7 @@
 			interpretDate(obj);
 			cur_tweet_num += 1;
 		});
-
+		
 	$('#replyModal').on('show.bs.modal', function (event) {
 		    var tweet_id = $(event.relatedTarget).data('tweet-id');
 		    var username = $(event.relatedTarget).data('user');
@@ -84,25 +84,30 @@
 		}, "json");
 	});
 
-	$(".new-reply-btn").on("click",function() {
+	$( document ).on("click", ".new-reply-btn",function() {
 		var element=$('.descendant-list',$(this).parents('.tweet-panel'))
 		$.post('/tweet/'+$( this ).attr( "data-reply-to")+'/comment/new',{comment:$(this).parent().children('textarea').val()},function( data ) {
 			element.append(data.html);
 			}, "json");
 	});
-    $(".reply-btn").click(function() {
-		var panel=$(this).parents('.tweet-panel');
-		if (panel.attr('data-loaded')=='false') {
-			$.post($( this ).attr( "href"),function( data ) {
+    $(document).on("click", ".reply-btn", function () {
+		var panel = $(this).parents('.tweet-panel');
+		if (panel.attr('data-loaded') == 'false') {
+			$.post('/tweet/' + $(this).attr("data-tweet-id") + '/comment', function (data) {
 				if (data.ancestors)
-					$('.ancestor-list',panel).html(data.ancestors);
+					$('.ancestor-list', panel).html(data.ancestors);
 				if (data.descendants)
-					$('.descendant-list',panel).html(data.descendants);
-				$('.collapse',panel).collapse();
+					$('.descendant-list', panel).html(data.descendants);
+				$('.reply', panel).each(function (i, obj) {
+					if ($(obj).html().indexOf("UTC") > -1) {
+						interpretDate(obj);
+					}
+				});
+				$('.collapse', panel).collapse();
 			}, "json");
-			panel.attr('data-loaded',true);
+			panel.attr('data-loaded', true);
 		} else {
-			$('.collapse',panel).collapse("toggle");
+			$('.collapse', panel).collapse("toggle");
 		};
 		return false;
 	});

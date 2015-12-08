@@ -1,7 +1,4 @@
-		<div class="container-fluid" style="height:1000px">
-		<% index=1 %>
-	  	<% @user.followers.each do |u| %>
-		<div class="panel panel-info">
+<div class="panel panel-info">
 		  <div class="panel-body bg-primary">
 		  	<div class="row">
 		  	<div class="col-xs-1">
@@ -29,6 +26,3 @@
 		  	<%= erb :follow,:locals=>{:user=>u}%>
 		  </div>
 		</div>
-		<% index += 1%>
-		<% end %>
-	</div>

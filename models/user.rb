@@ -32,4 +32,8 @@ class User < ActiveRecord::Base
     user=User.create(name:params[:name],display_name:params[:display_name],email:params[:email] || "",password:params[:password] || "",bio:params[:bio] || "",create_time:params[:create_time] || Time.now)
     user
   end
+  
+  def self.search(name) 
+    User.where("lower(name) like ? or lower(display_name) like ?",name+"%",name+"%")
+  end
 end

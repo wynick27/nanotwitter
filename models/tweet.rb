@@ -41,12 +41,12 @@ select tweets.id,tweets.text,retweets.create_time,tweets.user_id,tweets.referenc
       nil
     else
       tmap={}
-      tarray=Tweet.includes(:user).where("conversation_root = ? and id != ? and create_time < ?",self.conversation_root,self.id,self.create_time).order(:create_time).each {|t| tmap[t.id]=t }
+      tarray=Tweet.includes(:user).where("conversation_root = ? and id != ? and create_time <= ?",self.conversation_root,self.id,self.create_time).order(:create_time).each {|t| tmap[t.id]=t }
       plist=[self]
-      while plist[0].reply_to
+      while plist[0] && plist[0].reply_to
         plist.unshift(tmap[plist[0].reply_to])
       end
-      plist.pop
+      plist.pop if plist != []
       plist
     end
   end
@@ -56,7 +56,7 @@ select tweets.id,tweets.text,retweets.create_time,tweets.user_id,tweets.referenc
       Tweet.includes(:user).where("conversation_root = ? and id != ?",self.conversation_root,self.id).order(:create_time)
     else
       pset=Set.new [self.id]
-      tweets=Tweet.includes(:user).where("conversation_root = ? and id != ? and create_time > ?",self.conversation_root,self.id,self.create_time).order(:reply_level).select do |t|
+      tweets=Tweet.includes(:user).where("conversation_root = ? and id != ? and create_time >= ?",self.conversation_root,self.id,self.create_time).order(:reply_level).select do |t|
         ismember=pset.include?(t.reply_to)
         if ismember then pset<<t.id end
         ismember
