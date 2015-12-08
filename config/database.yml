@@ -1,11 +1,11 @@
 development:
-  adapter: postgresql
-  database: nanotwitter
-  username: postgres
-  password: password
-  host: localhost
-  #adapter: sqlite3
-  #database: db/development.sqlite3
+  #adapter: postgresql
+  #database: nanotwitter
+  #username: postgres
+  #password: password
+  #host: localhost
+  adapter: sqlite3
+  database: db/development.sqlite3
 test:
   adapter: sqlite3
   database: db/test.sqlite3

@@ -16,6 +16,7 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.3)
     builder (3.2.2)
+    byebug (8.2.1)
     capybara (2.5.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -30,10 +31,14 @@ GEM
       minitest (>= 4)
     childprocess (0.5.7)
       ffi (~> 1.0, >= 1.0.11)
+    coderay (1.1.0)
+    faker (1.6.1)
+      i18n (~> 0.5)
     ffi (1.9.10)
     ffi (1.9.10-x64-mingw32)
     i18n (0.7.0)
     json (1.8.3)
+    method_source (0.8.2)
     mime-types (2.6.2)
     mini_portile (0.6.2)
     minitest (5.8.0)
@@ -42,18 +47,27 @@ GEM
       minitest (~> 5.0)
       rake
     multi_json (1.11.2)
+    newrelic_rpm (3.14.0.305)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     nokogiri (1.6.6.2-x64-mingw32)
       mini_portile (~> 0.6.0)
     pg (0.18.3)
     pg (0.18.3-x64-mingw32)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-byebug (3.3.0)
+      byebug (~> 8.0)
+      pry (~> 0.10)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rake (10.4.2)
+    redis (3.2.2)
     rubyzip (1.1.7)
     selenium-webdriver (2.48.1)
       childprocess (~> 0.5)
@@ -67,6 +81,7 @@ GEM
     sinatra-activerecord (2.0.8)
       activerecord (>= 3.2)
       sinatra (~> 1.0)
+    slop (3.6.0)
     sqlite3 (1.3.11)
     sqlite3 (1.3.11-x64-mingw32)
     thread_safe (0.3.5)
@@ -86,8 +101,12 @@ DEPENDENCIES
   capybara
   capybara-webkit
   capybara_minitest_spec
+  faker
   minitest-capybara
+  newrelic_rpm
   pg
+  pry-byebug
+  redis
   selenium-webdriver
   sinatra
   sinatra-activerecord
