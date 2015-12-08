@@ -1,38 +1,31 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Nanotwitter : Nano Twitter project">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Nanotwitter</title>
+    <meta charset="UTF-8">
+    <title>Nanotwitter by wynick27</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
+    <section class="page-header">
+      <h1 class="project-name">Nanotwitter</h1>
+      <h2 class="project-tagline">A twitter mimic using Sinatra + Ruby + Postgres</h2>
+      <a href="https://github.com/wynick27/nanotwitter" class="btn">View on GitHub</a>
+      <a href="https://github.com/wynick27/nanotwitter/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/wynick27/nanotwitter/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/wynick27/nanotwitter">View on GitHub</a>
+    <section class="main-content">
+      <p><img src="https://raw.githubusercontent.com/wynick27/nanotwitter/master/sreenshots/Screen%20Shot%202015-12-07%20at%2011.11.54%20PM.png" alt="">
+Main page</p>
 
-          <h1 id="project_title">Nanotwitter</h1>
-          <h2 id="project_tagline">Nano Twitter project</h2>
+<h2>
+<a id="technology-description" class="anchor" href="#technology-description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Technology Description:</h2>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/wynick27/nanotwitter/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/wynick27/nanotwitter/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <p><strong>Technology Description:</strong> 
-Redis: Caching the data that is frequently used and reduce the response time for user actions
+<p>Redis: Caching the data that is frequently used and reduce the response time for user actions
 Postgres: Database to store the data including the user information, tweets send out, fellowship, and some others.
 AJAX: Dynamically send request to server and get response without refreshing the page.
 Bootstrap: Front-end framework to build the interface for the website.
@@ -45,22 +38,43 @@ New Relic: Monitoring the performance of nanoTwiter website
 Loader.io: Testing the scalability of nanoTwiter by checking the response time of automatic visiting the website
 Rspec: Testing the functionality of the website and the methods to see if they can function as we expected.</p>
 
-<p><strong>Interesting Engineering:</strong>
-Back-end:  The sinatra app is using single file style at first where every function is written in a single file and the model file is almost nothing in it. After most of the functionality are implemented, the file become too large and hard to locate a specific route, what’s worse is several routes called same function such as Tweet.create in different places, sometimes the tweets is not properly analyzed which caused bugs. So we refactored it into several routes files like test, restful api, main, tweets etc.  And all useful functions used are in the model and controllers and views do almost nothing related to logic now.   Since tweets is regularly sorted by time, so we added an index on create_time. And we also added index for username and displayname. When generating user timeline and homepage, we need to load every user that posted the tweet, so I eager load all users to prevent generating n queries. And for tweets, we parse all tweets and analyze for hashtags and mentions, it’s also escaped because sinatra don’t do escaping by default, so that user can insert any html or javascript in their tweets, causing the website vulnerable to XSS attacks.</p>
+<h2>
+<a id="interesting-engineering" class="anchor" href="#interesting-engineering" aria-hidden="true"><span class="octicon octicon-link"></span></a>Interesting Engineering:</h2>
 
-<p>Front-end: During the progress, we checked real twitter’s behavior , to see how they did on different effects, and inspected their front-end code, which inspired us how to make a similar level user experience as the real twitter. We choose AJAX over simple submit button in the HTML form, because refresh pages destroys user experience, a normal user would not like to scroll down to the same place again. Also, just like twitter, we decided to make the anything relate to the private chat dialog happen inside a popup modal. And we found it a big challenge to turn # and @ into an operational semantic and then trigger a list of options until we found a package named typeahead provided by twitter, which can return a list of options in real time as the user typing.</p>
+<p>During the progress, we did our best to study real twitter’s behavior, and tried to implement the functionality that twitter has.</p>
 
-<p>RestAPI: We decided to try both ways the SODRR textbook described to organize the API:
+<p><strong>Back-end</strong>:  The sinatra app is using single file style at first where every function is written in a single file and the model file is almost nothing in it. After most of the functionality are implemented, the file become too large and hard to locate a specific route, what’s worse is several routes called same function such as Tweet.create in different places, sometimes the tweets is not properly analyzed which caused bugs. So we refactored it into several routes files like test, restful api, main, tweets etc.  And all useful functions used are in the model and controllers and views do almost nothing related to logic now.   Since tweets is regularly sorted by time, so we added an index on create_time. And we also added index for username and displayname. When generating user timeline and homepage, we need to load every user that posted the tweet, so I eager load all users to prevent generating n queries. And for tweets, we parse all tweets and analyze for hashtags and mentions, it’s also escaped because sinatra don’t do escaping by default, so that user can insert any html or javascript in their tweets, causing the website vulnerable to XSS attacks.</p>
+
+<p><strong>Front-end</strong>: We choose AJAX over simple submit button in the HTML form, because refresh pages destroys user experience, a normal user would not like to scroll down to the same place again. Also, just like twitter, we decided to make the anything relate to the private chat dialog happen inside a popup modal. And we found it a big challenge to turn # and @ into an operational semantic and then trigger a list of options until we found a package named typeahead provided by twitter, which can return a list of options in real time as the user typing.</p>
+
+<p><img src="https://raw.githubusercontent.com/wynick27/nanotwitter/master/sreenshots/Screen%20Shot%202015-12-07%20at%2011.25.37%20PM.png" alt="">
+Login page</p>
+
+<p>We allow user to upload their avatars.
+<img src="https://raw.githubusercontent.com/wynick27/nanotwitter/master/sreenshots/Screen%20Shot%202015-12-07%20at%2011.26.26%20PM.png" alt="">
+Settings page</p>
+
+<p>We also implemented a group chat system, which allows user send private messages to a group of people.
+<img src="https://raw.githubusercontent.com/wynick27/nanotwitter/master/sreenshots/Screen%20Shot%202015-12-07%20at%2011.19.55%20PM.png" alt="">
+Group chat</p>
+
+<p>The dialog is stored in a tree structure and is loaded dynamically.
+User's can also favourite a specific tweet.
+<img src="https://raw.githubusercontent.com/wynick27/nanotwitter/master/sreenshots/Screen%20Shot%202015-12-07%20at%2011.18.34%20PM.png" alt=""></p>
+
+<p><strong>RestAPI</strong>: We decided to try both ways the SODRR textbook described to organize the API:
 /api/v1/user/username/:username
 /api/v1/users?username=USERNAME
 So, the API we have can support both and the user can search with either way they like.  The search function works now and multi-words is supported.</p>
 
-<p>Testing: Unit test is easy to test as single methods can be tested directly with the proper setup. We did follow the instructions about the Capybara to do the integrity test and found it’s a little bit more complicate than the minitest and rspec, but the result turns out to be very good. One big challenge we had was that if we apply AJAX to the buttons, then the Capybara won’t accept than because the default driver won’t support JS. We have to switch the driver to :webkit in order to test the AJAX.</p>
+<p><strong>Testing</strong>: Unit test is easy to test as single methods can be tested directly with the proper setup. We did follow the instructions about the Capybara to do the integrity test and found it’s a little bit more complicate than the minitest and rspec, but the result turns out to be very good. One big challenge we had was that if we apply AJAX to the buttons, then the Capybara won’t accept than because the default driver won’t support JS. We have to switch the driver to :webkit in order to test the AJAX.</p>
 
 <p>ClientLibrary: Client Library is implemented in ruby and users can access the data in the database without directly query the API.</p>
 
-<p><strong>Result of scalability work, timings etc.</strong>
-We’ve added counter cache in many places. Like followings count, followers count, tweets count and favourites count in the user table so that instead of doing 4 aggregation query when showing information, it just checks the cache in the table. And for each tweet, we added favourite and retweet counter cache to avoid doing aggregation query. 
+<h2>
+<a id="result-of-scalability-work-timings-etc" class="anchor" href="#result-of-scalability-work-timings-etc" aria-hidden="true"><span class="octicon octicon-link"></span></a>Result of scalability work, timings etc.</h2>
+
+<p>We’ve added counter cache in many places. Like followings count, followers count, tweets count and favourites count in the user table so that instead of doing 4 aggregation query when showing information, it just checks the cache in the table. And for each tweet, we added favourite and retweet counter cache to avoid doing aggregation query. 
 Indices are added to attributes that are common in join or sort operations. Like create_time for tweets. User id for tweets and other places.
 We also added a postgres special gin index for full text search on tweets, which uses english tokenizer so that morphology is also considered. And it also provides highlight functionality.
 Redis is also used but only in the main page when user is not logged in. Because taking user timeline into consideration results in very complicated cache updating strategy which is not worth doing for index is already added to required fields. And actually we found using redis is resulting worse latency because redis is stored in amazon aws for heroku and communication cost is high.
@@ -69,18 +83,15 @@ Ajax is used whenever possible to avoid having to refresh entire page, which is 
 <p>Team members: Yun Wei, Zhongqi Li, Zhenyu Han</p>
 
 <p>Date: 12/6/2015</p>
-      </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Nanotwitter maintained by <a href="https://github.com/wynick27">wynick27</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/wynick27/nanotwitter">Nanotwitter</a> is maintained by <a href="https://github.com/wynick27">wynick27</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
 
-    
+    </section>
 
+  
   </body>
 </html>
