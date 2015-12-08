@@ -8,7 +8,7 @@ class Tweet < ActiveRecord::Base
   def self.parse_tweet(text)
   
   text.gsub(/@([\w\d]|<b>|<\/b>)+|(?<!&)#([\w\d]|<b>|<\/b>)+/) do |s|
-       "<a href='/#{s[0]=='@'? 'user' : 'hashtag'}/#{s[1..-1]}'>#{s}</a>"
+       "<a href='/#{s[0]=='@'? 'user' : 'hashtag'}/#{s[1..-1].gsub(/<b>|<\/b>/,'')}'>#{s}</a>"
     end
   end
 

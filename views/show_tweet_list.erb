@@ -30,8 +30,9 @@
 </div>
 
 	<script>
-		<% if @post_url %>
+		
 	var cur_tweet_num = 0;
+	<% if @post_url %>
 	var hasmore = true;
 	var TRIGGER_DISTANCE = 10;
 
@@ -65,12 +66,14 @@
 				}
 			},"json");
 		}
+		
+		<% end %>
 
 		$('.moment').each(function(i, obj){
 			interpretDate(obj);
 			cur_tweet_num += 1;
 		});
-		<% end %>
+		
 	$('#replyModal').on('show.bs.modal', function (event) {
 		    var tweet_id = $(event.relatedTarget).data('tweet-id');
 		    var username = $(event.relatedTarget).data('user');
