@@ -5,3 +5,10 @@
 	<%=erb(:chat_message_left,:locals=>{:m=>m})%>
 	<%end%>
 <% end %>
+<script>
+$('.msg-moment').each(function(i, obj){
+    if ($(obj).html().indexOf("UTC") > -1){
+        interpretDate(obj);
+    }
+ });
+</script>

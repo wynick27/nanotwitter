@@ -30,12 +30,11 @@
    <script>
    function interpretDate(obj){
       var time = $(obj).html();
-      var id = $(obj).attr('id');
       var create_time = new Date(time);
-      if (moment(create_time).diff(moment(), 'days') <=  -1){
-        $('#' + id).html(moment(create_time).format('MMMM Do YYYY, h:mm:ss a'));
+      if (moment(create_time).utc().diff(moment(), 'days') <=  -1){
+        $(obj).html(moment(create_time).utc().format('MMMM Do YYYY, h:mm:ss a'));
       } else {
-        $('#' + id).html(moment.duration(moment(create_time).diff(moment())).humanize(true));
+        $(obj).html(moment.duration(moment(create_time).utc().diff(moment().utc())).humanize(true));
       }
     }
   </script>

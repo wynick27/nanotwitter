@@ -75,7 +75,7 @@
 				element.children(0).css({'color':'green'});
 			else
 				element.children(0).css({'color':''});
-			element.children(1).text(data.count);
+			element.parent().children(".count").text(data.count);
 		}, "json");
 		return false;
 	});
@@ -86,7 +86,7 @@
 				element.children(0).css({'color':'yellow'});
 			else
 				element.children(0).css({'color':''});
-			element.children(1).text(data.count);
+			element.parent().children(".count").text(data.count);
 		}, "json");
 		return false;
 	});

@@ -10,11 +10,13 @@
 	    <img id="profile-pic" src="/user_avatars/<%=tweet.user.name%>.jpg" alt="your image" width="50" height="50"/>
 	    </div> 
 	    <div class="col-xs-10">
+	    <div class="row">
 		<a href="/user/<%= tweet.user.name%>"><%= tweet.user.display_name%></a>  @<%=tweet.user.name%>
 		<span id="moment<%= tweet.id %>" class="moment text-success"><%=tweet.create_time%></span>
-		<br>
+		</div>
+		<div class="row">
 		<%= tweet.to_html%>
-		<br>
+		</div>
 		</div>
 		</div>
 	<div class="container-fluid">

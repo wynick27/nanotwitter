@@ -1,15 +1,42 @@
 <%@tweets.each do |tweet| %>
 	<li class="list-group-item">
+		<div class="row">
+		<div class="col-xs-2">
+		<img id="profile-pic" src="/user_avatars/<%=tweet.user.name%>.jpg" alt="your image" width="50" height="50"/>
+		</div>
+		<div class="col-xs-10">
+		<div class="row">
 		<a href="/user/<%= tweet.user.name%>"><%= tweet.user.display_name%></a>  @<%=tweet.user.name%>
-		<span id="moment<%=tweet.id%>"><%=tweet.create_time%></span>
-		<script> interpretDate('<%=tweet.id%>', '<%=tweet.create_time%>');</script>
-		<br>
+		<span id="reply<%=tweet.id%>" class="reply text-success" data="createtime"><%=tweet.create_time%></span>
+		</div>
+		<div class="row">
 		<%= tweet.to_html%>
-		<br>
+		</div>
+		</div>
+		</div>
+		<div class="container-fluid">
+		<div class="row">
+		<div class="col-xs-2">
+		</div>
+		<div class="col-xs-2">
 		<a role="button" class="text-success reply-button-inside" data-tweet-id="<%=tweet.id%>">
 		  <span class="fa fa-reply tweet-comment"></span>
 		</a>
-		<a class="retweet-btn" role="button"  href="/tweet/<%=tweet.id%>/retweet"><span class="glyphicon glyphicon-retweet" <%=@curuser && tweet.retweeted_by?(@curuser) ? 'style="color:green"': nil%> /><span class="count"><%=tweet.retweets.size%></span></a>
-		<a class="fav-btn" role="button"  href="/tweet/<%=tweet.id%>/favourite"><span class="glyphicon glyphicon-star" <%=@curuser && tweet.favourited_by?(@curuser) ? 'style="color:yellow"': nil%> /><span class="count"><%=tweet.favourites.size%></span></a>	
+		</div>
+		<div class="col-xs-2">
+		<a class="retweet-btn" role="button"  href="/tweet/<%=tweet.id%>/retweet"><span class="glyphicon glyphicon-retweet" <%=@curuser && tweet.retweeted_by?(@curuser) ? 'style="color:green"': nil%> /></a>&nbsp;<span class="count badge" style="background-color:#333333;"><%=tweet.retweets.size%></span>
+		</div>
+		<div class="col-xs-2">
+		<a class="fav-btn" role="button"  href="/tweet/<%=tweet.id%>/favourite"><span class="glyphicon glyphicon-star" <%=@curuser && tweet.favourited_by?(@curuser) ? 'style="color:yellow"': nil%> /></a>&nbsp;<span class="count badge" style="background-color:#333333;"><%=tweet.favourites.size%></span>
+		</div>
+		</div>
+		</div>	
 	</li>
 <% end %>		
+<script>
+	$('.reply').each(function(i, obj){
+			if ($(obj).html().indexOf("UTC") > -1){
+				interpretDate(obj);
+			}
+		});
+</script>

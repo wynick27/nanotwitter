@@ -183,28 +183,6 @@
             </div>
 </div>
 
-<div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="tweetModalLabel">New message</h4>
-                </div>
-                <div class="modal-body">
-                  <form action="/tweet/new" method="POST">
-                    <div class="form-group">
-                      <label for="text" class="control-label">Tweet:</label>
-                      <textarea class="form-control user-autocomplete" data-provide="typeahead" maxlength="140" id="text" name="text" placeholder="What's in your mind?" required></textarea>
-                    </div>
-                    <input type="submit" class="btn btn-info" id="submit" value="Send Tweet"/>
-                    <span id="charleft"></span>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
 <script>
 
 /* Modal JS */
@@ -282,6 +260,12 @@ function LoadChat(url, recipients) {
 
 function AppendMessages(data) {
 	$('#chat-messages').append(data.html);
+    $('.msg-moment').each(function(i, obj){
+          if ($(obj).html().indexOf("UTC") > -1 || $(obj).html().indexOf("-0500") > -1){
+              interpretDate(obj);
+          }
+       });
+
 }
 
 /* Message Modal */
@@ -344,8 +328,7 @@ $('#msgFormSubmit').click(function(){
 
   $('#btn-chat').click(function(){
     
-    $.post('/messages/'+$('#chat-messages').attr('data-id')+'/new', {text:$('#btn-input').val()},function(data){
-	AppendMessages(data);
+    $.post('/messages/'+$('#chat-messages').attr('data-id')+'/new', {text:$('#btn-input').val()},function(data){	   AppendMessages(data);
     }, "json");
 
     $("#chat-body").animate({ scrollTop: $("#chat-messages").height() + 150 }, 'slow');
