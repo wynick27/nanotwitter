@@ -47,7 +47,7 @@
     if @curuser
       @user=@curuser
       erb :master, :layout=> :header do
-        erb :following
+        erb :show_user_list ,locals:{users=@user.followed_users}
       end
     else
       "Not logged in"
@@ -59,7 +59,7 @@
     if @curuser
       @user=@curuser
       erb :master, :layout=> :header do
-        erb :followers
+        erb :show_user_list ,locals:{users=@user.followers}
       end
     else
       "Not logged in"
@@ -162,7 +162,7 @@
     if @user
       @curuser=get_cur_user
       erb :master, :layout=> :header do
-        erb :following
+        erb :show_user_list ,locals:{users=@user.followed_users}
       end
     else
       "Not logged in"
@@ -174,7 +174,7 @@
     if @user
       @curuser=get_cur_user
       erb :master, :layout=> :header do
-        erb :followers
+        erb :show_user_list ,locals:{users=@user.followers}
       end
     else
       "Not logged in"

@@ -1,1 +1,24 @@
-  <%= erb :show_tweet_list,:locals=>{:tweets=>@tweets} %>
+<% if @searchtype=='users' then %>
+		<ul class="nav nav-tabs">
+	  <li><a href="/search?q=<%=html @query%>&type=tweets">Tweets</a></li>
+	  <li class="active"><a data-toggle="tab" href="#result">Users</a></li>
+	</ul>
+   <div class="tab-content">
+		  <div id="result" class="tab-pane fade in active">
+		  	<%= erb :show_user_list,:locals=>{:users=>@result} %>
+	  	</div>
+	  </div>
+	<% else %>
+	<ul class="nav nav-tabs">
+	 
+	  <li class="active"><a data-toggle="tab" href="#result">Tweets</a></li>
+    <li><a href="/search?q=<%=html @query%>&type=users">Users</a></li>
+	</ul>
+  <div class="tab-content">
+		  <div id="result" class="tab-pane fade in active">
+		  	<%= erb :show_tweet_list,:locals=>{:tweets=>@result} %>
+	  	</div>
+	  </div>
+
+	<% end %>
+

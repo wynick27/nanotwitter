@@ -5,8 +5,9 @@
 
   NanoTwitter.get '/search' do
     @curuser=get_cur_user
-    query=params['q']
-    @tweets=Tweet.search(query)
+    @query=params['q']
+    @searchtype=params['type'] || 'tweets'
+    @tweets=Tweet.search(@query)
     erb :master, :layout=> :header do
       erb :search_result 
     end
