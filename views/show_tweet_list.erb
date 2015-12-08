@@ -6,6 +6,29 @@
 		  <% end %>
 		</div>
 	</div>
+
+<div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header" id="reply-header">
+                	<div class="row">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              		</div>
+                </div>
+
+                <div class="modal-body" id="reply-body">
+                    <div class="form-group">
+                      <textarea id="reply-text" type="text" class="form-control" required></textarea>
+                    </div>
+                </div>
+                
+                <div class="modal-footer" id="reply-footer">
+                  <input type="button" id="replyFormSubmit" class="btn btn-info" value="Reply"/>
+                </div>
+              </div>
+            </div>
+</div>
+
 	<script>
 		<% if @post_url %>
 	var cur_tweet_num = 0;
@@ -48,6 +71,20 @@
 			cur_tweet_num += 1;
 		});
 		<% end %>
+	$('#replyModal').on('show.bs.modal', function (event) {
+		    var tweet_id = $(event.relatedTarget).data('tweet-id');
+		    var username = $(event.relatedTarget).data('user');
+		    var targethtml = $(event.relatedTarget).parent().parent().parent().parent().children('.reply-title').html();
+		    $('#reply-header').html(targethtml);
+		    $('#reply-text').html('@' + username + ' ');
+		  });
+
+	$('#replyFormSubmit').click(function(){
+		$.post('/tweet/'+ $('#replyModal').find('.reply').attr('id').replace('reply', '') +'/comment/new',{comment:$('#replyModal').find('#reply-text').val()},function( data ) {
+			$('#replyModal').modal('hide');
+		}, "json");
+	});
+
 	$( document ).on("click", ".new-reply-btn",function() {
 		var element=$('.descendant-list',$(this).parents('.tweet-panel'))
 		$.post('/tweet/'+$( this ).attr( "data-reply-to")+'/comment/new',{comment:$(this).parent().children('textarea').val()},function( data ) {
