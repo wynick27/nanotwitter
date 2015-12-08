@@ -7,6 +7,7 @@
 		</div>
 	</div>
 	<script>
+		<% if @post_url %>
 	var cur_tweet_num = 0;
 	var hasmore = true;
 	var TRIGGER_DISTANCE = 10;
@@ -46,6 +47,7 @@
 			interpretDate(obj);
 			cur_tweet_num += 1;
 		});
+		<% end %>
 	$( document ).on("click", ".new-reply-btn",function() {
 		var element=$('.descendant-list',$(this).parents('.tweet-panel'))
 		$.post('/tweet/'+$( this ).attr( "data-reply-to")+'/comment/new',{comment:$(this).parent().children('textarea').val()},function( data ) {
@@ -94,7 +96,6 @@
 			element.parent().children(".count").text(data.count);
 		}, "json");
 		return false;
-	});
 	});
 
 

@@ -1,5 +1,5 @@
 
-  NanoTwitter.post '/messages/?' do
+  NanoTwitter.post '/messages' do
     uid=session['user']
     @curuser=uid && User.find(uid)
     {:html=>(erb :chat_groups)}.to_json
@@ -31,7 +31,7 @@
     {:created=>false}.to_json
   end
 
-  NanoTwitter.post '/messages/:conversation_id/?' do
+  NanoTwitter.post '/messages/:conversation_id' do
     uid=session['user']
     @curuser=uid && User.find(uid)
     cid=params['conversation_id']
