@@ -40,7 +40,7 @@
       <div class="panel-collapse collapse">
 		<% if @curuser %>
 		<div class="panel-footer">
-			<textarea class="form-control user-autocomplete" data-provide="typeahead" maxlength="140" name="text" required></textarea>	
+			<textarea class="form-control user-autocomplete" data-provide="typeahead" maxlength="140" name="text" required>@<%=tweet.user.name%>&nbsp;</textarea>	
 		    <button class="btn btn-info new-reply-btn" data-reply-to="<%=tweet.id%>">Reply</button>
 		</div>
 		<% end %>
