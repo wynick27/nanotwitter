@@ -52,19 +52,24 @@
 			element.append(data.html);
 			}, "json");
 	});
-    $( document ).on("click", ".reply-btn", function() {
-		var panel=$(this).parents('.tweet-panel');
-		if (panel.attr('data-loaded')=='false') {
-			$.post('/tweet/'+$(this).attr( "data-tweet-id")+'/comment',function( data ) {
+    $(document).on("click", ".reply-btn", function () {
+		var panel = $(this).parents('.tweet-panel');
+		if (panel.attr('data-loaded') == 'false') {
+			$.post('/tweet/' + $(this).attr("data-tweet-id") + '/comment', function (data) {
 				if (data.ancestors)
-					$('.ancestor-list',panel).html(data.ancestors);
+					$('.ancestor-list', panel).html(data.ancestors);
 				if (data.descendants)
-					$('.descendant-list',panel).html(data.descendants);
-				$('.collapse',panel).collapse();
+					$('.descendant-list', panel).html(data.descendants);
+				$('.reply', panel).each(function (i, obj) {
+					if ($(obj).html().indexOf("UTC") > -1) {
+						interpretDate(obj);
+					}
+				});
+				$('.collapse', panel).collapse();
 			}, "json");
-			panel.attr('data-loaded',true);
+			panel.attr('data-loaded', true);
 		} else {
-			$('.collapse',panel).collapse("toggle");
+			$('.collapse', panel).collapse("toggle");
 		};
 		return false;
 	});

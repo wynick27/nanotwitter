@@ -1,13 +1,13 @@
   NanoTwitter.get '/autocomplete' do
     name=params['q']
-    User.where("lower(name) like ? or lower(display_name) like ?",name+"%",name+"%").limit(5).pluck(:name,:display_name).to_json
+    User.search(name).limit(5).pluck(:name,:display_name).to_json
   end
 
   NanoTwitter.get '/search' do
     @curuser=get_cur_user
     @query=params['q']
     @searchtype=params['type'] || 'tweets'
-    @tweets=Tweet.search(@query)
+    @result= @searchtype.downcase == 'users' ? User.search(@query) : Tweet.search(@query)
     erb :master, :layout=> :header do
       erb :search_result 
     end

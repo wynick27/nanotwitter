@@ -1,8 +1,0 @@
-
-	<div class="container-fluid" style="height:1000px">
-		<% index=1 %>
-	  	<% @user.followed_users.each do |u| %>
-		<%= erb :show_user,:locals=>{u:u} %>
-		<% index += 1%>
-		<% end %>
-	</div>
