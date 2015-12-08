@@ -1,59 +1,37 @@
-This is Version 0.5
+#Nanotwitter
 
+[ ![Codeship Status for wynick27/nanotwitter](https://codeship.com/projects/70bcc180-60da-0133-f236-1a6c59bbc52b/status?branch=master)](https://codeship.com/projects/112320)
 
-authentication
-get /login
-Generates user login form.
+Nanotwitter is an web application built with Ruby + Sinatra + PostgreSQL. It's a course project for COSI105B at Brandeis University.
+Our team name is Llama. Consist of three people.
 
-post /login
-Checks user login information and puts session.
+Website:[](https://nanotwitter-llama.herokuapp.com)
 
-get /logout
-Logout current user.
+Porfolio:[](https://wynick27.github.io/nanotwitter/)
 
-get /register
-Generates register form.
+## Team Members
+[Yun Wei](https://github.com/wynick27)
+[Zhongqi Li](https://github.com/zhongqil)
+[Zhenyu Han](https://github.com/jaosn)
 
-post /register
-Checks name conflict and add it to database.
+## Functionality
 
-User Interface
-get /
-if user logged in return its tweets
-otherwise return all recent tweets of the site.
+Authentication:
+User can sign up or sign in with an email address, a user name and a display name.
 
-get /following
-Shows the current user's followings.
+Main Page:
+User can see recent tweets without login. And see their timeline when logged in.
 
-get /followers
-Shows the current user's followers.
+Tweet:
+User can post new tweets and retweet other people's tweets and comment on other's tweets.
+User can also favourite tweets.
 
-get /user/:username
-if user is matches the current user then show new tweet otherwise just show the user's tweets.
+Private Message:
+User can send private message to a group of people.
 
-get /user/:username/followings
-Shows the specific user's followings.
+Profile edit:
+User can edit their profile and upload avatars.
 
-get /user/:username/followers
-Shows the specific user's followers.
+Search:
+User can search throught all tweets and users.
 
-get /user/:username/follow
-if user is matches the current user or not followed by current user then error otherwise follow the user.
-
-get /user/:username/unfollow
-if user is matches the current user or not followed by current user then error otherwise unfollow the user.
-
-
-post /tweet/new
-If user is not logged in then error
-else post a new tweet in users profile.
-
-post /tweet/:id/retweet
-Retweet a specific post of other user, user cannot retweet his own tweets.
-And user can also specify an optional comment.
-
-post /tweet/:id/comments
-Post a comment to a tweet.
-
-post /tweet/:id/favourite
-Add a tweet to its favourites.
