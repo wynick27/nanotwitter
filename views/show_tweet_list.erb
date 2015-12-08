@@ -73,8 +73,8 @@
 	$('#replyModal').on('show.bs.modal', function (event) {
 		    var tweet_id = $(event.relatedTarget).data('tweet-id');
 		    var username = $(event.relatedTarget).data('user');
-		    var targethtml = $(event.relatedTarget).parent().parent().parent().parent().children('.reply-title');
-		    $('#reply-header').append(targethtml);
+		    var targethtml = $(event.relatedTarget).parent().parent().parent().parent().children('.reply-title').html();
+		    $('#reply-header').html(targethtml);
 		    $('#reply-text').html('@' + username + ' ');
 		  });
 
